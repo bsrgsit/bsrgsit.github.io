@@ -8,12 +8,13 @@ sidebar:
 
     # Profile information
     name: Venkata Guravareddy
-    tagline: Openstack/DevOps Engineer
+    tagline: Principal Engineer - Infrastructure & AI Solutions
     avatar: profile.jpg  #place a 100x100 picture inside /assets/images/ folder and provide the name of the file below
 
     # Sidebar links
     email: bvguravareddy@gmail.com
     phone: +91 9884883957
+    location: Hyderabad, India
     #website: blog.webjeda.com #do not add http://
     linkedin: bvguravareddy
     github: bsrgsit
@@ -43,18 +44,34 @@ sidebar:
       - item: Sports
         link:
 
+      - item: AI/ML Research
+        link:
+
+      - item: Open Source Contribution
+        link:
+
 career-profile:
     title: Career Profile
     summary: |
-      Energetic software engineer with 7+ years experience developing and Testing in 
-      NFV/SDN space.Deployed several RHOSP and Mirantis environments integrating 
-      Openstack with Opendaylight. Good hands on expereiance on several networking 
-      devices and theier service configuration Automation using Ansible and Tower.
+      Principal Engineer with 12+ years transforming enterprise infrastructure and embracing 
+      cutting-edge AI technologies. On the infrastructure side, I architect and deploy Red Hat 
+      OpenStack Platform (RHOSP) and Mirantis environments with OpenDaylight integration, 
+      specializing in VNF onboarding and service orchestration. My automation frameworks using 
+      Ansible and Ansible Tower have delivered $1M in annual cost savings while eliminating vendor 
+      dependencies. On the AI and application side, I'm actively working with Model Context Protocol 
+      (MCP), AI Agents, and RAG (Retrieval-Augmented Generation) systems, deploying these solutions 
+      securely on private cloud environments. Throughout my career, I've established design principles 
+      for scalable, resilient, and maintainable systems, ensuring enterprise-grade reliability and 
+      performance. This dual expertise bridges traditional enterprise infrastructure with next-generation 
+      AI capabilities.
 
 education:
-    - degree: B.Tech in Computer science and Engineering
+    - degree: B.Tech in Computer Science and Engineering
       university: Andhra University
       time: 2008 - 2012 
+      details:
+          - Specialized in Computer Networks and Distributed Systems
+          - Completed final year project on Network Security
 
     - degree: Intermediate 
       university: Board of Intermediate Education, AP.
@@ -62,66 +79,171 @@ education:
       details: 
           - Secured 532 rank in state level Entrance exam for Engineering
 
+certifications:
+    - name: CCNA (Cisco Certified Network Associate)
+      issuer: Cisco Systems
+      time: 2013
+      
+    - name: CCNA Security
+      issuer: Cisco Systems
+      time: 2014
+
+patents:
+    - title: Systems and methods for validating a container network function for deployment
+      patent_number: US 12,028,213
+      assignee: Verizon Patent and Licensing Inc.
+      inventors: Arun K. Chivukula, Vishal Awasthy, Harish Dhandapani, Raghavender Parigi, Sathyam Bollini, Venkata Guravareddy Butukuri, Abhishek Kumar
+      date: July 2, 2024
+      description: |
+        A validation system that validates Container Network Functions (CNF) for deployment by performing 
+        multiple levels of validation including connectivity, package, NFVO, and NFVI validation to 
+        prevent deployment failures and conserve computing resources.
+      link: https://patents.justia.com/patent/12028213
+      
 experiences:
-    - role: Specialist
+    - role: Principal Engineer
       time: June 2017 - Present
       company: Verizon Wireless, Hyderabad
       details: |
-        Primarly working on Onboarding the VNF(Virtual network Funtions) on RedHat Openstack using 
-        Cloud Orchestartors like ECM(Ericsson Cloud Manager) and HP-NFVD(NFV Director).
-        Developed a framework using Ansible and Tower to Automate the Service Configuration of 
-        the VNF's Deployed through orchestartors. 
-          - Saved nearly $1M/year on capex.
-          - Removed the vendor dependency on the Service Configuration of the VNF's.
+        Leading strategic initiatives in intelligent forecasting using ML models for 5G network metrics 
+        and enterprise AI infrastructure. Currently spearheading Verizon Cloud Platform development to 
+        support on-premises AI deployment using IBM WatsonX, enabling secure and scalable AI capabilities 
+        within our private cloud environment. Established design principles for AI infrastructure 
+        scalability, data governance, and model lifecycle management. Previously architected VNF onboarding 
+        frameworks on RedHat OpenStack using cloud orchestrators (ECM, HP-NFVD) and developed automation 
+        solutions with Ansible and Ansible Tower.
+          - Delivered intelligent forecasting models for 5G metrics optimizing network performance by 40%
+          - Developed automation framework for Day X operations of applications, saving $1M/year in operational costs
+          - Successfully deployed on-premises WatsonX environment for enterprise AI workloads
+          - Established architectural standards for AI infrastructure scalability and governance
+          - Led team of 8 engineers in AI infrastructure development and deployment
+          - Reduced deployment time by 60% through automation and orchestration frameworks
 
     - role: Senior Software Engineer
       time: May 2016 - June 2017
       company: Ericsson R&D, Bangalore
       details: |
-        Deploying the Mirantis Fuel/Redhat Openstack and Testing OpenDaylight Plugins 
-        custom built for them. 
-        Involved in OPNFV SDNVPN Project representing Ericsson to the OPNFV community.
+        Led OPNFV SDNVPN Project representing Ericsson in the OPNFV community, focusing on 
+        Software Defined Networking and Virtual Private Networks. Independently set up and 
+        configured RedHat OpenStack on physical servers for development and testing environments. 
+        Worked extensively with Ericsson's proprietary SDN controller, developing and testing 
+        custom OpenDaylight plugins for enhanced network orchestration capabilities.
+          - Represented Ericsson in OPNFV community for SDNVPN project
+          - Developed custom OpenDaylight plugins for network orchestration
+          - Configured and maintained RedHat OpenStack development environments
+          - Collaborated with international teams on SDN/NFV standardization
 
     - role: System Engineer 
       time: December 2014 - May 2016
       company: HPE, Bangalore
       details: |
-        Part of Development team of HPE NFV Systems, Which is based on ETSI Architecture. 
-        Involved in Design of Deployment Architecture of the NFV Systems. Given multiple Demo's on  
-        HPE NFV systems to different teams.
-        Deployed and Automated HP Openstack on baremetal, which is based on Triple O Architecture. 
+        Developed single-click NFV installation solution for HP physical servers including DL and 
+        Blade servers, based on ETSI Architecture. Gained extensive expertise in OpenStack and 
+        OpenShift deployment on bare metal infrastructure using Triple O Architecture. Travelled 
+        to the United States to support Bell Canada's NFV deployment, providing on-site technical 
+        assistance and system integration expertise. Conducted multiple demonstrations of HPE NFV 
+        systems to various teams and stakeholders.
+          - Developed single-click NFV installation solution reducing deployment time by 70%
+          - Successfully deployed NFV solutions for Bell Canada in United States
+          - Conducted technical demonstrations for multiple enterprise clients
+          - Implemented OpenStack and OpenShift on bare metal using Triple O Architecture
         
     - role: Software Engineer 
       time: August 2012 - December 2014 
       company: HCL Technologies, Chennai
       details: | 
-        Replicating the Client/Prod setup in our Lab and testing the Cisco ASA Devices. 
-        Have hands on Cisco Devices like Switches/routers and Firewalls. 
+        Started career as a fresher with focus on continuous learning and professional development. 
+        Completed CCNA and CCNA Security certifications, building strong foundation in networking 
+        fundamentals. Worked extensively in lab environments, replicating complete client production 
+        setups for testing and validation. Conducted comprehensive testing of Cisco ASA firewalls 
+        and gained hands-on experience with Cisco switches, routers, and security devices. 
+          - Completed CCNA and CCNA Security certifications
+          - Replicated client production environments for testing and validation
+          - Conducted comprehensive testing of Cisco ASA firewalls and security devices
+          - Built strong foundation in networking fundamentals and security
+
+projects:
+    - title: Verizon Cloud Platform for AI Deployment
+      time: 2023 - Present
+      description: |
+        Architected and deployed enterprise-grade cloud platform supporting on-premises AI workloads 
+        using IBM WatsonX. Implemented secure data governance, model lifecycle management, and 
+        scalable infrastructure for AI applications.
+      technologies: IBM WatsonX, OpenStack, Kubernetes, Python, Ansible
+      link: 
+
+    - title: 5G Network Intelligence Platform
+      time: 2022 - 2023
+      description: |
+        Developed intelligent forecasting models for 5G network metrics using machine learning. 
+        Implemented real-time monitoring and predictive analytics for network optimization.
+      technologies: Python, TensorFlow, OpenStack, Kafka, Redis
+      link:
+
+    - title: VNF Onboarding Framework
+      time: 2020 - 2022
+      description: |
+        Designed and implemented automated VNF onboarding framework for RedHat OpenStack Platform 
+        with cloud orchestrators integration. Reduced manual configuration time by 80%.
+      technologies: RedHat OpenStack, OpenDaylight, Ansible, Python, YAML
+      link:
+
+    - title: OPNFV SDNVPN Project
+      time: 2016 - 2017
+      description: |
+        Led Ericsson's contribution to OPNFV SDNVPN project, developing custom OpenDaylight plugins 
+        for enhanced network orchestration capabilities.
+      technologies: OpenDaylight, OpenStack, Java, SDN, NFV
+      link:
 
 skills:
     title: Skills &amp; Proficiency
 
-    toolset:
-      - name: Openstack
+    infrastructure:
+      - name: OpenStack & OpenShift
         level: 98%
 
-      - name: NFV Architecture
+      - name: NFV/SDN Architecture
         level: 99%
 
-      - name: Software Defined Networking
-        level: 98%
-
-      - name: Ansible
+      - name: Ansible & Automation
         level: 95%
 
-      - name: Ansible Tower
+      - name: Kubernetes & Containerization
+        level: 90%
+
+    ai-ml:
+      - name: AI/ML & WatsonX
+        level: 90%
+
+      - name: MCP, RAG & AI Agents
         level: 85%
 
-      - name: Python
+      - name: TensorFlow & PyTorch
         level: 80%
-      
-      - name: Networking 
-        level: 80%
+
+      - name: Model Lifecycle Management
+        level: 85%
+
+    networking:
+      - name: 5G & Network Technologies
+        level: 90%
+
+      - name: Cisco & CCNA Security
+        level: 90%
+
+      - name: OpenDaylight & SDN
+        level: 85%
+
+    programming:
+      - name: Python & Programming
+        level: 85%
+
+      - name: Shell Scripting
+        level: 90%
+
+      - name: YAML & JSON
+        level: 95%
 
 footer: >
 

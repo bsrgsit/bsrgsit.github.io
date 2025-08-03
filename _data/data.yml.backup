@@ -1,0 +1,128 @@
+#
+# Be aware that even a small syntax error here can lead to failures in output. 
+#
+
+sidebar:
+    about: True # set to False or comment line if you want to remove the "how to use?" in the sidebar
+    education: True # set to False if you want education in main section instead of in sidebar
+
+    # Profile information
+    name: Venkata Guravareddy
+    tagline: Openstack/DevOps Engineer
+    avatar: profile.jpg  #place a 100x100 picture inside /assets/images/ folder and provide the name of the file below
+
+    # Sidebar links
+    email: bvguravareddy@gmail.com
+    phone: +91 9884883957
+    #website: blog.webjeda.com #do not add http://
+    linkedin: bvguravareddy
+    github: bsrgsit
+    gitlab:
+    bitbucket:
+    twitter: '@bsrgsit'
+    stack-overflow: # Number/Username, e.g. 123456/alandoe
+    codewars:
+
+    languages:
+      - idiom: English
+        level: Professional
+
+      - idiom: Telugu
+        level: Native
+
+      - idiom: Hindi
+        level: Beginner
+        
+    interests:
+      - item: Travelling
+        link:
+
+      - item: ROM Development
+        link:
+
+      - item: Sports
+        link:
+
+career-profile:
+    title: Career Profile
+    summary: |
+      Energetic software engineer with 7+ years experience developing and Testing in 
+      NFV/SDN space.Deployed several RHOSP and Mirantis environments integrating 
+      Openstack with Opendaylight. Good hands on expereiance on several networking 
+      devices and theier service configuration Automation using Ansible and Tower.
+
+education:
+    - degree: B.Tech in Computer science and Engineering
+      university: Andhra University
+      time: 2008 - 2012 
+
+    - degree: Intermediate 
+      university: Board of Intermediate Education, AP.
+      time: 2006 - 2008
+      details: 
+          - Secured 532 rank in state level Entrance exam for Engineering
+
+experiences:
+    - role: Specialist
+      time: June 2017 - Present
+      company: Verizon Wireless, Hyderabad
+      details: |
+        Primarly working on Onboarding the VNF(Virtual network Funtions) on RedHat Openstack using 
+        Cloud Orchestartors like ECM(Ericsson Cloud Manager) and HP-NFVD(NFV Director).
+        Developed a framework using Ansible and Tower to Automate the Service Configuration of 
+        the VNF's Deployed through orchestartors. 
+          - Saved nearly $1M/year on capex.
+          - Removed the vendor dependency on the Service Configuration of the VNF's.
+
+    - role: Senior Software Engineer
+      time: May 2016 - June 2017
+      company: Ericsson R&D, Bangalore
+      details: |
+        Deploying the Mirantis Fuel/Redhat Openstack and Testing OpenDaylight Plugins 
+        custom built for them. 
+        Involved in OPNFV SDNVPN Project representing Ericsson to the OPNFV community.
+
+    - role: System Engineer 
+      time: December 2014 - May 2016
+      company: HPE, Bangalore
+      details: |
+        Part of Development team of HPE NFV Systems, Which is based on ETSI Architecture. 
+        Involved in Design of Deployment Architecture of the NFV Systems. Given multiple Demo's on  
+        HPE NFV systems to different teams.
+        Deployed and Automated HP Openstack on baremetal, which is based on Triple O Architecture. 
+        
+    - role: Software Engineer 
+      time: August 2012 - December 2014 
+      company: HCL Technologies, Chennai
+      details: | 
+        Replicating the Client/Prod setup in our Lab and testing the Cisco ASA Devices. 
+        Have hands on Cisco Devices like Switches/routers and Firewalls. 
+
+skills:
+    title: Skills &amp; Proficiency
+
+    toolset:
+      - name: Openstack
+        level: 98%
+
+      - name: NFV Architecture
+        level: 99%
+
+      - name: Software Defined Networking
+        level: 98%
+
+      - name: Ansible
+        level: 95%
+
+      - name: Ansible Tower
+        level: 85%
+
+      - name: Python
+        level: 80%
+      
+      - name: Networking 
+        level: 80%
+
+footer: >
+
+    End of Resume <i class="fas fa-heart"></i> Venkata Guravareddy
