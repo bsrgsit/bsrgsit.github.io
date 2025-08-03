@@ -1,18 +1,791 @@
----
-layout: default
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venkata Guravareddy - Principal Engineer</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-{% include career-profile.html %}
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
 
-{% unless site.data.data.sidebar.education %}
-  {% include education.html %}
-{% endunless %}
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
 
-{% include experiences.html %}
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
 
-{% include projects.html %}
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 300;
+        }
 
-{% include publications.html %}
+        .header .tagline {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
 
-{% include skills.html %}
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-item i {
+            font-size: 1.1rem;
+        }
+
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 2rem;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: #667eea;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #667eea;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-title i {
+            font-size: 1.2rem;
+        }
+
+        /* Career Profile */
+        .career-profile {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        /* Experience */
+        .experience-item {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            transition: transform 0.2s;
+        }
+
+        .experience-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .experience-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .experience-company {
+            font-weight: 500;
+            color: #495057;
+        }
+
+        .experience-time {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        .experience-details {
+            margin-top: 1rem;
+        }
+
+        .experience-details ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .experience-details li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .experience-details li:before {
+            content: "▸";
+            color: #667eea;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Education */
+        .education-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 1rem 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .education-item:last-child {
+            border-bottom: none;
+        }
+
+        .education-info h4 {
+            color: #667eea;
+            margin-bottom: 0.25rem;
+        }
+
+        .education-info p {
+            color: #6c757d;
+            margin-bottom: 0.25rem;
+        }
+
+        .education-time {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-category {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .skill-category h4 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .skill-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+
+        .skill-name {
+            font-weight: 500;
+        }
+
+        .skill-level {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        /* Projects */
+        .project-item {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #667eea;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .project-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .project-time {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        .project-description {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .project-technologies {
+            font-size: 0.9rem;
+            color: #6c757d;
+            font-style: italic;
+        }
+
+        /* Certifications */
+        .certification-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .certification-item:last-child {
+            border-bottom: none;
+        }
+
+        .certification-info h4 {
+            color: #667eea;
+            margin-bottom: 0.25rem;
+        }
+
+        .certification-info p {
+            color: #6c757d;
+            margin-bottom: 0.25rem;
+        }
+
+        .certification-time {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        /* Patents */
+        .patent-item {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #28a745;
+        }
+
+        .patent-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .patent-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #28a745;
+        }
+
+        .patent-number {
+            color: #6c757d;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .patent-details {
+            margin-bottom: 1rem;
+        }
+
+        .patent-details p {
+            margin-bottom: 0.5rem;
+        }
+
+        .patent-link {
+            color: #28a745;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .patent-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Interests */
+        .interests {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .interest-item {
+            background: #667eea;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: #343a40;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .footer i {
+            color: #dc3545;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .experience-header,
+            .project-header,
+            .patent-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .main-content {
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                padding: 2rem 1rem;
+            }
+
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>Venkata Guravareddy</h1>
+            <div class="tagline">Principal Engineer - Infrastructure & AI Solutions</div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:bvguravareddy@gmail.com">bvguravareddy@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <a href="tel:+919884883957">+91 9884883957</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Hyderabad, India</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-linkedin"></i>
+                    <a href="https://linkedin.com/in/bvguravareddy" target="_blank">bvguravareddy</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-github"></i>
+                    <a href="https://github.com/bsrgsit" target="_blank">bsrgsit</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-twitter"></i>
+                    <a href="https://twitter.com/bsrgsit" target="_blank">@bsrgsit</a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Career Profile -->
+            <section class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-user"></i>
+                    Career Profile
+                </h2>
+                <div class="career-profile">
+                    <p>Principal Engineer with 12+ years transforming enterprise infrastructure and embracing cutting-edge AI technologies. On the infrastructure side, I architect and deploy Red Hat OpenStack Platform (RHOSP) and Mirantis environments with OpenDaylight integration, specializing in VNF onboarding and service orchestration. My automation frameworks using Ansible and Ansible Tower have delivered $1M in annual cost savings while eliminating vendor dependencies. On the AI and application side, I'm actively working with Model Context Protocol (MCP), AI Agents, and RAG (Retrieval-Augmented Generation) systems, deploying these solutions securely on private cloud environments. Throughout my career, I've established design principles for scalable, resilient, and maintainable systems, ensuring enterprise-grade reliability and performance. This dual expertise bridges traditional enterprise infrastructure with next-generation AI capabilities.</p>
+                </div>
+            </section>
+
+            <!-- Experience -->
+            <section class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-briefcase"></i>
+                    Professional Experience
+                </h2>
+                
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div>
+                            <div class="experience-title">Principal Engineer</div>
+                            <div class="experience-company">Verizon Wireless, Hyderabad</div>
+                        </div>
+                        <div class="experience-time">June 2017 - Present</div>
+                    </div>
+                    <div class="experience-details">
+                        <p>Leading strategic initiatives in intelligent forecasting using ML models for 5G network metrics and enterprise AI infrastructure. Currently spearheading Verizon Cloud Platform development to support on-premises AI deployment using IBM WatsonX, enabling secure and scalable AI capabilities within our private cloud environment. Established design principles for AI infrastructure scalability, data governance, and model lifecycle management. Previously architected VNF onboarding frameworks on RedHat OpenStack using cloud orchestrators (ECM, HP-NFVD) and developed automation solutions with Ansible and Ansible Tower.</p>
+                        <ul>
+                            <li>Delivered intelligent forecasting models for 5G metrics optimizing network performance by 40%</li>
+                            <li>Developed automation framework for Day X operations of applications, saving $1M/year in operational costs</li>
+                            <li>Successfully deployed on-premises WatsonX environment for enterprise AI workloads</li>
+                            <li>Established architectural standards for AI infrastructure scalability and governance</li>
+                            <li>Led team of 8 engineers in AI infrastructure development and deployment</li>
+                            <li>Reduced deployment time by 60% through automation and orchestration frameworks</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div>
+                            <div class="experience-title">Senior Software Engineer</div>
+                            <div class="experience-company">Ericsson R&D, Bangalore</div>
+                        </div>
+                        <div class="experience-time">May 2016 - June 2017</div>
+                    </div>
+                    <div class="experience-details">
+                        <p>Led OPNFV SDNVPN Project representing Ericsson in the OPNFV community, focusing on Software Defined Networking and Virtual Private Networks. Independently set up and configured RedHat OpenStack on physical servers for development and testing environments. Worked extensively with Ericsson's proprietary SDN controller, developing and testing custom OpenDaylight plugins for enhanced network orchestration capabilities.</p>
+                        <ul>
+                            <li>Represented Ericsson in OPNFV community for SDNVPN project</li>
+                            <li>Developed custom OpenDaylight plugins for network orchestration</li>
+                            <li>Configured and maintained RedHat OpenStack development environments</li>
+                            <li>Collaborated with international teams on SDN/NFV standardization</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div>
+                            <div class="experience-title">System Engineer</div>
+                            <div class="experience-company">HPE, Bangalore</div>
+                        </div>
+                        <div class="experience-time">December 2014 - May 2016</div>
+                    </div>
+                    <div class="experience-details">
+                        <p>Developed single-click NFV installation solution for HP physical servers including DL and Blade servers, based on ETSI Architecture. Gained extensive expertise in OpenStack and OpenShift deployment on bare metal infrastructure using Triple O Architecture. Travelled to the United States to support Bell Canada's NFV deployment, providing on-site technical assistance and system integration expertise. Conducted multiple demonstrations of HPE NFV systems to various teams and stakeholders.</p>
+                        <ul>
+                            <li>Developed single-click NFV installation solution reducing deployment time by 70%</li>
+                            <li>Successfully deployed NFV solutions for Bell Canada in United States</li>
+                            <li>Conducted technical demonstrations for multiple enterprise clients</li>
+                            <li>Implemented OpenStack and OpenShift on bare metal using Triple O Architecture</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div>
+                            <div class="experience-title">Software Engineer</div>
+                            <div class="experience-company">HCL Technologies, Chennai</div>
+                        </div>
+                        <div class="experience-time">August 2012 - December 2014</div>
+                    </div>
+                    <div class="experience-details">
+                        <p>Started career as a fresher with focus on continuous learning and professional development. Completed CCNA and CCNA Security certifications, building strong foundation in networking fundamentals. Worked extensively in lab environments, replicating complete client production setups for testing and validation. Conducted comprehensive testing of Cisco ASA firewalls and gained hands-on experience with Cisco switches, routers, and security devices.</p>
+                        <ul>
+                            <li>Completed CCNA and CCNA Security certifications</li>
+                            <li>Replicated client production environments for testing and validation</li>
+                            <li>Conducted comprehensive testing of Cisco ASA firewalls and security devices</li>
+                            <li>Built strong foundation in networking fundamentals and security</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Patents -->
+            <section class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-lightbulb"></i>
+                    Patents
+                </h2>
+                
+                <div class="patent-item">
+                    <div class="patent-header">
+                        <div class="patent-title">Systems and methods for validating a container network function for deployment</div>
+                        <div class="patent-number">US 12,028,213</div>
+                    </div>
+                    <div class="patent-details">
+                        <p><strong>Assignee:</strong> Verizon Patent and Licensing Inc.</p>
+                        <p><strong>Inventors:</strong> Arun K. Chivukula, Vishal Awasthy, Harish Dhandapani, Raghavender Parigi, Sathyam Bollini, Venkata Guravareddy Butukuri, Abhishek Kumar</p>
+                        <p><strong>Date:</strong> July 2, 2024</p>
+                        <p><strong>Description:</strong> A validation system that validates Container Network Functions (CNF) for deployment by performing multiple levels of validation including connectivity, package, NFVO, and NFVI validation to prevent deployment failures and conserve computing resources.</p>
+                    </div>
+                    <a href="https://patents.justia.com/patent/12028213" target="_blank" class="patent-link">
+                        <i class="fas fa-external-link-alt"></i> View Patent
+                    </a>
+                </div>
+            </section>
+
+            <!-- Projects -->
+            <section class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-project-diagram"></i>
+                    Key Projects
+                </h2>
+                
+                <div class="project-item">
+                    <div class="project-header">
+                        <div class="project-title">Verizon Cloud Platform for AI Deployment</div>
+                        <div class="project-time">2023 - Present</div>
+                    </div>
+                    <div class="project-description">
+                        Architected and deployed enterprise-grade cloud platform supporting on-premises AI workloads using IBM WatsonX. Implemented secure data governance, model lifecycle management, and scalable infrastructure for AI applications.
+                    </div>
+                    <div class="project-technologies">
+                        <strong>Technologies:</strong> IBM WatsonX, OpenStack, Kubernetes, Python, Ansible
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-header">
+                        <div class="project-title">5G Network Intelligence Platform</div>
+                        <div class="project-time">2022 - 2023</div>
+                    </div>
+                    <div class="project-description">
+                        Developed intelligent forecasting models for 5G network metrics using machine learning. Implemented real-time monitoring and predictive analytics for network optimization.
+                    </div>
+                    <div class="project-technologies">
+                        <strong>Technologies:</strong> Python, TensorFlow, OpenStack, Kafka, Redis
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-header">
+                        <div class="project-title">VNF Onboarding Framework</div>
+                        <div class="project-time">2020 - 2022</div>
+                    </div>
+                    <div class="project-description">
+                        Designed and implemented automated VNF onboarding framework for RedHat OpenStack Platform with cloud orchestrators integration. Reduced manual configuration time by 80%.
+                    </div>
+                    <div class="project-technologies">
+                        <strong>Technologies:</strong> RedHat OpenStack, OpenDaylight, Ansible, Python, YAML
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-header">
+                        <div class="project-title">OPNFV SDNVPN Project</div>
+                        <div class="project-time">2016 - 2017</div>
+                    </div>
+                    <div class="project-description">
+                        Led Ericsson's contribution to OPNFV SDNVPN project, developing custom OpenDaylight plugins for enhanced network orchestration capabilities.
+                    </div>
+                    <div class="project-technologies">
+                        <strong>Technologies:</strong> OpenDaylight, OpenStack, Java, SDN, NFV
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skills -->
+            <section class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-tools"></i>
+                    Skills & Proficiency
+                </h2>
+                
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>Infrastructure</h4>
+                        <div class="skill-item">
+                            <span class="skill-name">OpenStack & OpenShift</span>
+                            <span class="skill-level">98%</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">NFV/SDN Architecture</span>
+                            <span class="skill-level">99%</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Ansible & Automation</span>
+                            <span class="skill-level">95%</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Kubernetes & Containerization</span>
+                            <span class="skill-level">90%</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h4>AI/ML</h4>
+                        <div class="skill-item">
+                            <span class="skill-name">AI/ML & WatsonX</span>
+                            <span class="skill-level">90%</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">MCP, RAG & AI Agents</span>
+                            <span class="skill-level">85%</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">TensorFlow & PyTorch</span>
+                            <span class="skill-level">80%</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Model Lifecycle Management</span>
+                            <span class="skill-level">85%</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h4>Networking</h4>
+                        <div class="skill-item">
+                            <span class="skill-name">5G & Network Technologies</span>
+                            <span class="skill-level">90%</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Cisco & CCNA Security</span>
+                            <span class="skill-level">90%</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">OpenDaylight & SDN</span>
+                            <span class="skill-level">85%</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h4>Programming</h4>
+                        <div class="skill-item">
+                            <span class="skill-name">Python & Programming</span>
+                            <span class="skill-level">85%</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Shell Scripting</span>
+                            <span class="skill-level">90%</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">YAML & JSON</span>
+                            <span class="skill-level">95%</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Education -->
+            <section class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-graduation-cap"></i>
+                    Education
+                </h2>
+                
+                <div class="education-item">
+                    <div class="education-info">
+                        <h4>B.Tech in Computer Science and Engineering</h4>
+                        <p>Andhra University</p>
+                        <p>Specialized in Computer Networks and Distributed Systems</p>
+                        <p>Completed final year project on Network Security</p>
+                    </div>
+                    <div class="education-time">2008 - 2012</div>
+                </div>
+
+                <div class="education-item">
+                    <div class="education-info">
+                        <h4>Intermediate</h4>
+                        <p>Board of Intermediate Education, AP.</p>
+                        <p>Secured 532 rank in state level Entrance exam for Engineering</p>
+                    </div>
+                    <div class="education-time">2006 - 2008</div>
+                </div>
+            </section>
+
+            <!-- Certifications -->
+            <section class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-certificate"></i>
+                    Certifications
+                </h2>
+                
+                <div class="certification-item">
+                    <div class="certification-info">
+                        <h4>CCNA (Cisco Certified Network Associate)</h4>
+                        <p>Cisco Systems</p>
+                    </div>
+                    <div class="certification-time">2013</div>
+                </div>
+
+                <div class="certification-item">
+                    <div class="certification-info">
+                        <h4>CCNA Security</h4>
+                        <p>Cisco Systems</p>
+                    </div>
+                    <div class="certification-time">2014</div>
+                </div>
+            </section>
+
+            <!-- Interests -->
+            <section class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-heart"></i>
+                    Interests
+                </h2>
+                <div class="interests">
+                    <div class="interest-item">Travelling</div>
+                    <div class="interest-item">ROM Development</div>
+                    <div class="interest-item">Sports</div>
+                    <div class="interest-item">AI/ML Research</div>
+                    <div class="interest-item">Open Source Contribution</div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>End of Resume <i class="fas fa-heart"></i> Venkata Guravareddy</p>
+        </footer>
+    </div>
+</body>
+</html>
 
