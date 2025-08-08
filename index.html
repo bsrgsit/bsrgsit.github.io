@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
     <link type="image/png" sizes="32x32" rel="icon" href="https://img.icons8.com/?size=100&id=POBc2SrrhhnF&format=png&color=000000">
     <style>
         /* --- Base & General Styling --- */
@@ -24,8 +24,8 @@
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
-            color: #2d3748;
-            background: #f8fafc;
+            color: #0f172a;
+            background: #0b1220; /* professional deep navy background */
             min-height: 100vh;
             padding: 1rem 0; /* Adjusted padding for mobile first */
         }
@@ -41,7 +41,7 @@
 
         /* --- Header --- */
         .header {
-            background: linear-gradient(135deg, #0f172a 0%, #1f2937 50%, #334155 100%);
+            background: #0f172a;
             color: white;
             padding: 3rem 1.5rem; /* Adjusted padding */
             text-align: center;
@@ -61,29 +61,26 @@
         }
 
         .header h1 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 2.5rem; /* Adjusted for better mobile view */
+            font-family: 'Manrope', sans-serif;
+            font-size: 2.7rem; /* Adjusted for better mobile view */
             margin-bottom: 0.5rem;
             font-weight: 700;
             letter-spacing: -0.02em;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            text-shadow: none;
             position: relative;
             z-index: 1;
-            background: linear-gradient(45deg, #ffffff, #e2e8f0);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #ffffff;
         }
 
         .header .tagline {
             font-size: 1.2rem; /* Adjusted */
             margin-bottom: 2rem;
-            opacity: 0.9;
-            font-weight: 500;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            opacity: 1;
+            font-weight: 600;
+            text-shadow: none;
             position: relative;
             z-index: 1;
-            color: #cbd5e0;
+            color: #cbd5e1;
         }
 
         .contact-info {
@@ -116,7 +113,7 @@
         }
         .contact-item i { 
             font-size: 1rem; 
-            color: #2563eb;
+            color: #0ea5a1;
         }
         .contact-item a { 
             color: white; 
@@ -138,13 +135,13 @@
         }
 
         .section-title {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Manrope', sans-serif;
             font-size: 1.6rem; /* Adjusted font size */
             color: #1e293b;
             margin-bottom: 2rem; /* Adjusted margin */
             padding-bottom: 1rem;
             border-bottom: 4px solid;
-            border-image: linear-gradient(90deg, #2563eb, #0ea5e9) 1;
+            border-image: linear-gradient(90deg, #0ea5a1, #0891b2) 1;
             display: flex;
             align-items: center;
             gap: 1rem;
@@ -159,16 +156,13 @@
             left: 0;
             width: 50px;
             height: 4px;
-            background: linear-gradient(90deg, #2563eb, #0ea5e9);
+            background: linear-gradient(90deg, #0ea5a1, #0891b2);
             border-radius: 2px;
         }
 
         .section-title i {
             font-size: 1.5rem;
-            background: linear-gradient(45deg, #2563eb, #0ea5e9);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #0ea5a1;
         }
 
         /* --- Career Profile --- */
@@ -177,10 +171,10 @@
             padding: 2rem; /* Adjusted padding */
             border-radius: 16px;
             border-left: 6px solid;
-            border-image: linear-gradient(180deg, #2563eb, #0ea5e9) 1;
+            border-image: linear-gradient(180deg, #0ea5a1, #0891b2) 1;
             font-size: 1.05rem; /* Adjusted font size */
             line-height: 1.8;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.1);
+            box-shadow: 0 10px 30px rgba(14, 165, 161, 0.12);
             position: relative;
             overflow: hidden;
         }
@@ -228,7 +222,7 @@
             height: 15px;
             width: 15px;
             background: white;
-            border: 3px solid #2563eb;
+            border: 3px solid #0ea5a1;
             border-radius: 50%;
             z-index: 1;
         }
@@ -244,9 +238,9 @@
 
         .experience-content:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(37, 99, 235, 0.15);
-            border-color: #2563eb;
-            background: linear-gradient(135deg, #ffffff 0%, #eef2ff 100%);
+            box-shadow: 0 15px 40px rgba(14, 165, 161, 0.18);
+            border-color: #0ea5a1;
+            background: linear-gradient(135deg, #ffffff 0%, #f0fdfa 100%);
         }
 
         .experience-header { display: flex; flex-direction: column; align-items: flex-start; margin-bottom: 1rem; gap: 0.5rem; } /* Mobile first: column */
@@ -258,10 +252,10 @@
         .experience-details ul { list-style: none; padding-left: 0; max-height: 120px; overflow: hidden; transition: max-height 0.5s ease-in-out; }
         .experience-details ul.expanded { max-height: 1000px; } /* Expand the list */
         .experience-details li { margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative; color: #4a5568; }
-        .experience-details li:before { content: "▸"; color: #2563eb; position: absolute; left: 0; font-weight: bold; }
+        .experience-details li:before { content: "▸"; color: #0ea5a1; position: absolute; left: 0; font-weight: bold; }
 
         .show-more-btn {
-            background: linear-gradient(45deg, #2563eb, #1e40af);
+            background: linear-gradient(45deg, #0ea5a1, #0891b2);
             border: none;
             color: white;
             padding: 0.6rem 1.2rem;
@@ -270,12 +264,12 @@
             font-weight: 600;
             margin-top: 1.5rem;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+            box-shadow: 0 4px 15px rgba(14, 165, 161, 0.3);
         }
         .show-more-btn:hover { 
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
-            background: linear-gradient(45deg, #2563eb, #1d4ed8);
+            box-shadow: 0 8px 25px rgba(14, 165, 161, 0.45);
+            background: linear-gradient(45deg, #0ea5a1, #0d9488);
         }
 
         /* --- Download PDF Button --- */
@@ -313,7 +307,7 @@
             box-shadow: 0 15px 40px rgba(102, 126, 234, 0.1);
         }
         .skill-category h4 { 
-            font-family: 'Poppins', sans-serif; 
+            font-family: 'Manrope', sans-serif; 
             color: #1e293b; 
             margin-bottom: 2rem; 
             font-size: 1.2rem; /* Adjusted */
@@ -323,10 +317,7 @@
             gap: 0.75rem; 
         }
         .skill-category h4 i { 
-            background: linear-gradient(45deg, #2563eb, #0ea5e9);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #0ea5a1;
         }
         .skill-item { 
             margin-bottom: 1.5rem; /* Adjusted */
@@ -347,10 +338,7 @@
             color: #64748b; 
             font-size: 0.9rem; 
             font-weight: 600;
-            background: linear-gradient(45deg, #2563eb, #0ea5e9);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #0ea5a1;
         }
         .skill-bar { 
             width: 100%; 
@@ -362,9 +350,9 @@
         }
         .skill-progress { 
             height: 100%; 
-            background: linear-gradient(90deg, #2563eb 0%, #0ea5e9 100%); 
+            background: linear-gradient(90deg, #0ea5a1 0%, #0891b2 100%); 
             border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 2px 4px rgba(14, 165, 161, 0.3);
         }
         .skill-progress.expert { width: 95%; }
         .skill-progress.advanced { width: 85%; }
@@ -417,7 +405,7 @@
         .project-item, .patent-item { background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%); padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem; border-left: 5px solid #667eea; transition: all 0.3s ease; }
         .project-item:hover, .patent-item:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
         .project-header, .patent-header { display: flex; flex-direction: column; align-items: flex-start; margin-bottom: 1rem; gap: 0.5rem; } /* Mobile first: column */
-        .project-title, .patent-title { font-family: 'Poppins', sans-serif; font-size: 1.1rem; font-weight: 600; color: #2d3748; }
+            .project-title, .patent-title { font-family: 'Manrope', sans-serif; font-size: 1.1rem; font-weight: 700; color: #1f2937; }
         .project-time, .patent-number { color: #718096; font-size: 0.85rem; font-weight: 500; background: #edf2f7; padding: 0.4rem 0.8rem; border-radius: 20px; }
         .project-description, .patent-details { margin-bottom: 1rem; line-height: 1.7; color: #4a5568; }
         .project-technologies { font-size: 0.9rem; color: #718096; font-style: italic; }
@@ -429,13 +417,13 @@
 
         .education-item { display: flex; flex-direction: column; align-items: flex-start; gap: 0.75rem; padding: 1.5rem 0; border-bottom: 1px solid #e2e8f0; } /* Mobile first: column */
         .education-item:last-child { border-bottom: none; }
-        .education-info h4 { font-family: 'Poppins', sans-serif; color: #2d3748; margin-bottom: 0.25rem; font-weight: 600; font-size: 1.1rem; }
+            .education-info h4 { font-family: 'Manrope', sans-serif; color: #1f2937; margin-bottom: 0.25rem; font-weight: 700; font-size: 1.1rem; }
         .education-info p { color: #4a5568; margin-bottom: 0.25rem; font-size: 0.95rem; }
         .education-time { color: #718096; font-size: 0.9rem; font-weight: 500; background: #edf2f7; padding: 0.5rem 1rem; border-radius: 20px; flex-shrink: 0; }
         
         .certification-item { display: flex; flex-direction: column; align-items: flex-start; gap: 0.75rem; padding: 1.5rem 0; border-bottom: 1px solid #e2e8f0; } /* Mobile first: column */
         .certification-item:last-child { border-bottom: none; }
-        .certification-info h4 { font-family: 'Poppins', sans-serif; color: #2d3748; margin-bottom: 0.25rem; font-weight: 600; font-size: 1.1rem; }
+            .certification-info h4 { font-family: 'Manrope', sans-serif; color: #1f2937; margin-bottom: 0.25rem; font-weight: 700; font-size: 1.1rem; }
         .certification-info p { color: #4a5568; margin-bottom: 0.25rem; font-size: 0.95rem; }
         .certification-time { color: #718096; font-size: 0.9rem; font-weight: 500; background: #edf2f7; padding: 0.5rem 1rem; border-radius: 20px; }
 
@@ -445,7 +433,7 @@
 
         /* --- Footer --- */
         .footer { 
-            background: linear-gradient(135deg, #0f172a 0%, #1f2937 50%, #334155 100%); 
+            background: linear-gradient(135deg, #0b1220 0%, #0f172a 60%, #0b1220 100%); 
             color: white; 
             padding: 3rem 1.5rem 2rem;
             margin-top: 3rem;
@@ -506,18 +494,18 @@
             justify-content: center;
         }
         .footer-social a:hover {
-            background: #93c5fd;
-            color: #0f172a;
+            background: #99f6e4;
+            color: #0b1220;
             transform: translateX(0) translateY(-2px); /* Adjusted transform */
         }
         .footer-social i { font-size: 1.2rem; width: 20px; }
         .footer-stats { display: flex; flex-direction: column; gap: 1rem; align-items: center; }
         .stat-item { display: flex; align-items: center; gap: 1rem; }
-        .stat-number { font-size: 1.8rem; font-weight: 700; color: #93c5fd; font-family: 'Poppins', sans-serif; }
+        .stat-number { font-size: 1.8rem; font-weight: 700; color: #2dd4bf; font-family: 'Manrope', sans-serif; }
         .stat-label { font-size: 0.9rem; color: #a0aec0; }
         .footer-expertise { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; }
         .expertise-tag { background: rgba(255,255,255,0.1); color: #e2e8f0; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.85rem; font-weight: 500; transition: all 0.3s ease; }
-        .expertise-tag:hover { background: #93c5fd; color: #0f172a; transform: translateY(-2px); }
+        .expertise-tag:hover { background: #99f6e4; color: #0b1220; transform: translateY(-2px); }
         .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; text-align: center; position: relative; z-index: 1; }
         .footer-bottom p { margin-bottom: 0.5rem; font-size: 0.9rem; color: #a0aec0; }
         
@@ -598,10 +586,10 @@
         body.dark .contact-item a { color: #e2e8f0; }
         body.dark .contact-item:hover a { color: #90cdf4; }
         body.dark .main-content { background: linear-gradient(135deg, #23272f 0%, #181a1b 100%); }
-        body.dark .section-title { color: #e2e8f0; border-image: linear-gradient(90deg, #93c5fd, #60a5fa) 1; }
-        body.dark .section-title::before { background: linear-gradient(90deg, #93c5fd, #60a5fa); }
-        body.dark .section-title i, body.dark .skill-category h4 i, body.dark .skill-level-text { background: linear-gradient(45deg, #93c5fd, #60a5fa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        body.dark .career-profile { border-image: linear-gradient(180deg, #93c5fd, #60a5fa) 1; background: linear-gradient(135deg, #2a2f3b 0%, #23272f 100%); }
+        body.dark .section-title { color: #e2e8f0; border-image: linear-gradient(90deg, #2dd4bf, #06b6d4) 1; }
+        body.dark .section-title::before { background: linear-gradient(90deg, #2dd4bf, #06b6d4); }
+        body.dark .section-title i, body.dark .skill-category h4 i, body.dark .skill-level-text { color: #2dd4bf; -webkit-text-fill-color: initial; background: none; }
+        body.dark .career-profile { border-image: linear-gradient(180deg, #2dd4bf, #06b6d4) 1; background: linear-gradient(135deg, #2a2f3b 0%, #23272f 100%); }
         body.dark .experience-timeline::before { background: #2d3748; }
         body.dark .experience-item::before { border-color: #60a5fa; background: #23272f; }
         body.dark .experience-content { background: linear-gradient(135deg, #2a2f3b 0%, #23272f 100%); border-color: #2d3748; }
@@ -612,9 +600,9 @@
         body.dark .experience-details li:before { color: #60a5fa; }
         body.dark .skill-category { background: linear-gradient(135deg, #2a2f3b 0%, #23272f 100%); border-color: #2d3748; }
         body.dark .skill-item:hover { background: rgba(147, 197, 253, 0.1); }
-        body.dark .skill-item:hover .skill-name { color: #93c5fd; }
+        body.dark .skill-item:hover .skill-name { color: #2dd4bf; }
         body.dark .skill-bar { background: #2d3748; }
-        body.dark .project-item { background: linear-gradient(135deg, #2a2f3b 0%, #23272f 100%); border-color: #60a5fa; }
+        body.dark .project-item { background: linear-gradient(135deg, #2a2f3b 0%, #23272f 100%); border-color: #06b6d4; }
         body.dark .patent-item { background: linear-gradient(135deg, #1c3a3a 0%, #23272f 100%); border-color: #4fd1c5; }
         body.dark .patent-link { color: #4fd1c5; }
         body.dark .patent-link:hover { color: #38b2ac; }
@@ -692,7 +680,7 @@
         <header class="header">
             <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
             <h1>Venkata Guravareddy</h1>
-            <div class="tagline">Principal Engineer - Infrastructure & AI Solutions</div>
+            <div class="tagline">Principal Engineer — Cloud, DevOps & AI Infrastructure</div>
             <div class="contact-info">
                  <div class="contact-item">
                     <i class="fas fa-envelope" aria-hidden="true"></i>
@@ -1302,7 +1290,7 @@
                 y += 22;
                 doc.setFont('helvetica', 'normal');
                 doc.setFontSize(12);
-                doc.text(title || 'Principal Engineer - Infrastructure & AI Solutions', margin, y);
+                doc.text(title || 'Principal Engineer — Cloud, DevOps & AI Infrastructure', margin, y);
                 y += 18;
                 doc.setTextColor(80);
                 const contactWrapped = doc.splitTextToSize(contact, contentWidth);
