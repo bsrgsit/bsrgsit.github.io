@@ -1341,12 +1341,16 @@
             const stickyBar = document.getElementById('stickyBar');
             let lastScrollY = window.scrollY;
             const headerHeight = document.querySelector('.header')?.offsetHeight || 200;
+            const floatingToggle = document.getElementById('darkModeToggle');
 
             function updateStickyVisibility() {
-                if (window.scrollY > headerHeight - 80) {
+                const showSticky = window.scrollY > headerHeight - 80;
+                if (showSticky) {
                     stickyBar.classList.add('visible');
+                    if (floatingToggle) floatingToggle.style.display = 'none';
                 } else {
                     stickyBar.classList.remove('visible');
+                    if (floatingToggle) floatingToggle.style.display = 'flex';
                 }
             }
             updateStickyVisibility();
