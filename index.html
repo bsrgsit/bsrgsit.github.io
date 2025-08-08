@@ -6,6 +6,7 @@
     <title>Venkata Guravareddy - Principal Engineer</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link type="image/png" sizes="32x32" rel="icon" href="https://img.icons8.com/?size=100&id=POBc2SrrhhnF&format=png&color=000000">
     <style>
         /* --- Base & General Styling --- */
         * {
@@ -274,6 +275,26 @@
             box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
             background: linear-gradient(45deg, #5a67d8, #6b46c1);
         }
+
+        /* --- Download PDF Button --- */
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: linear-gradient(45deg, #0ea5e9, #2563eb);
+            border: none;
+            color: white;
+            padding: 0.8rem 1.4rem;
+            border-radius: 28px;
+            cursor: pointer;
+            font-weight: 700;
+            letter-spacing: 0.2px;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(14, 165, 233, 0.35);
+        }
+        .download-btn i { font-size: 1rem; }
+        .download-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(14,165,233,0.45); }
+        .footer-bottom .download-btn { margin-bottom: 1rem; }
 
         /* --- Skills --- */
         .skills-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; } /* Mobile first: 1 column */
@@ -1063,6 +1084,9 @@
             </div>
             
             <div class="footer-bottom">
+                <button id="downloadPdfBtn" class="download-btn" aria-label="Download quick PDF resume">
+                    <i class="fas fa-file-arrow-down"></i> Download PDF
+                </button>
                 <p>&copy; 2024 Venkata Guravareddy. All rights reserved.</p>
             </div>
         </footer>
@@ -1080,6 +1104,9 @@
             </div>
         </div>
     </div>
+
+    <!-- jsPDF (for generating single-page PDF) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" referrerpolicy="no-referrer"></script>
 
     <!-- JavaScript for Interactivity -->
     <script>
@@ -1157,6 +1184,166 @@
                 localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
                 updateToggleIcon();
             });
+
+            // --- Quick Resume PDF Generator ---
+            const downloadBtn = document.getElementById('downloadPdfBtn');
+            if (downloadBtn) {
+                downloadBtn.addEventListener('click', generateQuickResumePDF);
+            }
+
+            function generateQuickResumePDF() {
+                const { jsPDF } = window.jspdf || {};
+                if (!jsPDF) {
+                    alert('PDF generator failed to load. Please check your internet connection and try again.');
+                    return;
+                }
+
+                const doc = new jsPDF({ unit: 'pt', format: 'a4' });
+                const pageWidth = doc.internal.pageSize.getWidth();
+                const pageHeight = doc.internal.pageSize.getHeight();
+                const margin = 40;
+                const contentWidth = pageWidth - margin * 2;
+                let y = margin;
+
+                // Extract content from DOM
+                const name = (document.querySelector('.header h1')?.textContent || '').trim();
+                const title = (document.querySelector('.tagline')?.textContent || '').trim();
+                const contactParts = Array.from(document.querySelectorAll('.contact-info .contact-item a, .contact-info .contact-item span'))
+                    .map(el => (el.textContent || '').trim())
+                    .filter(Boolean);
+                const contact = contactParts.join('  |  ');
+
+                const summary = (document.querySelector('.career-profile p')?.textContent || '').trim();
+
+                // Top skills (first 8 skill names)
+                const skills = Array.from(document.querySelectorAll('.skills-grid .skill-name'))
+                    .slice(0, 8)
+                    .map(el => el.textContent.trim());
+
+                // Experience: take first 2 roles with up to 3 bullets each
+                const expItems = Array.from(document.querySelectorAll('.experience-item')).slice(0, 2).map(item => {
+                    const role = item.querySelector('.experience-title')?.textContent?.trim() || '';
+                    const company = item.querySelector('.experience-company')?.textContent?.trim() || '';
+                    const time = item.querySelector('.experience-time')?.textContent?.trim() || '';
+                    const bullets = Array.from(item.querySelectorAll('.experience-details li')).slice(0, 3).map(li => li.textContent.trim());
+                    return { role, company, time, bullets };
+                });
+
+                // Projects: take first 2
+                const projects = Array.from(document.querySelectorAll('.project-item')).slice(0, 2).map(p => ({
+                    title: p.querySelector('.project-title')?.textContent?.trim() || '',
+                    time: p.querySelector('.project-time')?.textContent?.trim() || '',
+                    desc: p.querySelector('.project-description')?.textContent?.trim() || ''
+                }));
+
+                // Patent: first one
+                const patentTitle = document.querySelector('.patent-title')?.textContent?.trim() || '';
+                const patentNum = document.querySelector('.patent-number')?.textContent?.trim() || '';
+
+                // Typography
+                doc.setFont('helvetica', 'bold');
+                doc.setFontSize(22);
+                doc.text(name || 'Venkata Guravareddy', margin, y);
+                y += 22;
+                doc.setFont('helvetica', 'normal');
+                doc.setFontSize(12);
+                doc.text(title || 'Principal Engineer - Infrastructure & AI Solutions', margin, y);
+                y += 18;
+                doc.setTextColor(80);
+                const contactWrapped = doc.splitTextToSize(contact, contentWidth);
+                doc.text(contactWrapped, margin, y);
+                y += 20 + (contactWrapped.length - 1) * 14;
+
+                // Divider
+                doc.setDrawColor(102, 126, 234);
+                doc.setLineWidth(1);
+                doc.line(margin, y, pageWidth - margin, y);
+                y += 18;
+
+                // Summary
+                addSectionHeading('Summary');
+                const shortSummary = (summary.length > 600 ? summary.slice(0, 600) + '…' : summary);
+                y = addParagraph(shortSummary, y);
+
+                // Core Skills
+                addSectionHeading('Core Skills');
+                const skillsLine = skills.join(' • ');
+                y = addParagraph(skillsLine, y);
+
+                // Experience
+                addSectionHeading('Experience');
+                expItems.forEach(exp => {
+                    if (!exp.role) return;
+                    const header = `${exp.role} — ${exp.company} (${exp.time})`;
+                    doc.setFont('helvetica', 'bold');
+                    doc.setFontSize(12);
+                    const headerWrapped = doc.splitTextToSize(header, contentWidth);
+                    doc.text(headerWrapped, margin, y);
+                    y += 16 + (headerWrapped.length - 1) * 14;
+                    doc.setFont('helvetica', 'normal');
+                    doc.setFontSize(11);
+                    exp.bullets.forEach(b => {
+                        const bullet = `• ${b}`;
+                        const wrapped = doc.splitTextToSize(bullet, contentWidth);
+                        doc.text(wrapped, margin, y);
+                        y += 14 * wrapped.length;
+                    });
+                    y += 6;
+                });
+
+                // Projects
+                addSectionHeading('Key Projects');
+                projects.forEach(p => {
+                    const header = `${p.title} (${p.time})`;
+                    doc.setFont('helvetica', 'bold');
+                    doc.setFontSize(12);
+                    const headerWrapped = doc.splitTextToSize(header, contentWidth);
+                    doc.text(headerWrapped, margin, y);
+                    y += 16 + (headerWrapped.length - 1) * 14;
+                    doc.setFont('helvetica', 'normal');
+                    doc.setFontSize(11);
+                    y = addParagraph(p.desc, y);
+                });
+
+                // Patent
+                if (patentTitle) {
+                    addSectionHeading('Patent');
+                    const line = `${patentTitle} — ${patentNum}`;
+                    y = addParagraph(line, y);
+                }
+
+                // Footer note
+                doc.setTextColor(120);
+                doc.setFontSize(9);
+                const footer = 'Quick Resume — generated from venkata-guravareddy.github.io';
+                doc.text(footer, margin, pageHeight - 20);
+
+                doc.save('Venkata_Guravareddy_Quick_Resume.pdf');
+
+                function addSectionHeading(text) {
+                    doc.setTextColor(30);
+                    doc.setFont('helvetica', 'bold');
+                    doc.setFontSize(13);
+                    doc.text(text, margin, y);
+                    y += 10;
+                    doc.setDrawColor(118, 75, 162);
+                    doc.setLineWidth(0.7);
+                    doc.line(margin, y, margin + 50, y);
+                    y += 12;
+                    doc.setFont('helvetica', 'normal');
+                    doc.setTextColor(40);
+                    doc.setFontSize(11);
+                }
+
+                function addParagraph(text, startY) {
+                    doc.setTextColor(40);
+                    doc.setFont('helvetica', 'normal');
+                    doc.setFontSize(11);
+                    const wrapped = doc.splitTextToSize(text, contentWidth);
+                    doc.text(wrapped, margin, startY);
+                    return startY + 14 * wrapped.length + 6;
+                }
+            }
         });
     </script>
 </body>
