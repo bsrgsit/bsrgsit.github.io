@@ -395,7 +395,9 @@
         }
         .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 1rem; }
         .modal-title { font-family: 'Poppins', sans-serif; font-size: 1.3rem; color: #2d3748; }
-        .modal-close { font-size: 1.5rem; color: #718096; cursor: pointer; border: none; background: none; }
+        .modal-close { font-size: 1.5rem; color: #334155; cursor: pointer; border: none; background: none; line-height: 1; }
+        .modal-close:hover { color: #0ea5a1; transform: scale(1.05); }
+        .modal-close:focus { outline: 2px solid #0ea5a1; outline-offset: 2px; border-radius: 4px; }
         .modal-body p { color: #4a5568; line-height: 1.7; }
         .modal-body ul { list-style: none; padding-left: 0; margin-top: 1rem; }
         .modal-body li { padding-left: 1.5rem; position: relative; margin-bottom: 0.5rem; }
@@ -1110,7 +1112,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h3 class="modal-title" id="skill-modal-title">Skill Details</h3>
-                <button class="modal-close" id="skill-modal-close">&times;</button>
+                <button class="modal-close" id="skill-modal-close" aria-label="Close modal">&times;</button>
             </div>
             <div class="modal-body" id="skill-modal-body">
                 <!-- Details will be injected here by JavaScript -->
