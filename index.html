@@ -98,6 +98,21 @@
         }
         .sticky-nav-list a:hover { background: rgba(45, 212, 191, 0.15); color: #99f6e4; }
         .sticky-nav-list a.active { background: rgba(45, 212, 191, 0.3); color: #0b1220; }
+        .sticky-dark-toggle {
+            background: transparent;
+            border: 1px solid rgba(226, 232, 240, 0.35);
+            color: #e2e8f0;
+            border-radius: 999px;
+            width: 40px;
+            height: 36px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-left: 0.5rem;
+        }
+        .sticky-dark-toggle:hover { background: rgba(226, 232, 240, 0.12); }
 
         /* --- Header --- */
         .header {
@@ -792,6 +807,7 @@
                 <li><a href="#certifications">Certifications</a></li>
                 <li><a href="#interests">Interests</a></li>
             </ul>
+            <button id="stickyDarkToggle" class="sticky-dark-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
         </div>
 
         <!-- Main Content -->
@@ -1286,15 +1302,17 @@
             // --- Dark Mode Logic ---
             const toggle = document.getElementById('darkModeToggle');
             const toggleIcon = toggle.querySelector('i');
+            const stickyToggle = document.getElementById('stickyDarkToggle');
+            const stickyToggleIcon = stickyToggle?.querySelector('i');
             const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
             
             function updateToggleIcon() {
-                if (document.body.classList.contains('dark')) {
-                    toggleIcon.className = 'fas fa-sun';
-                    toggle.setAttribute('aria-label', 'Switch to light mode');
-                } else {
-                    toggleIcon.className = 'fas fa-moon';
-                    toggle.setAttribute('aria-label', 'Switch to dark mode');
+                const isDark = document.body.classList.contains('dark');
+                toggleIcon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+                toggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+                if (stickyToggleIcon) {
+                    stickyToggleIcon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+                    stickyToggle?.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
                 }
             }
             
@@ -1310,6 +1328,14 @@
                 localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
                 updateToggleIcon();
             });
+
+            if (stickyToggle) {
+                stickyToggle.addEventListener('click', function() {
+                    document.body.classList.toggle('dark');
+                    localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+                    updateToggleIcon();
+                });
+            }
 
             // --- Sticky bar show/hide on scroll ---
             const stickyBar = document.getElementById('stickyBar');
