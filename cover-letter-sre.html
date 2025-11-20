@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venkata Guravareddy - SRE Cover Letter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link type="image/png" sizes="32x32" rel="icon"
+        href="https://img.icons8.com/?size=100&id=POBc2SrrhhnF&format=png&color=000000">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #0f172a;
+            background: #0b1220;
+            min-height: 100vh;
+            padding: 1rem 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.1"/><circle cx="10" cy="60" r="0.5" fill="white" opacity="0.1"/><circle cx="90" cy="40" r="0.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 0.25rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .header .role {
+            font-size: 1rem;
+            color: #a5b4fc;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .contact-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            font-size: 0.8rem;
+        }
+
+        .contact-bar a,
+        .contact-bar span {
+            color: #cbd5e1;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: color 0.3s ease;
+        }
+
+        .contact-bar a:hover {
+            color: #818cf8;
+        }
+
+        .contact-bar i {
+            color: #818cf8;
+            font-size: 0.9rem;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        }
+
+        .date-section {
+            margin-bottom: 1.25rem;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        .recipient-section {
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        .recipient-section p {
+            margin-bottom: 0.25rem;
+            color: #334155;
+            font-weight: 500;
+        }
+
+        .salutation {
+            margin-bottom: 1.25rem;
+            font-weight: 600;
+            color: #1e293b;
+            font-size: 1rem;
+        }
+
+        .letter-body {
+            margin-bottom: 1.5rem;
+        }
+
+        .letter-body p {
+            margin-bottom: 1rem;
+            color: #475569;
+            line-height: 1.7;
+            text-align: justify;
+        }
+
+        .letter-body strong {
+            color: #1e293b;
+            font-weight: 600;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+            border-left: 4px solid #4f46e5;
+            padding: 1rem;
+            margin: 1.25rem 0;
+            border-radius: 8px;
+        }
+
+        .highlight-box h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.95rem;
+            color: #1e293b;
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+        }
+
+        .highlight-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .highlight-box li {
+            padding-left: 1.25rem;
+            position: relative;
+            margin-bottom: 0.5rem;
+            color: #475569;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .highlight-box li::before {
+            content: "▸";
+            color: #4f46e5;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .closing {
+            margin-top: 1.5rem;
+        }
+
+        .closing p {
+            margin-bottom: 0.5rem;
+            color: #475569;
+        }
+
+        .signature {
+            margin-top: 2rem;
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .signature-name {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #0b1220 0%, #0f172a 100%);
+            color: #cbd5e1;
+            padding: 1rem 1.5rem;
+            text-align: center;
+            font-size: 0.8rem;
+        }
+
+        .footer a {
+            color: #818cf8;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer a:hover {
+            color: #a5b4fc;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+                max-width: 100%;
+            }
+
+            .footer {
+                display: none;
+            }
+        }
+
+        /* Dark Mode Toggle */
+        .dark-mode-toggle {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .dark-mode-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .dark-mode-toggle i {
+            font-size: 1.1rem;
+            color: #2d3748;
+        }
+
+        /* Dark Mode Styles */
+        body.dark {
+            background: #181a1b;
+            color: #e2e8f0;
+        }
+
+        body.dark .container {
+            background: #23272f;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        body.dark .main-content {
+            background: linear-gradient(135deg, #23272f 0%, #181a1b 100%);
+        }
+
+        body.dark .letter-body p,
+        body.dark .closing p,
+        body.dark .highlight-box li {
+            color: #a0aec0;
+        }
+
+        body.dark .recipient-section p,
+        body.dark .salutation,
+        body.dark .signature-name,
+        body.dark .highlight-box h3 {
+            color: #e2e8f0;
+        }
+
+        body.dark .highlight-box {
+            background: linear-gradient(135deg, #2a2f3b 0%, #23272f 100%);
+            border-left-color: #818cf8;
+        }
+
+        body.dark .highlight-box li::before {
+            color: #818cf8;
+        }
+
+        body.dark .dark-mode-toggle {
+            background: rgba(45, 55, 72, 0.9);
+        }
+
+        body.dark .dark-mode-toggle i {
+            color: #e2e8f0;
+        }
+
+        @media (min-width: 768px) {
+            .header {
+                padding: 2rem;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .main-content {
+                padding: 2rem 2.5rem;
+            }
+
+            .contact-bar {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1>Venkata Guravareddy</h1>
+                <div class="role">Site Reliability Engineer | Cloud Infrastructure Specialist</div>
+                <div class="contact-bar">
+                    <a href="mailto:bvguravareddy@gmail.com">
+                        <i class="fas fa-envelope"></i>
+                        bvguravareddy@gmail.com
+                    </a>
+                    <a href="tel:+919884883957">
+                        <i class="fas fa-phone"></i>
+                        +91 9884883957
+                    </a>
+                    <span>
+                        <i class="fas fa-map-marker-alt"></i>
+                        Hyderabad, India
+                    </span>
+                    <a href="https://linkedin.com/in/bvguravareddy" target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                        LinkedIn
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="date-section">
+                <p id="currentDate"></p>
+            </div>
+
+            <div class="recipient-section">
+                <p><strong>Hiring Manager</strong></p>
+                <p>[Company Name]</p>
+                <p>[Company Address]</p>
+            </div>
+
+            <div class="salutation">
+                Dear Hiring Manager,
+            </div>
+
+            <div class="letter-body">
+                <p>
+                    I am writing to express my strong interest in the <strong>Site Reliability Engineer</strong>
+                    position at your organization. With over 12 years of experience in cloud infrastructure, automation,
+                    and reliability engineering, I am excited about the opportunity to contribute to building and
+                    maintaining highly available, scalable systems that power critical business operations.
+                </p>
+
+                <p>
+                    Throughout my career at Verizon Wireless, I have specialized in designing and operating large-scale
+                    distributed systems with a focus on reliability, performance, and automation. My experience spans
+                    across cloud platforms (OpenStack, Kubernetes), infrastructure automation (Ansible, Terraform), and
+                    implementing comprehensive monitoring and observability solutions that ensure 99.99% uptime for
+                    mission-critical services.
+                </p>
+
+                <div class="highlight-box">
+                    <h3>Key SRE Achievements & Expertise:</h3>
+                    <ul>
+                        <li><strong>Reliability & Automation:</strong> Engineered automation frameworks that reduced
+                            manual operations by 80%, saving $1M annually while improving system reliability and
+                            reducing MTTR by 60%</li>
+                        <li><strong>Infrastructure at Scale:</strong> Architected and deployed enterprise-grade
+                            OpenStack and Kubernetes platforms supporting 1000+ VMs and containerized workloads with
+                            99.99% availability</li>
+                        <li><strong>Monitoring & Observability:</strong> Implemented comprehensive monitoring solutions
+                            using Prometheus, Grafana, and ELK stack, establishing SLIs/SLOs that improved incident
+                            response time by 40%</li>
+                        <li><strong>Incident Management:</strong> Led on-call rotations and incident response,
+                            developing runbooks and post-mortem processes that reduced repeat incidents by 70%</li>
+                        <li><strong>Performance Optimization:</strong> Developed intelligent forecasting models for 5G
+                            network metrics, optimizing resource utilization and preventing capacity issues before they
+                            impact users</li>
+                        <li><strong>CI/CD & DevOps:</strong> Built robust CI/CD pipelines reducing deployment time by
+                            60% while maintaining zero-downtime deployments through blue-green and canary strategies
+                        </li>
+                    </ul>
+                </div>
+
+                <p>
+                    What excites me most about SRE is the intersection of software engineering and operations—using code
+                    to solve operational challenges at scale. I have extensive experience with Infrastructure as Code
+                    (Terraform, Ansible), configuration management, and building self-healing systems that automatically
+                    detect and remediate issues before they impact end users.
+                </p>
+
+                <p>
+                    My approach to SRE emphasizes <strong>proactive reliability engineering</strong> rather than
+                    reactive firefighting. I believe in establishing strong SLIs/SLOs, implementing chaos engineering
+                    practices, and fostering a culture of blameless post-mortems to continuously improve system
+                    resilience. I have successfully led teams in adopting these practices, resulting in measurable
+                    improvements in system reliability and team efficiency.
+                </p>
+
+                <p>
+                    I am particularly drawn to your organization's commitment to engineering excellence and innovation.
+                    I am confident that my technical expertise in cloud infrastructure, automation, and reliability
+                    engineering, combined with my proven track record of improving system availability and operational
+                    efficiency, would make me a valuable addition to your SRE team.
+                </p>
+            </div>
+
+            <div class="closing">
+                <p>
+                    Thank you for considering my application. I would welcome the opportunity to discuss how my
+                    experience in building reliable, scalable systems can contribute to your organization's success. I
+                    look forward to speaking with you soon.
+                </p>
+            </div>
+
+            <div class="signature">
+                <p>Sincerely,</p>
+                <p class="signature-name">Venkata Guravareddy</p>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>View my complete resume at <a href="index.html">bsrgsit.github.io</a> | <a
+                    href="cover-letter-architect.html">Architect Cover Letter</a> | <a
+                    href="cover-letter-devops.html">DevOps Cover Letter</a></p>
+        </footer>
+    </div>
+
+    <script>
+        // Set current date
+        const dateElement = document.getElementById('currentDate');
+        const today = new Date();
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        dateElement.textContent = today.toLocaleDateString('en-US', options);
+
+        // Dark mode toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+        const icon = darkModeToggle.querySelector('i');
+
+        // Check for saved dark mode preference
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            body.classList.add('dark');
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+        }
+
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark');
+
+            if (body.classList.contains('dark')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        });
+    </script>
+</body>
+
+</html>

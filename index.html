@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +8,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
-    <link type="image/png" sizes="32x32" rel="icon" href="https://img.icons8.com/?size=100&id=POBc2SrrhhnF&format=png&color=000000">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link type="image/png" sizes="32x32" rel="icon"
+        href="https://img.icons8.com/?size=100&id=POBc2SrrhhnF&format=png&color=000000">
     <style>
         /* --- Base & General Styling --- */
         * {
@@ -23,19 +27,19 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            font-size: 15px;
-            line-height: 1.6;
+            font-size: 14px;
+            line-height: 1.5;
             color: #0f172a;
-            background: #0b1220; /* professional deep navy background */
+            background: #0b1220;
             min-height: 100vh;
-            padding: 1rem 0; /* Adjusted padding for mobile first */
+            padding: 0.75rem 0;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
             background: white;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
             border-radius: 20px;
             overflow: hidden;
         }
@@ -58,26 +62,44 @@
             transform: translateY(-100%);
             transition: transform 0.25s ease;
         }
-        .sticky-bar.visible { transform: translateY(0); }
+
+        .sticky-bar.visible {
+            transform: translateY(0);
+        }
+
         .sticky-brand {
             display: flex;
             align-items: center;
             gap: 0.75rem;
             min-width: 0;
         }
+
         .sticky-name {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-weight: 800;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
             color: #e2e8f0;
-            font-size: 1rem;
+            font-size: 1.1rem;
             white-space: nowrap;
+            letter-spacing: -0.01em;
         }
+
         .sticky-contact {
             display: none;
             gap: 0.75rem;
         }
-        .sticky-contact a { color: #99f6e4; text-decoration: none; font-weight: 600; font-size: 0.85rem; }
-        .sticky-contact i { color: #2dd4bf; }
+
+        .sticky-contact a {
+            color: #a5b4fc;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .sticky-contact i {
+            color: #818cf8;
+        }
+
+
         .sticky-nav-list {
             list-style: none;
             display: flex;
@@ -87,6 +109,7 @@
             padding: 0;
             justify-content: flex-end;
         }
+
         .sticky-nav-list a {
             color: #e2e8f0;
             text-decoration: none;
@@ -96,8 +119,18 @@
             border-radius: 999px;
             transition: background 0.2s ease, color 0.2s ease;
         }
-        .sticky-nav-list a:hover { background: rgba(45, 212, 191, 0.15); color: #99f6e4; }
-        .sticky-nav-list a.active { background: rgba(45, 212, 191, 0.3); color: #0b1220; }
+
+        .sticky-nav-list a:hover {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+        }
+
+        .sticky-nav-list a.active {
+            background: rgba(99, 102, 241, 0.3);
+            color: #0b1220;
+        }
+
+
         .sticky-dark-toggle {
             background: transparent;
             border: 1px solid rgba(226, 232, 240, 0.35);
@@ -112,13 +145,16 @@
             transition: all 0.2s ease;
             margin-left: 0.5rem;
         }
-        .sticky-dark-toggle:hover { background: rgba(226, 232, 240, 0.12); }
+
+        .sticky-dark-toggle:hover {
+            background: rgba(226, 232, 240, 0.12);
+        }
 
         /* --- Header --- */
         .header {
             background: #0f172a;
             color: white;
-            padding: 3rem 1.5rem; /* Adjusted padding */
+            padding: 1.5rem 1rem;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -136,11 +172,11 @@
         }
 
         .header h1 {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 2.2rem; /* slightly reduced for compactness */
-            margin-bottom: 0.5rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 0.3rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
             text-shadow: none;
             position: relative;
             z-index: 1;
@@ -148,108 +184,119 @@
         }
 
         .header .tagline {
-            font-size: 1.2rem; /* Adjusted */
-            margin-bottom: 2rem;
-            opacity: 1;
-            font-weight: 600;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+            font-weight: 500;
             text-shadow: none;
             position: relative;
             z-index: 1;
             color: #cbd5e1;
+            letter-spacing: 0.01em;
         }
 
         .contact-info {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 1rem; /* Adjusted gap */
-            margin-top: 2rem;
+            gap: 0.5rem;
+            /* Adjusted gap */
+            margin-top: 1rem;
             position: relative;
             z-index: 1;
         }
 
-        .contact-item { 
-            display: flex; 
-            align-items: center; 
-            gap: 0.5rem; 
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
             font-weight: 500;
-            font-size: 0.9rem; /* Adjusted font size */
+            font-size: 0.8rem;
+            /* Adjusted font size */
             background: rgba(255, 255, 255, 0.1);
-            padding: 0.6rem 1rem; /* Adjusted padding */
-            border-radius: 25px;
+            padding: 0.4rem 0.8rem;
+            /* Adjusted padding */
+            border-radius: 20px;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
             transition: all 0.3s ease;
         }
+
         .contact-item:hover {
             background: rgba(255, 255, 255, 0.2);
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
         }
-        .contact-item i { 
-            font-size: 1rem; 
-            color: #0ea5a1;
+
+        .contact-item i {
+            font-size: 1rem;
+            color: #818cf8;
         }
-        .contact-item a { 
-            color: white; 
-            text-decoration: none; 
-            transition: all 0.3s ease; 
+
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
         }
-        .contact-item a:hover { 
-            color: #667eea;
+
+        .contact-item a:hover {
+            color: #a5b4fc;
         }
 
         /* --- Main Content & Sections --- */
         .main-content {
-            padding: 2rem 1.5rem; /* Adjusted padding */
+            padding: 1.5rem 1rem;
+            /* Adjusted padding */
             background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
         }
 
         .section {
-            margin-bottom: 3rem; /* Adjusted margin */
+            margin-bottom: 1.75rem;
         }
 
         .section-title {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 1.4rem; /* reduced */
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
             color: #1e293b;
-            margin-bottom: 2rem; /* Adjusted margin */
-            padding-bottom: 1rem;
-            border-bottom: 4px solid;
-            border-image: linear-gradient(90deg, #0ea5a1, #0891b2) 1;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid;
+            border-image: linear-gradient(90deg, #4f46e5, #7c3aed) 1;
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 0.75rem;
             font-weight: 700;
             position: relative;
+            letter-spacing: -0.02em;
         }
 
         .section-title::before {
             content: '';
             position: absolute;
-            bottom: -4px;
+            bottom: -3px;
             left: 0;
-            width: 50px;
-            height: 4px;
-            background: linear-gradient(90deg, #0ea5a1, #0891b2);
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(90deg, #4f46e5, #7c3aed);
             border-radius: 2px;
         }
 
         .section-title i {
-            font-size: 1.5rem;
-            color: #0ea5a1;
+            font-size: 1.2rem;
+            color: #4f46e5;
         }
 
         /* --- Career Profile --- */
         .career-profile {
             background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-            padding: 2rem; /* Adjusted padding */
-            border-radius: 16px;
-            border-left: 6px solid;
-            border-image: linear-gradient(180deg, #0ea5a1, #0891b2) 1;
-            font-size: 1.05rem; /* Adjusted font size */
-            line-height: 1.8;
-            box-shadow: 0 10px 30px rgba(14, 165, 161, 0.12);
+            padding: 1rem;
+            border-radius: 12px;
+            border-left: 4px solid;
+            border-image: linear-gradient(180deg, #4f46e5, #7c3aed) 1;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            box-shadow: 0 6px 20px rgba(79, 70, 229, 0.1);
             position: relative;
             overflow: hidden;
         }
@@ -270,168 +317,260 @@
         /* --- Experience Timeline --- */
         .experience-timeline {
             position: relative;
-            padding-left: 25px; /* Adjusted Space */
+            padding-left: 20px;
+            /* Adjusted Space */
         }
 
         .experience-timeline::before {
             content: '';
             position: absolute;
-            left: 10px; /* Adjusted position */
+            left: 8px;
+            /* Adjusted position */
             top: 5px;
             bottom: 5px;
-            width: 3px;
+            width: 2px;
             background: #e2e8f0;
             border-radius: 2px;
         }
 
         .experience-item {
-            margin-bottom: 2.5rem;
+            margin-bottom: 1.5rem;
             position: relative;
         }
 
-        .experience-item::before { /* The dot on the timeline */
+        .experience-item::before {
+            /* The dot on the timeline */
             content: '';
             position: absolute;
-            left: -23px; /* Adjusted to center on the line */
+            left: -18px;
+            /* Adjusted to center on the line */
             top: 5px;
-            height: 15px;
-            width: 15px;
+            height: 12px;
+            width: 12px;
             background: white;
-            border: 3px solid #0ea5a1;
+            border: 2px solid #4f46e5;
             border-radius: 50%;
             z-index: 1;
         }
-        
+
         .experience-content {
-            padding: 1.5rem; /* Adjusted padding */
+            padding: 1rem;
             border: 1px solid #e2e8f0;
-            border-radius: 16px;
-            transition: all 0.4s ease;
+            border-radius: 12px;
+            transition: all 0.3s ease;
             background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
         }
 
         .experience-content:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(14, 165, 161, 0.18);
-            border-color: #0ea5a1;
-            background: linear-gradient(135deg, #ffffff 0%, #f0fdfa 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(79, 70, 229, 0.15);
+            border-color: #4f46e5;
+            background: linear-gradient(135deg, #ffffff 0%, #eef2ff 100%);
         }
 
-        .experience-header { display: flex; flex-direction: column; align-items: flex-start; margin-bottom: 1rem; gap: 0.5rem; } /* Mobile first: column */
-        .experience-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.1rem; font-weight: 700; color: #1f2937; }
-        .experience-company { font-weight: 500; color: #4a5568; font-size: 1rem; }
-        .experience-time { color: #718096; font-size: 0.9rem; font-weight: 500; background: #edf2f7; padding: 0.4rem 0.8rem; border-radius: 20px; }
-        .experience-details { margin-top: 1rem; }
-        .experience-details p { margin-bottom: 1rem; line-height: 1.7; color: #4a5568; }
-        .experience-details ul { list-style: none; padding-left: 0; max-height: 120px; overflow: hidden; transition: max-height 0.5s ease-in-out; }
-        .experience-details ul.expanded { max-height: 1000px; } /* Expand the list */
-        .experience-details li { margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative; color: #4a5568; }
-        .experience-details li:before { content: "▸"; color: #0ea5a1; position: absolute; left: 0; font-weight: bold; }
+        .experience-header {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 0.75rem;
+            gap: 0.4rem;
+        }
+
+        /* Mobile first: column */
+        .experience-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1f2937;
+            letter-spacing: -0.01em;
+        }
+
+        .experience-company {
+            font-weight: 500;
+            color: #4a5568;
+            font-size: 0.9rem;
+        }
+
+        .experience-time {
+            color: #718096;
+            font-size: 0.8rem;
+            font-weight: 500;
+            background: #edf2f7;
+            padding: 0.3rem 0.7rem;
+            border-radius: 15px;
+        }
+
+        .experience-details {
+            margin-top: 0.75rem;
+        }
+
+        .experience-details p {
+            margin-bottom: 0.75rem;
+            line-height: 1.6;
+            color: #4a5568;
+            font-size: 0.9rem;
+        }
+
+        .experience-details ul {
+            list-style: none;
+            padding-left: 0;
+            max-height: 120px;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+        }
+
+        .experience-details ul.expanded {
+            max-height: 1000px;
+        }
+
+        /* Expand the list */
+        .experience-details li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.2rem;
+            position: relative;
+            color: #4a5568;
+            font-size: 0.9rem;
+        }
+
+        .experience-details li:before {
+            content: "▸";
+            color: #4f46e5;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+
 
         .show-more-btn {
-            background: linear-gradient(45deg, #0ea5a1, #0891b2);
+            background: linear-gradient(45deg, #4f46e5, #7c3aed);
             border: none;
             color: white;
-            padding: 0.6rem 1.2rem;
-            border-radius: 25px;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
             cursor: pointer;
             font-weight: 600;
-            margin-top: 1.5rem;
+            font-size: 0.85rem;
+            margin-top: 1rem;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(14, 165, 161, 0.3);
-        }
-        .show-more-btn:hover { 
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(14, 165, 161, 0.45);
-            background: linear-gradient(45deg, #0ea5a1, #0d9488);
+            box-shadow: 0 3px 10px rgba(79, 70, 229, 0.25);
         }
 
-        /* --- Download PDF Button --- */
-        .download-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            background: linear-gradient(45deg, #0ea5e9, #2563eb);
-            border: none;
-            color: white;
-            padding: 0.8rem 1.4rem;
-            border-radius: 28px;
-            cursor: pointer;
-            font-weight: 700;
-            letter-spacing: 0.2px;
-            transition: all 0.3s ease;
-            box-shadow: 0 6px 20px rgba(14, 165, 233, 0.35);
+        .show-more-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(79, 70, 229, 0.45);
+            background: linear-gradient(45deg, #4338ca, #6d28d9);
         }
-        .download-btn i { font-size: 1rem; }
-        .download-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(14,165,233,0.45); }
-        .footer-bottom .download-btn { margin-bottom: 1rem; }
+
 
         /* --- Skills --- */
-        .skills-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; } /* Mobile first: 1 column */
-        .skill-category { 
-            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); 
-            padding: 2rem; /* Adjusted */
-            border-radius: 16px; 
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.25rem;
+        }
+
+        /* Mobile first: 1 column */
+        .skill-category {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            padding: 1rem;
+            border-radius: 12px;
             border: 1px solid #e2e8f0;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
             transition: all 0.3s ease;
         }
+
         .skill-category:hover {
             transform: translateY(-3px);
             box-shadow: 0 15px 40px rgba(102, 126, 234, 0.1);
         }
-        .skill-category h4 { 
-            font-family: 'Plus Jakarta Sans', sans-serif; 
-            color: #1e293b; 
-            margin-bottom: 2rem; 
-            font-size: 1.1rem; /* reduced */
-            font-weight: 700; 
-            display: flex; 
-            align-items: center; 
-            gap: 0.75rem; 
+
+        .skill-category h4 {
+            font-family: 'Outfit', sans-serif;
+            color: #1e293b;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
         }
-        .skill-category h4 i { 
-            color: #0ea5a1;
+
+        .skill-category h4 i {
+            color: #4f46e5;
         }
-        .skill-item { 
-            margin-bottom: 1.5rem; /* Adjusted */
-            cursor: pointer; 
-            padding: 1rem;
-            border-radius: 12px;
+
+        .skill-item {
+            margin-bottom: 1rem;
+            /* Adjusted */
+            cursor: pointer;
+            padding: 0.75rem;
+            border-radius: 10px;
             transition: all 0.3s ease;
         }
-        .skill-item:last-child { margin-bottom: 0; }
-        .skill-item:hover { 
+
+        .skill-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .skill-item:hover {
             background: rgba(102, 126, 234, 0.05);
             transform: translateX(5px);
         }
-        .skill-item:hover .skill-name { color: #667eea; }
-        .skill-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; }
-        .skill-name { font-weight: 600; color: #1e293b; transition: color 0.3s; font-size: 1rem; }
-        .skill-level-text { 
-            color: #64748b; 
-            font-size: 0.9rem; 
+
+        .skill-item:hover .skill-name {
+            color: #667eea;
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-name {
             font-weight: 600;
-            color: #0ea5a1;
+            color: #1e293b;
+            transition: color 0.3s;
+            font-size: 0.9rem;
         }
-        .skill-bar { 
-            width: 100%; 
-            height: 10px; 
-            background: #e2e8f0; 
-            border-radius: 5px; 
+
+        .skill-level-text {
+            color: #64748b;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #4f46e5;
+        }
+
+        .skill-bar {
+            width: 100%;
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 4px;
             overflow: hidden;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.08);
         }
-        .skill-progress { 
-            height: 100%; 
-            background: linear-gradient(90deg, #0ea5a1 0%, #0891b2 100%); 
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #4f46e5 0%, #7c3aed 100%);
             border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(14, 165, 161, 0.3);
+            box-shadow: 0 2px 4px rgba(79, 70, 229, 0.3);
         }
-        .skill-progress.expert { width: 95%; }
-        .skill-progress.advanced { width: 85%; }
-        .skill-progress.intermediate { width: 75%; }
+
+        .skill-progress.expert {
+            width: 95%;
+        }
+
+        .skill-progress.advanced {
+            width: 85%;
+        }
+
+        .skill-progress.intermediate {
+            width: 75%;
+        }
 
         /* --- Skill Modal --- */
         .modal-overlay {
@@ -450,74 +589,291 @@
             transition: opacity 0.3s ease, visibility 0s 0.3s;
             padding: 1rem;
         }
+
         .modal-overlay.active {
             opacity: 1;
             visibility: visible;
             transition: opacity 0.3s ease;
         }
+
         .modal-content {
             background: white;
             padding: 2rem;
             border-radius: 12px;
             max-width: 600px;
             width: 100%;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             transform: translateY(20px);
             transition: transform 0.3s ease;
         }
+
         .modal-overlay.active .modal-content {
             transform: translateY(0);
         }
-        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 1rem; }
-        .modal-title { font-family: 'Poppins', sans-serif; font-size: 1.3rem; color: #2d3748; }
-        .modal-close { font-size: 1.5rem; color: #334155; cursor: pointer; border: none; background: none; line-height: 1; }
-        .modal-close:hover { color: #0ea5a1; transform: scale(1.05); }
-        .modal-close:focus { outline: 2px solid #0ea5a1; outline-offset: 2px; border-radius: 4px; }
-        .modal-body p { color: #4a5568; line-height: 1.7; }
-        .modal-body ul { list-style: none; padding-left: 0; margin-top: 1rem; }
-        .modal-body li { padding-left: 1.5rem; position: relative; margin-bottom: 0.5rem; }
-        .modal-body li::before { content: "✓"; color: #38a169; position: absolute; left: 0; }
-        
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 1rem;
+        }
+
+        .modal-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.3rem;
+            color: #2d3748;
+        }
+
+        .modal-close {
+            font-size: 1.5rem;
+            color: #334155;
+            cursor: pointer;
+            border: none;
+            background: none;
+            line-height: 1;
+        }
+
+        .modal-close:hover {
+            color: #0ea5a1;
+            transform: scale(1.05);
+        }
+
+        .modal-close:focus {
+            outline: 2px solid #0ea5a1;
+            outline-offset: 2px;
+            border-radius: 4px;
+        }
+
+        .modal-body p {
+            color: #4a5568;
+            line-height: 1.7;
+        }
+
+        .modal-body ul {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 1rem;
+        }
+
+        .modal-body li {
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-body li::before {
+            content: "✓";
+            color: #38a169;
+            position: absolute;
+            left: 0;
+        }
+
         /* --- Other Sections (Projects, Patents, Education etc.) --- */
-        .project-item, .patent-item { background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%); padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem; border-left: 5px solid #667eea; transition: all 0.3s ease; }
-        .project-item:hover, .patent-item:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
-        .project-header, .patent-header { display: flex; flex-direction: column; align-items: flex-start; margin-bottom: 1rem; gap: 0.5rem; } /* Mobile first: column */
-            .project-title, .patent-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.05rem; font-weight: 700; color: #1f2937; }
-        .project-time, .patent-number { color: #718096; font-size: 0.85rem; font-weight: 500; background: #edf2f7; padding: 0.4rem 0.8rem; border-radius: 20px; }
-        .project-description, .patent-details { margin-bottom: 1rem; line-height: 1.7; color: #4a5568; }
-        .project-technologies { font-size: 0.9rem; color: #718096; font-style: italic; }
+        .project-item,
+        .patent-item {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
 
-        .patent-item { background: linear-gradient(135deg, #f0fff4 0%, #e6fffa 100%); border-left-color: #38a169; }
-        .patent-details p { margin-bottom: 0.5rem; color: #4a5568; }
-        .patent-link { color: #38a169; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem; transition: color 0.2s; }
-        .patent-link:hover { color: #2f855a; }
+        .project-item:hover,
+        .patent-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
 
-        .education-item { display: flex; flex-direction: column; align-items: flex-start; gap: 0.75rem; padding: 1.5rem 0; border-bottom: 1px solid #e2e8f0; } /* Mobile first: column */
-        .education-item:last-child { border-bottom: none; }
-            .education-info h4 { font-family: 'Plus Jakarta Sans', sans-serif; color: #1f2937; margin-bottom: 0.25rem; font-weight: 700; font-size: 1.05rem; }
-        .education-info p { color: #4a5568; margin-bottom: 0.25rem; font-size: 0.95rem; }
-        .education-time { color: #718096; font-size: 0.9rem; font-weight: 500; background: #edf2f7; padding: 0.5rem 1rem; border-radius: 20px; flex-shrink: 0; }
-        
-        .certification-item { display: flex; flex-direction: column; align-items: flex-start; gap: 0.75rem; padding: 1.5rem 0; border-bottom: 1px solid #e2e8f0; } /* Mobile first: column */
-        .certification-item:last-child { border-bottom: none; }
-            .certification-info h4 { font-family: 'Plus Jakarta Sans', sans-serif; color: #1f2937; margin-bottom: 0.25rem; font-weight: 700; font-size: 1.05rem; }
-        .certification-info p { color: #4a5568; margin-bottom: 0.25rem; font-size: 0.95rem; }
-        .certification-time { color: #718096; font-size: 0.9rem; font-weight: 500; background: #edf2f7; padding: 0.5rem 1rem; border-radius: 20px; }
+        .project-header,
+        .patent-header {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 0.75rem;
+            gap: 0.4rem;
+        }
 
-        .interests { display: flex; flex-wrap: wrap; gap: 0.75rem; }
-        .interest-item { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 0.6rem 1.2rem; border-radius: 25px; font-size: 0.9rem; font-weight: 500; transition: all 0.3s ease; }
-        .interest-item:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4); }
+        /* Mobile first: column */
+        .project-title,
+        .patent-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #1f2937;
+        }
+
+        .project-time,
+        .patent-number {
+            color: #718096;
+            font-size: 0.75rem;
+            font-weight: 500;
+            background: #edf2f7;
+            padding: 0.3rem 0.7rem;
+            border-radius: 15px;
+        }
+
+        .project-description,
+        .patent-details {
+            margin-bottom: 0.75rem;
+            line-height: 1.6;
+            color: #4a5568;
+            font-size: 0.9rem;
+        }
+
+        .project-technologies {
+            font-size: 0.85rem;
+            color: #718096;
+            font-style: italic;
+        }
+
+        .patent-item {
+            background: linear-gradient(135deg, #f0fff4 0%, #e6fffa 100%);
+            border-left-color: #38a169;
+        }
+
+        .patent-details p {
+            margin-bottom: 0.5rem;
+            color: #4a5568;
+        }
+
+        .patent-link {
+            color: #38a169;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.2s;
+        }
+
+        .patent-link:hover {
+            color: #2f855a;
+        }
+
+        .education-item {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.5rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        /* Mobile first: column */
+        .education-item:last-child {
+            border-bottom: none;
+        }
+
+        .education-info h4 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #1f2937;
+            margin-bottom: 0.2rem;
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        .education-info p {
+            color: #4a5568;
+            margin-bottom: 0.2rem;
+            font-size: 0.85rem;
+        }
+
+        .education-time {
+            color: #718096;
+            font-size: 0.8rem;
+            font-weight: 500;
+            background: #edf2f7;
+            padding: 0.35rem 0.8rem;
+            border-radius: 15px;
+            flex-shrink: 0;
+        }
+
+        .certification-item {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.5rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        /* Mobile first: column */
+        .certification-item:last-child {
+            border-bottom: none;
+        }
+
+        .certification-info h4 {
+            font-family: 'Outfit', sans-serif;
+            color: #1f2937;
+            margin-bottom: 0.2rem;
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        .certification-info p {
+            color: #4a5568;
+            margin-bottom: 0.2rem;
+            font-size: 0.85rem;
+        }
+
+        .certification-time {
+            color: #718096;
+            font-size: 0.8rem;
+            font-weight: 500;
+            background: #edf2f7;
+            padding: 0.35rem 0.8rem;
+            border-radius: 15px;
+        }
+
+        .interests {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-top: 1rem;
+        }
+
+        .interest-item {
+            background: white;
+            border: 1px solid #e2e8f0;
+            color: #4a5568;
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+        }
+
+        .interest-item i {
+            color: #4f46e5;
+        }
+
+        .interest-item:hover {
+            border-color: #4f46e5;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(79, 70, 229, 0.15);
+            color: #4f46e5;
+        }
+
 
         /* --- Footer --- */
-        .footer { 
-            background: linear-gradient(135deg, #0b1220 0%, #0f172a 60%, #0b1220 100%); 
-            color: white; 
-            padding: 3rem 1.5rem 2rem;
-            margin-top: 3rem;
+        .footer {
+            background: linear-gradient(135deg, #0b1220 0%, #0f172a 60%, #0b1220 100%);
+            color: white;
+            padding: 1.25rem 1rem 1rem;
+            margin-top: 2rem;
             position: relative;
             overflow: hidden;
-            text-align: center; /* Center align on mobile */
+            text-align: center;
+            /* Center align on mobile */
         }
+
         .footer::before {
             content: '';
             position: absolute;
@@ -528,71 +884,140 @@
             background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.1"/><circle cx="10" cy="60" r="0.5" fill="white" opacity="0.1"/><circle cx="90" cy="40" r="0.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
             opacity: 0.3;
         }
+
         .footer-content {
             display: grid;
-            grid-template-columns: 1fr; /* Mobile first: 1 column */
-            gap: 2.5rem;
-            margin-bottom: 2.5rem;
+            grid-template-columns: 1fr;
+            /* Mobile first: 1 column */
+            gap: 1.25rem;
+            margin-bottom: 1.25rem;
             position: relative;
             z-index: 1;
         }
+
         .footer-section h3 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.3rem;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.95rem;
             font-weight: 700;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.6rem;
             color: #e2e8f0;
         }
+
         .footer-section h4 {
             font-family: 'Poppins', sans-serif;
             font-size: 1.1rem;
             font-weight: 600;
             margin-bottom: 1rem;
-            color: #90cdf4;
+            color: #a5b4fc;
         }
+
         .footer-social {
             display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-            align-items: center; /* Center social links on mobile */
-        }
-        .footer-social a {
-            display: inline-flex; /* Changed for better centering */
+            flex-direction: row;
+            gap: 0.5rem;
             align-items: center;
-            gap: 0.75rem;
-            padding: 0.75rem 1.25rem;
-            background: rgba(255,255,255,0.1);
-            border-radius: 8px;
+            justify-content: center;
+            flex-wrap: wrap;
+            /* Center social links on mobile */
+        }
+
+        .footer-social a {
+            display: inline-flex;
+            /* Changed for better centering */
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.4rem 0.9rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
             color: #e2e8f0;
             text-decoration: none;
             transition: all 0.3s ease;
-            font-size: 0.95rem;
-            width: 200px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .footer-social a:hover {
+            background: #818cf8;
+            color: #0b1220;
+            transform: translateY(-2px);
+            /* Adjusted transform */
+        }
+
+        .footer-social i {
+            font-size: 1rem;
+            width: 16px;
+        }
+
+        .footer-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .stat-number {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #2dd4bf;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #a0aec0;
+        }
+
+        .footer-expertise {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
             justify-content: center;
         }
-        .footer-social a:hover {
-            background: #99f6e4;
-            color: #0b1220;
-            transform: translateX(0) translateY(-2px); /* Adjusted transform */
+
+        .expertise-tag {
+            background: rgba(255, 255, 255, 0.1);
+            color: #e2e8f0;
+            padding: 0.35rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
         }
-        .footer-social i { font-size: 1.2rem; width: 20px; }
-        .footer-stats { display: flex; flex-direction: column; gap: 1rem; align-items: center; }
-        .stat-item { display: flex; align-items: center; gap: 1rem; }
-        .stat-number { font-size: 1.6rem; font-weight: 700; color: #2dd4bf; font-family: 'Plus Jakarta Sans', sans-serif; }
-        .stat-label { font-size: 0.9rem; color: #a0aec0; }
-        .footer-expertise { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; }
-        .expertise-tag { background: rgba(255,255,255,0.1); color: #e2e8f0; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.85rem; font-weight: 500; transition: all 0.3s ease; }
-        .expertise-tag:hover { background: #99f6e4; color: #0b1220; transform: translateY(-2px); }
-        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; text-align: center; position: relative; z-index: 1; }
-        .footer-bottom p { margin-bottom: 0.5rem; font-size: 0.9rem; color: #a0aec0; }
-        
+
+        .expertise-tag:hover {
+            background: #818cf8;
+            color: #0b1220;
+            transform: translateY(-2px);
+        }
+
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 0.75rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-bottom p {
+            margin-bottom: 0;
+            font-size: 0.75rem;
+            color: #a0aec0;
+        }
+
         /* --- Dark Mode Toggle --- */
         .dark-mode-toggle {
             position: fixed;
             top: 1rem;
             right: 1rem;
             z-index: 1000;
-            background: rgba(255,255,255,0.9);
+            background: rgba(255, 255, 255, 0.9);
             border: none;
             border-radius: 50%;
             width: 44px;
@@ -601,13 +1026,15 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
         }
+
         .dark-mode-toggle:hover {
             transform: scale(1.1);
         }
+
         .dark-mode-toggle i {
             font-size: 1.3rem;
             color: #2d3748;
@@ -615,156 +1042,670 @@
 
         /* --- Tablet and larger screens --- */
         @media (min-width: 768px) {
-            body { padding: 2rem 0; }
-            .header { padding: 4rem 2rem; }
-            .header h1 { font-size: 2.6rem; }
-            .header .tagline { font-size: 1.2rem; }
-            .contact-info { gap: 1.5rem; }
-            .contact-item { font-size: 0.95rem; padding: 0.75rem 1.25rem; }
-            
-            .main-content { padding: 3rem; }
-            .section { margin-bottom: 4rem; }
-            .section-title { font-size: 1.6rem; margin-bottom: 2.2rem; }
-            
-            .career-profile { padding: 2.5rem; font-size: 1.1rem; }
-            
-            .experience-timeline { padding-left: 40px; }
-            .experience-item::before { left: -33px; }
-            .experience-content { padding: 2rem 2.5rem; }
-            .experience-header { flex-direction: row; justify-content: space-between; align-items: flex-start; gap: 1rem; }
-            
-            .skills-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; }
-            .skill-category { padding: 2.5rem; }
-            .skill-category h4 { font-size: 1.2rem; }
-            .skill-item { margin-bottom: 2rem; }
-            
-            .project-item, .patent-item { padding: 2rem; }
-            .project-header, .patent-header { flex-direction: row; justify-content: space-between; align-items: flex-start; gap: 1rem; }
-            .project-title, .patent-title { font-size: 1.2rem; }
-            .project-time, .patent-number { font-size: 0.9rem; }
-            
-            .education-item, .certification-item { flex-direction: row; justify-content: space-between; align-items: center; }
-            
-            .footer { text-align: left; }
-            .footer-content { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
-            .footer-social { align-items: flex-start; }
-            .footer-social a { justify-content: flex-start; }
-            .footer-stats { align-items: flex-start; }
-            .footer-expertise { justify-content: flex-start; }
-            .sticky-bar { padding: 0.6rem 2rem; }
-            .sticky-contact { display: inline-flex; }
-            .sticky-name { font-size: 1.05rem; }
-            .sticky-nav-list a { font-size: 0.95rem; }
+            body {
+                padding: 1rem 0;
+            }
+
+            .header {
+                padding: 2rem 1.5rem;
+            }
+
+            .header h1 {
+                font-size: 2.2rem;
+            }
+
+            .header .tagline {
+                font-size: 1.05rem;
+            }
+
+            .contact-info {
+                gap: 0.75rem;
+            }
+
+            .contact-item {
+                font-size: 0.85rem;
+                padding: 0.5rem 1rem;
+            }
+
+            .main-content {
+                padding: 2rem 1.5rem;
+            }
+
+            .section {
+                margin-bottom: 2.25rem;
+            }
+
+            .section-title {
+                font-size: 1.4rem;
+                margin-bottom: 1.25rem;
+            }
+
+            .career-profile {
+                padding: 1.5rem;
+                font-size: 1rem;
+            }
+
+            .experience-timeline {
+                padding-left: 25px;
+            }
+
+            .experience-item::before {
+                left: -20px;
+            }
+
+            .experience-content {
+                padding: 1.25rem 1.5rem;
+            }
+
+            .experience-header {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 1.5rem;
+            }
+
+            .skill-category {
+                padding: 1.25rem;
+            }
+
+            .skill-category h4 {
+                font-size: 1.05rem;
+            }
+
+            .skill-item {
+                margin-bottom: 1.25rem;
+            }
+
+            .project-item,
+            .patent-item {
+                padding: 1.25rem;
+            }
+
+            .project-header,
+            .patent-header {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .project-title,
+            .patent-title {
+                font-size: 1rem;
+            }
+
+            .project-time,
+            .patent-number {
+                font-size: 0.8rem;
+            }
+
+            .education-item,
+            .certification-item {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .footer {
+                text-align: left;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+
+            .footer-social {
+                align-items: flex-start;
+                flex-direction: row;
+            }
+
+            .footer-expertise {
+                justify-content: flex-start;
+            }
+
+            .sticky-bar {
+                padding: 0.5rem 1.5rem;
+            }
+
+            .sticky-contact {
+                display: inline-flex;
+            }
+
+            .sticky-name {
+                font-size: 1rem;
+            }
+
+            .sticky-nav-list a {
+                font-size: 0.9rem;
+            }
         }
 
         /* --- Dark Mode Styles --- */
-        body.dark { background: #181a1b; color: #e2e8f0; }
-        body.dark .container { background: #23272f; box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
-        body.dark .header { background: linear-gradient(135deg, #23272f 0%, #181a1b 100%); }
-        body.dark .header h1 { background: linear-gradient(45deg, #e2e8f0, #a0aec0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        body.dark .header .tagline { color: #a0aec0; }
-        body.dark .contact-item { background: rgba(44, 62, 80, 0.2); border: 1px solid rgba(160, 174, 192, 0.2); }
-        body.dark .contact-item a { color: #e2e8f0; }
-        body.dark .contact-item:hover a { color: #90cdf4; }
-        body.dark .main-content { background: linear-gradient(135deg, #23272f 0%, #181a1b 100%); }
-        body.dark .section-title { color: #e2e8f0; border-image: linear-gradient(90deg, #2dd4bf, #06b6d4) 1; }
-        body.dark .section-title::before { background: linear-gradient(90deg, #2dd4bf, #06b6d4); }
-        body.dark .section-title i, body.dark .skill-category h4 i, body.dark .skill-level-text { color: #2dd4bf; -webkit-text-fill-color: initial; background: none; }
-        body.dark .career-profile { border-image: linear-gradient(180deg, #2dd4bf, #06b6d4) 1; background: linear-gradient(135deg, #2a2f3b 0%, #23272f 100%); }
-        body.dark .experience-timeline::before { background: #2d3748; }
-        body.dark .experience-item::before { border-color: #60a5fa; background: #23272f; }
-        body.dark .experience-content { background: linear-gradient(135deg, #2a2f3b 0%, #23272f 100%); border-color: #2d3748; }
-        body.dark .experience-content:hover { border-color: #60a5fa; }
-        body.dark .experience-title, body.dark .skill-category h4, body.dark .skill-name, body.dark .project-title, body.dark .patent-title, body.dark .education-info h4, body.dark .certification-info h4 { color: #e2e8f0; }
-        body.dark .experience-company, body.dark .experience-details p, body.dark .experience-details li, body.dark .career-profile p, body.dark .project-description, body.dark .patent-details p, body.dark .education-info p, body.dark .certification-info p { color: #a0aec0; }
-        body.dark .experience-time, body.dark .project-time, body.dark .patent-number, body.dark .education-time, body.dark .certification-time { background: #2d3748; color: #a0aec0; }
-        body.dark .experience-details li:before { color: #60a5fa; }
-        body.dark .skill-category { background: linear-gradient(135deg, #2a2f3b 0%, #23272f 100%); border-color: #2d3748; }
-        body.dark .skill-item:hover { background: rgba(147, 197, 253, 0.1); }
-        body.dark .skill-item:hover .skill-name { color: #2dd4bf; }
-        body.dark .skill-bar { background: #2d3748; }
-        body.dark .project-item { background: linear-gradient(135deg, #2a2f3b 0%, #23272f 100%); border-color: #06b6d4; }
-        body.dark .patent-item { background: linear-gradient(135deg, #1c3a3a 0%, #23272f 100%); border-color: #4fd1c5; }
-        body.dark .patent-link { color: #4fd1c5; }
-        body.dark .patent-link:hover { color: #38b2ac; }
-        body.dark .education-item, body.dark .certification-item { border-bottom-color: #2d3748; }
-        body.dark .interests .interest-item { background: linear-gradient(135deg, #93c5fd, #60a5fa); color: #0f172a; }
-        body.dark .footer { background: linear-gradient(135deg, #0b1220 0%, #0f172a 100%); }
-        body.dark .footer-section h3 { color: #e2e8f0; }
-        body.dark .footer-section h4, body.dark .footer-location i, body.dark .footer-contact i, body.dark .stat-number { color: #93c5fd; }
-        body.dark .footer-tagline, body.dark .footer-location, body.dark .stat-label, body.dark .footer-bottom p { color: #a0aec0; }
-        body.dark .footer-contact a { color: #e2e8f0; }
-        body.dark .footer-contact a:hover { color: #93c5fd; }
-        body.dark .footer-social a { background: rgba(255,255,255,0.1); color: #e2e8f0; }
-        body.dark .footer-social a:hover { background: #93c5fd; color: #0f172a; }
-        body.dark .expertise-tag { background: rgba(255,255,255,0.1); color: #e2e8f0; }
-        body.dark .expertise-tag:hover { background: #93c5fd; color: #0f172a; }
-        body.dark .footer-bottom { border-top-color: rgba(255,255,255,0.1); }
-        body.dark .modal-overlay { background: rgba(0, 0, 0, 0.8); }
-        body.dark .modal-content { background: #2d3748; }
-        body.dark .modal-header { border-bottom-color: #4a5568; }
-        body.dark .modal-title { color: #e2e8f0; }
-        body.dark .modal-close { color: #a0aec0; }
-        body.dark .modal-body p, body.dark .modal-body li { color: #a0aec0; }
-        body.dark .modal-body li::before { color: #4fd1c5; }
-        body.dark .dark-mode-toggle { background: rgba(45,55,72,0.9); }
-        body.dark .dark-mode-toggle i { color: #e2e8f0; }
+        body.dark {
+            background: #181a1b;
+            color: #e2e8f0;
+        }
+
+        body.dark .container {
+            background: #23272f;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        body.dark .header {
+            background: linear-gradient(135deg, #23272f 0%, #181a1b 100%);
+        }
+
+        body.dark .header h1 {
+            background: linear-gradient(45deg, #e2e8f0, #a0aec0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        body.dark .header .tagline {
+            color: #a0aec0;
+        }
+
+        body.dark .contact-item {
+            background: rgba(44, 62, 80, 0.2);
+            border: 1px solid rgba(160, 174, 192, 0.2);
+        }
+
+        body.dark .contact-item a {
+            color: #e2e8f0;
+        }
+
+        body.dark .contact-item:hover a {
+            color: #90cdf4;
+        }
+
+        body.dark .main-content {
+            background: linear-gradient(135deg, #23272f 0%, #181a1b 100%);
+        }
+
+        body.dark .section-title {
+            color: #e2e8f0;
+            border-image: linear-gradient(90deg, #818cf8, #a78bfa) 1;
+        }
+
+        body.dark .section-title::before {
+            background: linear-gradient(90deg, #818cf8, #a78bfa);
+        }
+
+        body.dark .section-title i,
+        body.dark .skill-category h4 i,
+        body.dark .skill-level-text {
+            color: #818cf8;
+            -webkit-text-fill-color: initial;
+            background: none;
+        }
+
+
+        body.dark .career-profile {
+            border-image: linear-gradient(180deg, #818cf8, #a78bfa) 1;
+            background: linear-gradient(135deg, #2a2f3b 0%, #23272f 100%);
+        }
+
+
+        body.dark .experience-timeline::before {
+            background: #2d3748;
+        }
+
+        body.dark .experience-item::before {
+            border-color: #818cf8;
+            background: #23272f;
+        }
+
+
+        body.dark .experience-content {
+            background: linear-gradient(135deg, #2a2f3b 0%, #23272f 100%);
+            border-color: #2d3748;
+        }
+
+        body.dark .experience-content:hover {
+            border-color: #818cf8;
+        }
+
+
+        body.dark .experience-title,
+        body.dark .skill-category h4,
+        body.dark .skill-name,
+        body.dark .project-title,
+        body.dark .patent-title,
+        body.dark .education-info h4,
+        body.dark .certification-info h4 {
+            color: #e2e8f0;
+        }
+
+        body.dark .experience-company,
+        body.dark .experience-details p,
+        body.dark .experience-details li,
+        body.dark .career-profile p,
+        body.dark .project-description,
+        body.dark .patent-details p,
+        body.dark .education-info p,
+        body.dark .certification-info p {
+            color: #a0aec0;
+        }
+
+        body.dark .experience-time,
+        body.dark .project-time,
+        body.dark .patent-number,
+        body.dark .education-time,
+        body.dark .certification-time {
+            background: #2d3748;
+            color: #a0aec0;
+        }
+
+        body.dark .experience-details li:before {
+            color: #818cf8;
+        }
+
+
+        body.dark .skill-category {
+            background: linear-gradient(135deg, #2a2f3b 0%, #23272f 100%);
+            border-color: #2d3748;
+        }
+
+        body.dark .skill-item:hover {
+            background: rgba(165, 180, 252, 0.1);
+        }
+
+        body.dark .skill-item:hover .skill-name {
+            color: #818cf8;
+        }
+
+
+        body.dark .skill-bar {
+            background: #2d3748;
+        }
+
+        body.dark .project-item {
+            background: linear-gradient(135deg, #2a2f3b 0%, #23272f 100%);
+            border-color: #06b6d4;
+        }
+
+        body.dark .patent-item {
+            background: linear-gradient(135deg, #1c3a3a 0%, #23272f 100%);
+            border-color: #4fd1c5;
+        }
+
+        body.dark .patent-link {
+            color: #4fd1c5;
+        }
+
+        body.dark .patent-link:hover {
+            color: #38b2ac;
+        }
+
+        body.dark .education-item,
+        body.dark .certification-item {
+            border-bottom-color: #2d3748;
+        }
+
+        body.dark .interest-item {
+            background: #1e293b;
+            border-color: #2d3748;
+            color: #cbd5e1;
+        }
+
+        body.dark .interest-item:hover {
+            border-color: #818cf8;
+            color: #818cf8;
+            background: #2d3748;
+        }
+
+        body.dark .interest-item i {
+            color: #818cf8;
+        }
+
+
+        body.dark .footer {
+            background: linear-gradient(135deg, #0b1220 0%, #0f172a 100%);
+        }
+
+        body.dark .footer-section h3 {
+            color: #e2e8f0;
+        }
+
+        body.dark .footer-section h4,
+        body.dark .footer-location i,
+        body.dark .footer-contact i,
+        body.dark .stat-number {
+            color: #818cf8;
+        }
+
+
+        body.dark .footer-tagline,
+        body.dark .footer-location,
+        body.dark .stat-label,
+        body.dark .footer-bottom p {
+            color: #a0aec0;
+        }
+
+        body.dark .footer-contact a {
+            color: #e2e8f0;
+        }
+
+        body.dark .footer-contact a:hover {
+            color: #818cf8;
+        }
+
+
+        body.dark .footer-social a {
+            background: rgba(255, 255, 255, 0.1);
+            color: #e2e8f0;
+        }
+
+        body.dark .footer-social a:hover {
+            background: #818cf8;
+            color: #0f172a;
+        }
+
+
+        body.dark .expertise-tag {
+            background: rgba(255, 255, 255, 0.1);
+            color: #e2e8f0;
+        }
+
+        body.dark .expertise-tag:hover {
+            background: #818cf8;
+            color: #0f172a;
+        }
+
+
+        body.dark .footer-bottom {
+            border-top-color: rgba(255, 255, 255, 0.1);
+        }
+
+        body.dark .modal-overlay {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        body.dark .modal-content {
+            background: #2d3748;
+        }
+
+        body.dark .modal-header {
+            border-bottom-color: #4a5568;
+        }
+
+        body.dark .modal-title {
+            color: #e2e8f0;
+        }
+
+        body.dark .modal-close {
+            color: #a0aec0;
+        }
+
+        body.dark .modal-body p,
+        body.dark .modal-body li {
+            color: #a0aec0;
+        }
+
+        body.dark .modal-body li::before {
+            color: #4fd1c5;
+        }
+
+        body.dark .dark-mode-toggle {
+            background: rgba(45, 55, 72, 0.9);
+        }
+
+        body.dark .dark-mode-toggle i {
+            color: #e2e8f0;
+        }
 
         /* --- ATS Mode (Simplified, Parser-Friendly) --- */
-        body.ats { background: #ffffff; color: #111827; }
-        body.ats .container { background: #ffffff; box-shadow: none; border-radius: 0; }
-        body.ats .header, body.ats .footer { background: #ffffff; color: #111827; }
-        body.ats .header::before, body.ats .footer::before { display: none; }
-        body.ats .header h1 { -webkit-text-fill-color: initial; background: none; color: #000000; text-shadow: none; }
-        body.ats .header .tagline { color: #111827; text-shadow: none; }
-        body.ats .contact-item { background: transparent; border: none; box-shadow: none; padding: 0; }
-        body.ats .contact-item i { display: none; }
-        body.ats .contact-item a, body.ats .contact-item span { color: #111827; text-decoration: none; }
-        body.ats .main-content { background: #ffffff; }
-        body.ats .section-title { border-bottom: 2px solid #111827; color: #000; }
-        body.ats .section-title::before, body.ats .section-title i { display: none; }
-        body.ats .career-profile, body.ats .experience-content, body.ats .skill-category, body.ats .project-item, body.ats .patent-item { background: transparent; border: none; box-shadow: none; }
-        body.ats .experience-timeline::before, body.ats .experience-item::before { display: none; }
-        body.ats .experience-timeline { padding-left: 0; }
-        body.ats .experience-details ul { max-height: none; overflow: visible; }
-        body.ats .show-more-btn, body.ats .dark-mode-toggle, body.ats .modal-overlay { display: none !important; }
-        body.ats .skill-bar { display: none; }
-        body.ats .skill-item { padding: 0; }
-        body.ats .footer-social, body.ats .footer-stats, body.ats .footer-expertise { display: none; }
-        body.ats .footer-bottom { border-top: 1px solid #e5e7eb; }
-        
+        body.ats {
+            background: #ffffff;
+            color: #111827;
+        }
+
+        body.ats .container {
+            background: #ffffff;
+            box-shadow: none;
+            border-radius: 0;
+        }
+
+        body.ats .header,
+        body.ats .footer {
+            background: #ffffff;
+            color: #111827;
+        }
+
+        body.ats .header::before,
+        body.ats .footer::before {
+            display: none;
+        }
+
+        body.ats .header h1 {
+            -webkit-text-fill-color: initial;
+            background: none;
+            color: #000000;
+            text-shadow: none;
+        }
+
+        body.ats .header .tagline {
+            color: #111827;
+            text-shadow: none;
+        }
+
+        body.ats .contact-item {
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            padding: 0;
+        }
+
+        body.ats .contact-item i {
+            display: none;
+        }
+
+        body.ats .contact-item a,
+        body.ats .contact-item span {
+            color: #111827;
+            text-decoration: none;
+        }
+
+        body.ats .main-content {
+            background: #ffffff;
+        }
+
+        body.ats .section-title {
+            border-bottom: 2px solid #111827;
+            color: #000;
+        }
+
+        body.ats .section-title::before,
+        body.ats .section-title i {
+            display: none;
+        }
+
+        body.ats .career-profile,
+        body.ats .experience-content,
+        body.ats .skill-category,
+        body.ats .project-item,
+        body.ats .patent-item {
+            background: transparent;
+            border: none;
+            box-shadow: none;
+        }
+
+        body.ats .experience-timeline::before,
+        body.ats .experience-item::before {
+            display: none;
+        }
+
+        body.ats .experience-timeline {
+            padding-left: 0;
+        }
+
+        body.ats .experience-details ul {
+            max-height: none;
+            overflow: visible;
+        }
+
+        body.ats .show-more-btn,
+        body.ats .dark-mode-toggle,
+        body.ats .modal-overlay {
+            display: none !important;
+        }
+
+        body.ats .skill-bar {
+            display: none;
+        }
+
+        body.ats .skill-item {
+            padding: 0;
+        }
+
+        body.ats .footer-social,
+        body.ats .footer-stats,
+        body.ats .footer-expertise {
+            display: none;
+        }
+
+        body.ats .footer-bottom {
+            border-top: 1px solid #e5e7eb;
+        }
+
         /* --- Print Stylesheet --- */
         @media print {
-            .sticky-bar { display: none; }
-            body { font-family: 'Garamond', 'Times New Roman', serif; color: #000; background-color: #fff; padding: 0; }
-            .container { box-shadow: none; max-width: 100%; border-radius: 0; }
-            .header, .footer, .interests, .skill-bar, .show-more-btn, .modal-overlay, .patent-link i, .dark-mode-toggle { display: none; }
-            .main-content, .experience-content, .skill-category, .project-item, .patent-item { padding: 0; }
-            .section { margin-bottom: 1.5rem; }
-            .section-title { font-size: 1.4rem; color: #000; border-image: none; border-bottom: 2px solid #000; margin-bottom: 1rem; }
-            .section-title i, .section-title::before { display: none; }
-            .experience-timeline::before, .experience-item::before { display: none; }
-            .experience-timeline { padding-left: 0; }
-            .experience-item, .project-item, .patent-item, .skill-category { border: none; padding: 0; margin-bottom: 1.5rem; box-shadow: none; background: none; }
-            .experience-details ul, .experience-details ul.expanded { max-height: none; overflow: visible; }
-            a { color: #000 !important; text-decoration: none; }
-            .contact-item span, .contact-item a::after { content: " | " attr(href); }
-            .contact-item a[href^="mailto:"]::after { content: " | " attr(href); }
-            .contact-item a[href^="tel:"]::after { content: " | " attr(href); }
-            .career-profile, .patent-item, .project-item { border-left: none; background: none; }
-            .experience-time, .project-time, .patent-number, .education-time, .certification-time { padding: 0; background: none; border-radius: 0; font-weight: bold; color: #000; }
+            .sticky-bar {
+                display: none;
+            }
+
+            body {
+                font-family: 'Garamond', 'Times New Roman', serif;
+                color: #000;
+                background-color: #fff;
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none;
+                max-width: 100%;
+                border-radius: 0;
+            }
+
+            .header,
+            .footer,
+            .interests,
+            .skill-bar,
+            .show-more-btn,
+            .modal-overlay,
+            .patent-link i,
+            .dark-mode-toggle {
+                display: none;
+            }
+
+            .main-content,
+            .experience-content,
+            .skill-category,
+            .project-item,
+            .patent-item {
+                padding: 0;
+            }
+
+            .section {
+                margin-bottom: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.4rem;
+                color: #000;
+                border-image: none;
+                border-bottom: 2px solid #000;
+                margin-bottom: 1rem;
+            }
+
+            .section-title i,
+            .section-title::before {
+                display: none;
+            }
+
+            .experience-timeline::before,
+            .experience-item::before {
+                display: none;
+            }
+
+            .experience-timeline {
+                padding-left: 0;
+            }
+
+            .experience-item,
+            .project-item,
+            .patent-item,
+            .skill-category {
+                border: none;
+                padding: 0;
+                margin-bottom: 1.5rem;
+                box-shadow: none;
+                background: none;
+            }
+
+            .experience-details ul,
+            .experience-details ul.expanded {
+                max-height: none;
+                overflow: visible;
+            }
+
+            a {
+                color: #000 !important;
+                text-decoration: none;
+            }
+
+            .contact-item span,
+            .contact-item a::after {
+                content: " | " attr(href);
+            }
+
+            .contact-item a[href^="mailto:"]::after {
+                content: " | " attr(href);
+            }
+
+            .contact-item a[href^="tel:"]::after {
+                content: " | " attr(href);
+            }
+
+            .career-profile,
+            .patent-item,
+            .project-item {
+                border-left: none;
+                background: none;
+            }
+
+            .experience-time,
+            .project-time,
+            .patent-number,
+            .education-time,
+            .certification-time {
+                padding: 0;
+                background: none;
+                border-radius: 0;
+                font-weight: bold;
+                color: #000;
+            }
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <!-- Header -->
         <header class="header">
-            <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+            <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Toggle dark mode"><i
+                    class="fas fa-moon"></i></button>
             <h1>Venkata Guravareddy</h1>
             <div class="tagline">Principal Engineer — Cloud, DevOps & AI Infrastructure</div>
             <div class="contact-info">
-                 <div class="contact-item">
+                <div class="contact-item">
                     <i class="fas fa-envelope" aria-hidden="true"></i>
                     <a href="mailto:bvguravareddy@gmail.com" aria-label="Email">bvguravareddy@gmail.com</a>
                 </div>
@@ -778,36 +1719,41 @@
                 </div>
                 <div class="contact-item">
                     <i class="fab fa-linkedin" aria-hidden="true"></i>
-                    <a href="https://linkedin.com/in/bvguravareddy" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">bvguravareddy</a>
+                    <a href="https://linkedin.com/in/bvguravareddy" target="_blank" rel="noopener noreferrer"
+                        aria-label="LinkedIn">bvguravareddy</a>
                 </div>
                 <div class="contact-item">
                     <i class="fab fa-github" aria-hidden="true"></i>
-                    <a href="https://github.com/bsrgsit" target="_blank" rel="noopener noreferrer" aria-label="GitHub">bsrgsit</a>
+                    <a href="https://github.com/bsrgsit" target="_blank" rel="noopener noreferrer"
+                        aria-label="GitHub">bsrgsit</a>
                 </div>
             </div>
         </header>
-        
+
         <!-- Sticky Compact Top Bar -->
         <div class="sticky-bar" id="stickyBar" role="navigation" aria-label="Resume sections">
             <div class="sticky-brand">
                 <span class="sticky-name">Venkata Guravareddy</span>
                 <div class="sticky-contact">
-                    <a href="mailto:bvguravareddy@gmail.com" aria-label="Email"><i class="fas fa-envelope" aria-hidden="true"></i></a>
+                    <a href="mailto:bvguravareddy@gmail.com" aria-label="Email"><i class="fas fa-envelope"
+                            aria-hidden="true"></i></a>
                     <a href="tel:+919884883957" aria-label="Phone"><i class="fas fa-phone" aria-hidden="true"></i></a>
-                    <a href="https://linkedin.com/in/bvguravareddy" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+                    <a href="https://linkedin.com/in/bvguravareddy" target="_blank" rel="noopener noreferrer"
+                        aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
                 </div>
             </div>
             <ul class="sticky-nav-list">
                 <li><a href="#profile">Profile</a></li>
                 <li><a href="#experience">Experience</a></li>
+                <li><a href="#patents">Patents</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#skills">Skills</a></li>
-                <li><a href="#patents">Patents</a></li>
                 <li><a href="#education">Education</a></li>
                 <li><a href="#certifications">Certifications</a></li>
                 <li><a href="#interests">Interests</a></li>
             </ul>
-            <button id="stickyDarkToggle" class="sticky-dark-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+            <button id="stickyDarkToggle" class="sticky-dark-toggle" aria-label="Toggle dark mode"><i
+                    class="fas fa-moon"></i></button>
         </div>
 
         <!-- Main Content -->
@@ -819,7 +1765,14 @@
                     Career Profile
                 </h2>
                 <div class="career-profile">
-                    <p>Principal Engineer with 12+ years of experience, expertly bridging enterprise infrastructure with cutting-edge AI. Architected and deployed large-scale Red Hat OpenStack Platform (RHOSP) and Mirantis environments, integrating OpenDaylight for advanced service orchestration. Proven success in automating operations with Ansible, delivering over $1M in annual savings and eliminating vendor lock-in. Currently pioneering the integration of AI technologies like Model Context Protocol (MCP), RAG systems, and AI Agents into secure, private cloud infrastructure. A leader in establishing design principles for scalable, resilient, and maintainable systems that meet enterprise-grade demands.</p>
+                    <p>Principal Engineer with 12+ years of experience, expertly bridging enterprise infrastructure with
+                        cutting-edge AI. Architected and deployed large-scale Red Hat OpenStack Platform (RHOSP) and
+                        Mirantis environments, integrating OpenDaylight for advanced service orchestration. Proven
+                        success in automating operations with Ansible, delivering over $1M in annual savings and
+                        eliminating vendor lock-in. Currently pioneering the integration of AI technologies like Model
+                        Context Protocol (MCP), RAG systems, and AI Agents into secure, private cloud infrastructure. A
+                        leader in establishing design principles for scalable, resilient, and maintainable systems that
+                        meet enterprise-grade demands.</p>
                 </div>
             </section>
 
@@ -830,7 +1783,7 @@
                     Professional Experience
                 </h2>
                 <div class="experience-timeline">
-                    
+
                     <div class="experience-item">
                         <div class="experience-content">
                             <div class="experience-header">
@@ -841,12 +1794,23 @@
                                 <div class="experience-time">June 2017 - Present</div>
                             </div>
                             <div class="experience-details">
-                                <p>Leading strategic initiatives in intelligent forecasting using ML models for 5G network metrics and enterprise AI infrastructure. Currently spearheading Verizon Cloud Platform development to support on-premises AI deployment using IBM WatsonX, enabling secure and scalable AI capabilities within our private cloud environment. Established design principles for AI infrastructure scalability, data governance, and model lifecycle management. Previously architected VNF onboarding frameworks on RedHat OpenStack using cloud orchestrators (ECM, HP-NFVD) and developed automation solutions with Ansible and Ansible Tower.</p>
+                                <p>Leading strategic initiatives in intelligent forecasting using ML models for 5G
+                                    network metrics and enterprise AI infrastructure. Currently spearheading Verizon
+                                    Cloud Platform development to support on-premises AI deployment using IBM WatsonX,
+                                    enabling secure and scalable AI capabilities within our private cloud environment.
+                                    Established design principles for AI infrastructure scalability, data governance,
+                                    and model lifecycle management. Previously architected VNF onboarding frameworks on
+                                    RedHat OpenStack using cloud orchestrators (ECM, HP-NFVD) and developed automation
+                                    solutions with Ansible and Ansible Tower.</p>
                                 <ul>
-                                    <li>Delivered intelligent forecasting models for 5G metrics optimizing network performance by 40%</li>
-                                    <li>Engineered an automation framework for Day-2 application operations, saving $1M/year in opex.</li>
-                                    <li>Successfully deployed an on-premises WatsonX environment for enterprise AI workloads.</li>
-                                    <li>Authored architectural standards for AI infrastructure scalability and governance.</li>
+                                    <li>Delivered intelligent forecasting models for 5G metrics optimizing network
+                                        performance by 40%</li>
+                                    <li>Engineered an automation framework for Day-2 application operations, saving
+                                        $1M/year in opex.</li>
+                                    <li>Successfully deployed an on-premises WatsonX environment for enterprise AI
+                                        workloads.</li>
+                                    <li>Authored architectural standards for AI infrastructure scalability and
+                                        governance.</li>
                                     <li>Led a team of 8 engineers in AI infrastructure development and deployment.</li>
                                     <li>Reduced VNF deployment time by 60% through custom orchestration frameworks.</li>
                                 </ul>
@@ -865,10 +1829,17 @@
                                 <div class="experience-time">May 2016 - June 2017</div>
                             </div>
                             <div class="experience-details">
-                                <p>Led OPNFV SDNVPN Project representing Ericsson in the OPNFV community, focusing on Software Defined Networking and Virtual Private Networks. Independently set up and configured RedHat OpenStack on physical servers for development and testing environments. Worked extensively with Ericsson's proprietary SDN controller, developing and testing custom OpenDaylight plugins for enhanced network orchestration capabilities.</p>
+                                <p>Led OPNFV SDNVPN Project representing Ericsson in the OPNFV community, focusing on
+                                    Software Defined Networking and Virtual Private Networks. Independently set up and
+                                    configured RedHat OpenStack on physical servers for development and testing
+                                    environments. Worked extensively with Ericsson's proprietary SDN controller,
+                                    developing and testing custom OpenDaylight plugins for enhanced network
+                                    orchestration capabilities.</p>
                                 <ul>
-                                    <li>Represented Ericsson in the OPNFV community for the flagship SDNVPN project.</li>
-                                    <li>Developed custom OpenDaylight plugins, enhancing network service chaining by 30%.</li>
+                                    <li>Represented Ericsson in the OPNFV community for the flagship SDNVPN project.
+                                    </li>
+                                    <li>Developed custom OpenDaylight plugins, enhancing network service chaining by
+                                        30%.</li>
                                     <li>Independently built and maintained RedHat OpenStack labs for R&D.</li>
                                     <li>Collaborated with international teams on SDN/NFV standardization efforts.</li>
                                 </ul>
@@ -887,12 +1858,21 @@
                                 <div class="experience-time">December 2014 - May 2016</div>
                             </div>
                             <div class="experience-details">
-                                <p>Developed single-click NFV installation solution for HP physical servers including DL and Blade servers, based on ETSI Architecture. Gained extensive expertise in OpenStack and OpenShift deployment on bare metal infrastructure using Triple O Architecture. Travelled to the United States to support Bell Canada's NFV deployment, providing on-site technical assistance and system integration expertise. Conducted multiple demonstrations of HPE NFV systems to various teams and stakeholders.</p>
+                                <p>Developed single-click NFV installation solution for HP physical servers including DL
+                                    and Blade servers, based on ETSI Architecture. Gained extensive expertise in
+                                    OpenStack and OpenShift deployment on bare metal infrastructure using Triple O
+                                    Architecture. Travelled to the United States to support Bell Canada's NFV
+                                    deployment, providing on-site technical assistance and system integration expertise.
+                                    Conducted multiple demonstrations of HPE NFV systems to various teams and
+                                    stakeholders.</p>
                                 <ul>
-                                    <li>Developed a single-click NFV installation solution, reducing deployment time by 70%.</li>
-                                    <li>Successfully deployed NFV solutions for Bell Canada on-site in the United States.</li>
+                                    <li>Developed a single-click NFV installation solution, reducing deployment time by
+                                        70%.</li>
+                                    <li>Successfully deployed NFV solutions for Bell Canada on-site in the United
+                                        States.</li>
                                     <li>Conducted technical product demonstrations for multiple enterprise clients.</li>
-                                    <li>Implemented OpenStack and OpenShift on bare metal using Triple O Architecture.</li>
+                                    <li>Implemented OpenStack and OpenShift on bare metal using Triple O Architecture.
+                                    </li>
                                 </ul>
                                 <button class="show-more-btn">Show More</button>
                             </div>
@@ -900,7 +1880,7 @@
                     </div>
 
                     <div class="experience-item">
-                         <div class="experience-content">
+                        <div class="experience-content">
                             <div class="experience-header">
                                 <div>
                                     <div class="experience-title">Software Engineer</div>
@@ -909,12 +1889,15 @@
                                 <div class="experience-time">August 2012 - December 2014</div>
                             </div>
                             <div class="experience-details">
-                                <p>Started career as a fresher with focus on continuous learning and professional development. Completed CCNA and CCNA Security certifications, building strong foundation in networking fundamentals. Worked extensively in lab environments, replicating complete client production setups for testing and validation. Conducted comprehensive testing of Cisco ASA firewalls and gained hands-on experience with Cisco switches, routers, and security devices.</p>
+                                <p>Built a strong foundation in networking and security fundamentals. Completed CCNA and
+                                    CCNA Security certifications while working extensively in lab environments.
+                                    Replicated complex client production setups for testing and validation, specifically
+                                    focusing on Cisco ASA firewalls and security devices.</p>
                                 <ul>
                                     <li>Achieved CCNA and CCNA Security certifications within the first 18 months.</li>
                                     <li>Expertly replicated complex client production environments for validation.</li>
-                                    <li>Conducted comprehensive testing of Cisco ASA firewalls and security appliances.</li>
-                                    <li>Built a strong foundational expertise in enterprise networking and security.</li>
+                                    <li>Conducted comprehensive testing of Cisco ASA firewalls and security appliances.
+                                    </li>
                                 </ul>
                                 <button class="show-more-btn">Show More</button>
                             </div>
@@ -922,7 +1905,7 @@
                     </div>
                 </div>
             </section>
-            
+
             <!-- Other sections remain here... -->
             <!-- Patents -->
             <section class="section" id="patents">
@@ -930,17 +1913,22 @@
                     <i class="fas fa-lightbulb"></i>
                     Patents
                 </h2>
-                
+
                 <div class="patent-item">
                     <div class="patent-header">
-                        <div class="patent-title">Systems and methods for validating a container network function for deployment</div>
+                        <div class="patent-title">Systems and methods for validating a container network function for
+                            deployment</div>
                         <div class="patent-number">US 12,028,213</div>
                     </div>
                     <div class="patent-details">
                         <p><strong>Assignee:</strong> Verizon Patent and Licensing Inc.</p>
-                        <p><strong>Inventors:</strong> Arun K. Chivukula, Vishal Awasthy, Harish Dhandapani, Raghavender Parigi, Sathyam Bollini, Venkata Guravareddy Butukuri, Abhishek Kumar</p>
+                        <p><strong>Inventors:</strong> Arun K. Chivukula, Vishal Awasthy, Harish Dhandapani, Raghavender
+                            Parigi, Sathyam Bollini, Venkata Guravareddy Butukuri, Abhishek Kumar</p>
                         <p><strong>Date:</strong> July 2, 2024</p>
-                        <p><strong>Description:</strong> A validation system that validates Container Network Functions (CNF) for deployment by performing multiple levels of validation including connectivity, package, NFVO, and NFVI validation to prevent deployment failures and conserve computing resources.</p>
+                        <p><strong>Description:</strong> A validation system that validates Container Network Functions
+                            (CNF) for deployment by performing multiple levels of validation including connectivity,
+                            package, NFVO, and NFVI validation to prevent deployment failures and conserve computing
+                            resources.</p>
                     </div>
                     <a href="https://patents.justia.com/patent/12028213" target="_blank" class="patent-link">
                         <i class="fas fa-external-link-alt"></i> View Patent
@@ -954,14 +1942,16 @@
                     <i class="fas fa-project-diagram"></i>
                     Key Projects
                 </h2>
-                
+
                 <div class="project-item">
                     <div class="project-header">
                         <div class="project-title">Verizon Cloud Platform for AI Deployment</div>
                         <div class="project-time">2023 - Present</div>
                     </div>
                     <div class="project-description">
-                        Architected and deployed enterprise-grade cloud platform supporting on-premises AI workloads using IBM WatsonX. Implemented secure data governance, model lifecycle management, and scalable infrastructure for AI applications.
+                        Architected and deployed enterprise-grade cloud platform supporting on-premises AI workloads
+                        using IBM WatsonX. Implemented secure data governance, model lifecycle management, and scalable
+                        infrastructure for AI applications.
                     </div>
                     <div class="project-technologies">
                         <strong>Technologies:</strong> IBM WatsonX, OpenStack, Kubernetes, Python, Ansible
@@ -974,20 +1964,22 @@
                         <div class="project-time">2022 - 2023</div>
                     </div>
                     <div class="project-description">
-                        Developed intelligent forecasting models for 5G network metrics using machine learning. Implemented real-time monitoring and predictive analytics for network optimization.
+                        Developed intelligent forecasting models for 5G network metrics using machine learning.
+                        Implemented real-time monitoring and predictive analytics for network optimization.
                     </div>
                     <div class="project-technologies">
                         <strong>Technologies:</strong> Python, TensorFlow, OpenStack, Kafka, Redis
                     </div>
                 </div>
 
-                 <div class="project-item">
+                <div class="project-item">
                     <div class="project-header">
                         <div class="project-title">VNF Onboarding Framework</div>
                         <div class="project-time">2020 - 2022</div>
                     </div>
                     <div class="project-description">
-                        Designed and implemented automated VNF onboarding framework for RedHat OpenStack Platform with cloud orchestrators integration. Reduced manual configuration time by 80%.
+                        Designed and implemented automated VNF onboarding framework for RedHat OpenStack Platform with
+                        cloud orchestrators integration. Reduced manual configuration time by 80%.
                     </div>
                     <div class="project-technologies">
                         <strong>Technologies:</strong> RedHat OpenStack, OpenDaylight, Ansible, Python, YAML
@@ -1000,7 +1992,8 @@
                         <div class="project-time">2016 - 2017</div>
                     </div>
                     <div class="project-description">
-                        Led Ericsson's contribution to OPNFV SDNVPN project, developing custom OpenDaylight plugins for enhanced network orchestration capabilities.
+                        Led Ericsson's contribution to OPNFV SDNVPN project, developing custom OpenDaylight plugins for
+                        enhanced network orchestration capabilities.
                     </div>
                     <div class="project-technologies">
                         <strong>Technologies:</strong> OpenDaylight, OpenStack, Java, SDN, NFV
@@ -1014,76 +2007,103 @@
                     <i class="fas fa-tools"></i>
                     Skills & Proficiency
                 </h2>
-                
+
                 <div class="skills-grid">
-                                         <div class="skill-category">
-                         <h4><i class="fas fa-server"></i> Infrastructure & DevOps</h4>
-                         <div class="skill-item" data-skill-details="<p>Extensive experience architecting, deploying, and managing large-scale, multi-region OpenStack (RHOSP, Mirantis) and OpenShift clusters for enterprise workloads, from bare metal provisioning (TripleO) to daily operations.</p><ul><li>Led deployment for Verizon Cloud Platform.</li><li>Managed clusters of over 500 compute nodes.</li><li>Automated platform upgrades and patching.</li></ul>">
-                             <div class="skill-header">
-                                 <span class="skill-name">OpenStack & OpenShift</span>
-                                 <span class="skill-level-text">Expert</span>
-                             </div>
-                             <div class="skill-bar"><div class="skill-progress expert"></div></div>
-                         </div>
-                         <div class="skill-item" data-skill-details="<p>Deep understanding of ETSI MANO architecture. Designed and implemented frameworks for VNF/CNF onboarding, service function chaining, and lifecycle management. Expertise in both reference architectures and real-world carrier-grade implementations.</p><ul><li>Architected HPE's single-click NFV solution.</li><li>Led Ericsson's SDNVPN project in OPNFV.</li></ul>">
-                             <div class="skill-header">
-                                 <span class="skill-name">NFV/SDN Architecture</span>
-                                 <span class="skill-level-text">Expert</span>
-                             </div>
-                             <div class="skill-bar"><div class="skill-progress expert"></div></div>
-                         </div>
-                         <div class="skill-item" data-skill-details="<p>Mastery of DevOps practices and infrastructure as code (IaC). Developed complex Ansible playbooks, roles, and dynamic inventories for configuration management, application deployment, and operational automation, managing thousands of nodes. Implemented CI/CD pipelines and automated testing frameworks.</p><ul><li>Created automation framework saving $1M annually.</li><li>Utilized Ansible Tower for centralized control and RBAC.</li><li>Implemented DevOps practices for continuous delivery.</li></ul>">
-                             <div class="skill-header">
-                                 <span class="skill-name">DevOps & Infrastructure as Code</span>
-                                 <span class="skill-level-text">Expert</span>
-                             </div>
-                             <div class="skill-bar"><div class="skill-progress expert"></div></div>
-                         </div>
-                         <div class="skill-item" data-skill-details="<p>Proficient in deploying and managing containerized applications on Kubernetes. Experience with Helm charts, custom resource definitions (CRDs), and integrating Kubernetes with underlying cloud platforms like OpenStack. Implemented container orchestration and microservices architecture.</p><ul><li>Deployed IBM WatsonX on a managed Kubernetes service.</li><li>Validated CNFs for network deployment.</li><li>Implemented container-based CI/CD workflows.</li></ul>">
-                             <div class="skill-header">
-                                 <span class="skill-name">Kubernetes & Containerization</span>
-                                 <span class="skill-level-text">Advanced</span>
-                             </div>
-                             <div class="skill-bar"><div class="skill-progress advanced"></div></div>
-                         </div>
-                         <div class="skill-item" data-skill-details="<p>Experience with CI/CD tools and practices including Jenkins, GitLab CI, and GitHub Actions. Implemented automated testing, deployment pipelines, and monitoring solutions for continuous delivery workflows.</p><ul><li>Built automated deployment pipelines for 5G applications.</li><li>Implemented automated testing frameworks.</li><li>Integrated monitoring and alerting systems.</li></ul>">
-                             <div class="skill-header">
-                                 <span class="skill-name">CI/CD & Automation Tools</span>
-                                 <span class="skill-level-text">Advanced</span>
-                             </div>
-                             <div class="skill-bar"><div class="skill-progress advanced"></div></div>
-                         </div>
-                     </div>
+                    <div class="skill-category">
+                        <h4><i class="fas fa-server"></i> Infrastructure & DevOps</h4>
+                        <div class="skill-item"
+                            data-skill-details="<p>Extensive experience architecting, deploying, and managing large-scale, multi-region OpenStack (RHOSP, Mirantis) and OpenShift clusters for enterprise workloads, from bare metal provisioning (TripleO) to daily operations.</p><ul><li>Led deployment for Verizon Cloud Platform.</li><li>Managed clusters of over 500 compute nodes.</li><li>Automated platform upgrades and patching.</li></ul>">
+                            <div class="skill-header">
+                                <span class="skill-name">OpenStack & OpenShift</span>
+                                <span class="skill-level-text">Expert</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress expert"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item"
+                            data-skill-details="<p>Deep understanding of ETSI MANO architecture. Designed and implemented frameworks for VNF/CNF onboarding, service function chaining, and lifecycle management. Expertise in both reference architectures and real-world carrier-grade implementations.</p><ul><li>Architected HPE's single-click NFV solution.</li><li>Led Ericsson's SDNVPN project in OPNFV.</li></ul>">
+                            <div class="skill-header">
+                                <span class="skill-name">NFV/SDN Architecture</span>
+                                <span class="skill-level-text">Expert</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress expert"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item"
+                            data-skill-details="<p>Mastery of DevOps practices and infrastructure as code (IaC). Developed complex Ansible playbooks, roles, and dynamic inventories for configuration management, application deployment, and operational automation, managing thousands of nodes. Implemented CI/CD pipelines and automated testing frameworks.</p><ul><li>Created automation framework saving $1M annually.</li><li>Utilized Ansible Tower for centralized control and RBAC.</li><li>Implemented DevOps practices for continuous delivery.</li></ul>">
+                            <div class="skill-header">
+                                <span class="skill-name">DevOps & Infrastructure as Code</span>
+                                <span class="skill-level-text">Expert</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress expert"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item"
+                            data-skill-details="<p>Proficient in deploying and managing containerized applications on Kubernetes. Experience with Helm charts, custom resource definitions (CRDs), and integrating Kubernetes with underlying cloud platforms like OpenStack. Implemented container orchestration and microservices architecture.</p><ul><li>Deployed IBM WatsonX on a managed Kubernetes service.</li><li>Validated CNFs for network deployment.</li><li>Implemented container-based CI/CD workflows.</li></ul>">
+                            <div class="skill-header">
+                                <span class="skill-name">Kubernetes & Containerization</span>
+                                <span class="skill-level-text">Advanced</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress advanced"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item"
+                            data-skill-details="<p>Experience with CI/CD tools and practices including Jenkins, GitLab CI, and GitHub Actions. Implemented automated testing, deployment pipelines, and monitoring solutions for continuous delivery workflows.</p><ul><li>Built automated deployment pipelines for 5G applications.</li><li>Implemented automated testing frameworks.</li><li>Integrated monitoring and alerting systems.</li></ul>">
+                            <div class="skill-header">
+                                <span class="skill-name">CI/CD & Automation Tools</span>
+                                <span class="skill-level-text">Advanced</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress advanced"></div>
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="skill-category">
                         <h4><i class="fas fa-brain"></i> AI/ML</h4>
-                        <div class="skill-item" data-skill-details="<p>Hands-on experience deploying and managing on-premises AI platforms, specifically IBM WatsonX. Responsible for the entire stack, from infrastructure provisioning to enabling data scientists and managing AI workloads securely.</p><ul><li>Spearheaded the deployment of WatsonX at Verizon.</li><li>Established governance and security models for on-prem AI.</li></ul>">
+                        <div class="skill-item"
+                            data-skill-details="<p>Hands-on experience deploying and managing on-premises AI platforms, specifically IBM WatsonX. Responsible for the entire stack, from infrastructure provisioning to enabling data scientists and managing AI workloads securely.</p><ul><li>Spearheaded the deployment of WatsonX at Verizon.</li><li>Established governance and security models for on-prem AI.</li></ul>">
                             <div class="skill-header">
                                 <span class="skill-name">AI/ML & WatsonX</span>
                                 <span class="skill-level-text">Advanced</span>
                             </div>
-                            <div class="skill-bar"><div class="skill-progress advanced"></div></div>
+                            <div class="skill-bar">
+                                <div class="skill-progress advanced"></div>
+                            </div>
                         </div>
-                        <div class="skill-item" data-skill-details="<p>Actively working with next-generation AI concepts. Implementing Retrieval-Augmented Generation (RAG) pipelines to ground LLMs in enterprise data and developing AI Agents to automate complex tasks. Familiar with emerging standards like Model Context Protocol (MCP).</p><ul><li>Building RAG systems for internal knowledge bases.</li><li>Prototyping AI agents for network operations.</li></ul>">
+                        <div class="skill-item"
+                            data-skill-details="<p>Actively working with next-generation AI concepts. Implementing Retrieval-Augmented Generation (RAG) pipelines to ground LLMs in enterprise data and developing AI Agents to automate complex tasks. Familiar with emerging standards like Model Context Protocol (MCP).</p><ul><li>Building RAG systems for internal knowledge bases.</li><li>Prototyping AI agents for network operations.</li></ul>">
                             <div class="skill-header">
                                 <span class="skill-name">MCP, RAG & AI Agents</span>
                                 <span class="skill-level-text">Advanced</span>
                             </div>
-                            <div class="skill-bar"><div class="skill-progress advanced"></div></div>
+                            <div class="skill-bar">
+                                <div class="skill-progress advanced"></div>
+                            </div>
                         </div>
-                        <div class="skill-item" data-skill-details="<p>Practical experience building and training models using core deep learning frameworks. Applied TensorFlow for time-series forecasting and have a working knowledge of PyTorch for various NLP and computer vision tasks.</p><ul><li>Developed 5G forecasting models with TensorFlow.</li></ul>">
+                        <div class="skill-item"
+                            data-skill-details="<p>Practical experience building and training models using core deep learning frameworks. Applied TensorFlow for time-series forecasting and have a working knowledge of PyTorch for various NLP and computer vision tasks.</p><ul><li>Developed 5G forecasting models with TensorFlow.</li></ul>">
                             <div class="skill-header">
                                 <span class="skill-name">TensorFlow & PyTorch</span>
                                 <span class="skill-level-text">Intermediate</span>
                             </div>
-                            <div class="skill-bar"><div class="skill-progress intermediate"></div></div>
+                            <div class="skill-bar">
+                                <div class="skill-progress intermediate"></div>
+                            </div>
                         </div>
-                        <div class="skill-item" data-skill-details="<p>Designed and implemented processes for managing the end-to-end lifecycle of machine learning models, including data versioning, experiment tracking (MLflow), model deployment, and monitoring for drift and performance degradation.</p><ul><li>Established MLOps principles for the 5G Intelligence platform.</li></ul>">
+                        <div class="skill-item"
+                            data-skill-details="<p>Designed and implemented processes for managing the end-to-end lifecycle of machine learning models, including data versioning, experiment tracking (MLflow), model deployment, and monitoring for drift and performance degradation.</p><ul><li>Established MLOps principles for the 5G Intelligence platform.</li></ul>">
                             <div class="skill-header">
                                 <span class="skill-name">Model Lifecycle Management</span>
                                 <span class="skill-level-text">Advanced</span>
                             </div>
-                            <div class="skill-bar"><div class="skill-progress advanced"></div></div>
+                            <div class="skill-bar">
+                                <div class="skill-progress advanced"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1095,7 +2115,7 @@
                     <i class="fas fa-graduation-cap"></i>
                     Education
                 </h2>
-                
+
                 <div class="education-item">
                     <div class="education-info">
                         <h4>B.Tech in Computer Science and Engineering</h4>
@@ -1105,14 +2125,7 @@
                     <div class="education-time">2008 - 2012</div>
                 </div>
 
-                <div class="education-item">
-                    <div class="education-info">
-                        <h4>Intermediate (MPC)</h4>
-                        <p>Board of Intermediate Education, A.P.</p>
-                        <p>Secured 532 rank in state-level Engineering Entrance Exam (EAMCET)</p>
-                    </div>
-                    <div class="education-time">2006 - 2008</div>
-                </div>
+
             </section>
 
             <!-- Certifications -->
@@ -1121,7 +2134,7 @@
                     <i class="fas fa-certificate"></i>
                     Certifications
                 </h2>
-                
+
                 <div class="certification-item">
                     <div class="certification-info">
                         <h4>CCNA (Cisco Certified Network Associate)</h4>
@@ -1146,11 +2159,10 @@
                     Interests
                 </h2>
                 <div class="interests">
-                    <div class="interest-item">Travelling</div>
-                    <div class="interest-item">ROM Development</div>
-                    <div class="interest-item">Sports</div>
-                    <div class="interest-item">AI/ML Research</div>
-                    <div class="interest-item">Open Source Contribution</div>
+                    <div class="interest-item"><i class="fas fa-brain"></i> AI/ML Research</div>
+                    <div class="interest-item"><i class="fas fa-code-branch"></i> Open Source</div>
+                    <div class="interest-item"><i class="fas fa-sitemap"></i> System Architecture</div>
+                    <div class="interest-item"><i class="fas fa-pen-nib"></i> Tech Blogging</div>
                 </div>
             </section>
         </main>
@@ -1158,24 +2170,8 @@
         <!-- Footer -->
         <footer class="footer">
             <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Quick Stats</h3>
-                    <div class="footer-stats">
-                        <div class="stat-item">
-                            <span class="stat-number">12+</span>
-                            <span class="stat-label">Years Experience</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">1</span>
-                            <span class="stat-label">Patent Granted</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">4</span>
-                            <span class="stat-label">Key Projects</span>
-                        </div>
-                    </div>
-                </div>
-                
+
+
                 <div class="footer-section">
                     <h3>Core Expertise</h3>
                     <div class="footer-expertise">
@@ -1185,26 +2181,26 @@
                         <div class="expertise-tag">5G & NFV/SDN</div>
                     </div>
                 </div>
-                
+
                 <div class="footer-section">
                     <h3>Connect & Follow</h3>
                     <div class="footer-social">
-                        <a href="https://linkedin.com/in/bvguravareddy" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <a href="https://linkedin.com/in/bvguravareddy" target="_blank" rel="noopener noreferrer"
+                            aria-label="LinkedIn">
                             <i class="fab fa-linkedin" aria-hidden="true"></i>
                             <span>LinkedIn</span>
                         </a>
-                        <a href="https://github.com/bsrgsit" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                        <a href="https://github.com/bsrgsit" target="_blank" rel="noopener noreferrer"
+                            aria-label="GitHub">
                             <i class="fab fa-github" aria-hidden="true"></i>
                             <span>GitHub</span>
                         </a>
                     </div>
                 </div>
             </div>
-            
+
             <div class="footer-bottom">
-                <button id="downloadPdfBtn" class="download-btn" aria-label="Download quick PDF resume">
-                    <i class="fas fa-file-arrow-down" aria-hidden="true"></i> Download PDF
-                </button>
+
                 <p>&copy; 2024 Venkata Guravareddy. All rights reserved.</p>
             </div>
         </footer>
@@ -1223,12 +2219,10 @@
         </div>
     </div>
 
-    <!-- jsPDF (for generating single-page PDF) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" referrerpolicy="no-referrer"></script>
 
     <!-- JavaScript for Interactivity -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // --- Show More/Less for Experience ---
             const showMoreButtons = document.querySelectorAll('.show-more-btn');
             showMoreButtons.forEach(button => {
@@ -1238,7 +2232,7 @@
                     if (list.scrollHeight <= 120) {
                         button.style.display = 'none';
                     } else {
-                         button.addEventListener('click', () => {
+                        button.addEventListener('click', () => {
                             list.classList.toggle('expanded');
                             button.textContent = list.classList.contains('expanded') ? 'Show Less' : 'Show More';
                         });
@@ -1305,7 +2299,7 @@
             const stickyToggle = document.getElementById('stickyDarkToggle');
             const stickyToggleIcon = stickyToggle?.querySelector('i');
             const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            
+
             function updateToggleIcon() {
                 const isDark = document.body.classList.contains('dark');
                 toggleIcon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
@@ -1315,22 +2309,22 @@
                     stickyToggle?.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
                 }
             }
-            
+
             // Set initial theme based on localStorage or system preference
             if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && prefersDark)) {
                 document.body.classList.add('dark');
             }
-            
+
             updateToggleIcon();
-            
-            toggle.addEventListener('click', function() {
+
+            toggle.addEventListener('click', function () {
                 document.body.classList.toggle('dark');
                 localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
                 updateToggleIcon();
             });
 
             if (stickyToggle) {
-                stickyToggle.addEventListener('click', function() {
+                stickyToggle.addEventListener('click', function () {
                     document.body.classList.toggle('dark');
                     localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
                     updateToggleIcon();
@@ -1395,166 +2389,9 @@
                 document.body.classList.add('ats');
             }
 
-            // --- Quick Resume PDF Generator ---
-            const downloadBtn = document.getElementById('downloadPdfBtn');
-            if (downloadBtn) {
-                downloadBtn.addEventListener('click', generateQuickResumePDF);
-            }
 
-            function generateQuickResumePDF() {
-                const { jsPDF } = window.jspdf || {};
-                if (!jsPDF) {
-                    alert('PDF generator failed to load. Please check your internet connection and try again.');
-                    return;
-                }
-
-                const doc = new jsPDF({ unit: 'pt', format: 'a4' });
-                const pageWidth = doc.internal.pageSize.getWidth();
-                const pageHeight = doc.internal.pageSize.getHeight();
-                const margin = 40;
-                const contentWidth = pageWidth - margin * 2;
-                let y = margin;
-
-                // Extract content from DOM
-                const name = (document.querySelector('.header h1')?.textContent || '').trim();
-                const title = (document.querySelector('.tagline')?.textContent || '').trim();
-                const contactParts = Array.from(document.querySelectorAll('.contact-info .contact-item a, .contact-info .contact-item span'))
-                    .map(el => (el.textContent || '').trim())
-                    .filter(Boolean);
-                const contact = contactParts.join('  |  ');
-
-                const summary = (document.querySelector('.career-profile p')?.textContent || '').trim();
-
-                // Top skills (first 8 skill names)
-                const skills = Array.from(document.querySelectorAll('.skills-grid .skill-name'))
-                    .slice(0, 8)
-                    .map(el => el.textContent.trim());
-
-                // Experience: take first 2 roles with up to 3 bullets each
-                const expItems = Array.from(document.querySelectorAll('.experience-item')).slice(0, 2).map(item => {
-                    const role = item.querySelector('.experience-title')?.textContent?.trim() || '';
-                    const company = item.querySelector('.experience-company')?.textContent?.trim() || '';
-                    const time = item.querySelector('.experience-time')?.textContent?.trim() || '';
-                    const bullets = Array.from(item.querySelectorAll('.experience-details li')).slice(0, 3).map(li => li.textContent.trim());
-                    return { role, company, time, bullets };
-                });
-
-                // Projects: take first 2
-                const projects = Array.from(document.querySelectorAll('.project-item')).slice(0, 2).map(p => ({
-                    title: p.querySelector('.project-title')?.textContent?.trim() || '',
-                    time: p.querySelector('.project-time')?.textContent?.trim() || '',
-                    desc: p.querySelector('.project-description')?.textContent?.trim() || ''
-                }));
-
-                // Patent: first one
-                const patentTitle = document.querySelector('.patent-title')?.textContent?.trim() || '';
-                const patentNum = document.querySelector('.patent-number')?.textContent?.trim() || '';
-
-                // Typography
-                doc.setFont('helvetica', 'bold');
-                doc.setFontSize(22);
-                doc.text(name || 'Venkata Guravareddy', margin, y);
-                y += 22;
-                doc.setFont('helvetica', 'normal');
-                doc.setFontSize(12);
-                doc.text(title || 'Principal Engineer — Cloud, DevOps & AI Infrastructure', margin, y);
-                y += 18;
-                doc.setTextColor(80);
-                const contactWrapped = doc.splitTextToSize(contact, contentWidth);
-                doc.text(contactWrapped, margin, y);
-                y += 20 + (contactWrapped.length - 1) * 14;
-
-                // Divider
-                doc.setDrawColor(102, 126, 234);
-                doc.setLineWidth(1);
-                doc.line(margin, y, pageWidth - margin, y);
-                y += 18;
-
-                // Summary
-                addSectionHeading('Summary');
-                const shortSummary = (summary.length > 600 ? summary.slice(0, 600) + '…' : summary);
-                y = addParagraph(shortSummary, y);
-
-                // Core Skills
-                addSectionHeading('Core Skills');
-                const skillsLine = skills.join(' • ');
-                y = addParagraph(skillsLine, y);
-
-                // Experience
-                addSectionHeading('Experience');
-                expItems.forEach(exp => {
-                    if (!exp.role) return;
-                    const header = `${exp.role} — ${exp.company} (${exp.time})`;
-                    doc.setFont('helvetica', 'bold');
-                    doc.setFontSize(12);
-                    const headerWrapped = doc.splitTextToSize(header, contentWidth);
-                    doc.text(headerWrapped, margin, y);
-                    y += 16 + (headerWrapped.length - 1) * 14;
-                    doc.setFont('helvetica', 'normal');
-                    doc.setFontSize(11);
-                    exp.bullets.forEach(b => {
-                        const bullet = `• ${b}`;
-                        const wrapped = doc.splitTextToSize(bullet, contentWidth);
-                        doc.text(wrapped, margin, y);
-                        y += 14 * wrapped.length;
-                    });
-                    y += 6;
-                });
-
-                // Projects
-                addSectionHeading('Key Projects');
-                projects.forEach(p => {
-                    const header = `${p.title} (${p.time})`;
-                    doc.setFont('helvetica', 'bold');
-                    doc.setFontSize(12);
-                    const headerWrapped = doc.splitTextToSize(header, contentWidth);
-                    doc.text(headerWrapped, margin, y);
-                    y += 16 + (headerWrapped.length - 1) * 14;
-                    doc.setFont('helvetica', 'normal');
-                    doc.setFontSize(11);
-                    y = addParagraph(p.desc, y);
-                });
-
-                // Patent
-                if (patentTitle) {
-                    addSectionHeading('Patent');
-                    const line = `${patentTitle} — ${patentNum}`;
-                    y = addParagraph(line, y);
-                }
-
-                // Footer note
-                doc.setTextColor(120);
-                doc.setFontSize(9);
-                const footer = 'Quick Resume — generated from venkata-guravareddy.github.io';
-                doc.text(footer, margin, pageHeight - 20);
-
-                doc.save('Venkata_Guravareddy_Quick_Resume.pdf');
-
-                function addSectionHeading(text) {
-                    doc.setTextColor(30);
-                    doc.setFont('helvetica', 'bold');
-                    doc.setFontSize(13);
-                    doc.text(text, margin, y);
-                    y += 10;
-                    doc.setDrawColor(118, 75, 162);
-                    doc.setLineWidth(0.7);
-                    doc.line(margin, y, margin + 50, y);
-                    y += 12;
-                    doc.setFont('helvetica', 'normal');
-                    doc.setTextColor(40);
-                    doc.setFontSize(11);
-                }
-
-                function addParagraph(text, startY) {
-                    doc.setTextColor(40);
-                    doc.setFont('helvetica', 'normal');
-                    doc.setFontSize(11);
-                    const wrapped = doc.splitTextToSize(text, contentWidth);
-                    doc.text(wrapped, margin, startY);
-                    return startY + 14 * wrapped.length + 6;
-                }
-            }
         });
     </script>
 </body>
+
 </html>
