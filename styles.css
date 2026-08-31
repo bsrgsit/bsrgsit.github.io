@@ -995,6 +995,28 @@ body.light-mode .filter-btn.is-active {
   margin-bottom: 2px;
 }
 
+.timeline-layer-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: rgba(56, 189, 248, 0.15);
+  color: var(--accent-cyan);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  margin-bottom: 6px;
+  width: fit-content;
+}
+
+body.light-mode .timeline-layer-tag {
+  background: #e0f2fe;
+  color: #0284c7;
+  border-color: #7dd3fc;
+}
+
 .timeline-node h3 {
   font-size: 1.1rem;
   font-weight: 700;
