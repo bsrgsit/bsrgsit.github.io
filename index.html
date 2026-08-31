@@ -1,2386 +1,724 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Venkata Guravareddy - Principal Engineer</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-    <link type="image/png" sizes="32x32" rel="icon"
-        href="https://img.icons8.com/?size=100&id=POBc2SrrhhnF&format=png&color=000000">
-    <style>
-        /* --- Base & General Styling --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            font-size: 14px;
-            line-height: 1.5;
-            color: #0f172a;
-            background: #0b1220;
-            min-height: 100vh;
-            padding: 0.75rem 0;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: white;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-            border-radius: 20px;
-            overflow: hidden;
-        }
-
-        /* --- Sticky Top Bar (brand + menu) --- */
-        .sticky-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1200;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
-            padding: 0.5rem 1rem;
-            background: rgba(11, 18, 32, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(45, 55, 72, 0.4);
-            transform: translateY(-100%);
-            transition: transform 0.25s ease;
-        }
-
-        .sticky-bar.visible {
-            transform: translateY(0);
-        }
-
-        .sticky-brand {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            min-width: 0;
-        }
-
-        .sticky-name {
-            font-family: 'Outfit', sans-serif;
-            font-weight: 700;
-            color: #e2e8f0;
-            font-size: 1.1rem;
-            white-space: nowrap;
-            letter-spacing: -0.01em;
-        }
-
-        .sticky-contact {
-            display: none;
-            gap: 0.75rem;
-        }
-
-        .sticky-contact a {
-            color: #a5b4fc;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.85rem;
-        }
-
-        .sticky-contact i {
-            color: #818cf8;
-        }
-
-
-        .sticky-nav-list {
-            list-style: none;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.25rem 0.5rem;
-            margin: 0;
-            padding: 0;
-            justify-content: flex-end;
-        }
-
-        .sticky-nav-list a {
-            color: #e2e8f0;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            padding: 0.35rem 0.7rem;
-            border-radius: 999px;
-            transition: background 0.2s ease, color 0.2s ease;
-        }
-
-        .sticky-nav-list a:hover {
-            background: rgba(99, 102, 241, 0.15);
-            color: #a5b4fc;
-        }
-
-        .sticky-nav-list a.active {
-            background: rgba(99, 102, 241, 0.3);
-            color: #0b1220;
-        }
-
-
-        .sticky-dark-toggle {
-            background: transparent;
-            border: 1px solid rgba(226, 232, 240, 0.35);
-            color: #e2e8f0;
-            border-radius: 999px;
-            width: 40px;
-            height: 36px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            margin-left: 0.5rem;
-        }
-
-        .sticky-dark-toggle:hover {
-            background: rgba(226, 232, 240, 0.12);
-        }
-
-        /* --- Header --- */
-        .header {
-            background: #0f172a;
-            color: white;
-            padding: 1.5rem 1rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.1"/><circle cx="10" cy="60" r="0.5" fill="white" opacity="0.1"/><circle cx="90" cy="40" r="0.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-            opacity: 0.3;
-        }
-
-        .header h1 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 2rem;
-            margin-bottom: 0.3rem;
-            font-weight: 800;
-            letter-spacing: -0.03em;
-            text-shadow: none;
-            position: relative;
-            z-index: 1;
-            color: #ffffff;
-        }
-
-        .header .tagline {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1rem;
-            margin-bottom: 1rem;
-            opacity: 0.9;
-            font-weight: 500;
-            text-shadow: none;
-            position: relative;
-            z-index: 1;
-            color: #cbd5e1;
-            letter-spacing: 0.01em;
-        }
-
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            /* Adjusted gap */
-            margin-top: 1rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            font-weight: 500;
-            font-size: 0.8rem;
-            /* Adjusted font size */
-            background: rgba(255, 255, 255, 0.1);
-            padding: 0.4rem 0.8rem;
-            /* Adjusted padding */
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .contact-item:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-        }
-
-        .contact-item i {
-            font-size: 1rem;
-            color: #818cf8;
-        }
-
-        .contact-item a {
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .contact-item a:hover {
-            color: #a5b4fc;
-        }
-
-        /* --- Main Content & Sections --- */
-        .main-content {
-            padding: 1.5rem 1rem;
-            /* Adjusted padding */
-            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-        }
-
-        .section {
-            margin-bottom: 1.75rem;
-        }
-
-        .section-title {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.3rem;
-            color: #1e293b;
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 3px solid;
-            border-image: linear-gradient(90deg, #4f46e5, #7c3aed) 1;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            font-weight: 700;
-            position: relative;
-            letter-spacing: -0.02em;
-        }
-
-        .section-title::before {
-            content: '';
-            position: absolute;
-            bottom: -3px;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background: linear-gradient(90deg, #4f46e5, #7c3aed);
-            border-radius: 2px;
-        }
-
-        .section-title i {
-            font-size: 1.2rem;
-            color: #4f46e5;
-        }
-
-        /* --- Career Profile --- */
-        .career-profile {
-            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-            padding: 1rem;
-            border-radius: 12px;
-            border-left: 4px solid;
-            border-image: linear-gradient(180deg, #4f46e5, #7c3aed) 1;
-            font-size: 0.95rem;
-            line-height: 1.6;
-            box-shadow: 0 6px 20px rgba(79, 70, 229, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .career-profile::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            opacity: 0.05;
-            border-radius: 50%;
-            transform: translate(30px, -30px);
-        }
-
-        /* --- Experience Timeline --- */
-        .experience-timeline {
-            position: relative;
-            padding-left: 20px;
-            /* Adjusted Space */
-        }
-
-        .experience-timeline::before {
-            content: '';
-            position: absolute;
-            left: 8px;
-            /* Adjusted position */
-            top: 5px;
-            bottom: 5px;
-            width: 2px;
-            background: #e2e8f0;
-            border-radius: 2px;
-        }
-
-        .experience-item {
-            margin-bottom: 1.5rem;
-            position: relative;
-        }
-
-        .experience-item::before {
-            /* The dot on the timeline */
-            content: '';
-            position: absolute;
-            left: -18px;
-            /* Adjusted to center on the line */
-            top: 5px;
-            height: 12px;
-            width: 12px;
-            background: white;
-            border: 2px solid #4f46e5;
-            border-radius: 50%;
-            z-index: 1;
-        }
-
-        .experience-content {
-            padding: 1rem;
-            border: 1px solid #e2e8f0;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
-        }
-
-        .experience-content:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(79, 70, 229, 0.15);
-            border-color: #4f46e5;
-            background: linear-gradient(135deg, #ffffff 0%, #eef2ff 100%);
-        }
-
-        .experience-header {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            margin-bottom: 0.75rem;
-            gap: 0.4rem;
-        }
-
-        /* Mobile first: column */
-        .experience-title {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: #1f2937;
-            letter-spacing: -0.01em;
-        }
-
-        .experience-company {
-            font-weight: 500;
-            color: #4a5568;
-            font-size: 0.9rem;
-        }
-
-        .experience-time {
-            color: #718096;
-            font-size: 0.8rem;
-            font-weight: 500;
-            background: #edf2f7;
-            padding: 0.3rem 0.7rem;
-            border-radius: 15px;
-        }
-
-        .experience-details {
-            margin-top: 0.75rem;
-        }
-
-        .experience-details p {
-            margin-bottom: 0.75rem;
-            line-height: 1.6;
-            color: #4a5568;
-            font-size: 0.9rem;
-        }
-
-        .experience-details ul {
-            list-style: none;
-            padding-left: 0;
-            max-height: 120px;
-            overflow: hidden;
-            transition: max-height 0.5s ease-in-out;
-        }
-
-        .experience-details ul.expanded {
-            max-height: 1000px;
-        }
-
-        /* Expand the list */
-        .experience-details li {
-            margin-bottom: 0.5rem;
-            padding-left: 1.2rem;
-            position: relative;
-            color: #4a5568;
-            font-size: 0.9rem;
-        }
-
-        .experience-details li:before {
-            content: "▸";
-            color: #4f46e5;
-            position: absolute;
-            left: 0;
-            font-weight: bold;
-        }
-
-
-
-        .show-more-btn {
-            background: linear-gradient(45deg, #4f46e5, #7c3aed);
-            border: none;
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.85rem;
-            margin-top: 1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 3px 10px rgba(79, 70, 229, 0.25);
-        }
-
-        .show-more-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(79, 70, 229, 0.45);
-            background: linear-gradient(45deg, #4338ca, #6d28d9);
-        }
-
-
-        /* --- Skills --- */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.25rem;
-        }
-
-        /* Mobile first: 1 column */
-        .skill-category {
-            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-            padding: 1rem;
-            border-radius: 12px;
-            border: 1px solid #e2e8f0;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
-            transition: all 0.3s ease;
-        }
-
-        .skill-category:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.1);
-        }
-
-        .skill-category h4 {
-            font-family: 'Outfit', sans-serif;
-            color: #1e293b;
-            margin-bottom: 1rem;
-            font-size: 1rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-        }
-
-        .skill-category h4 i {
-            color: #4f46e5;
-        }
-
-        .skill-item {
-            margin-bottom: 1rem;
-            /* Adjusted */
-            cursor: pointer;
-            padding: 0.75rem;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-        }
-
-        .skill-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .skill-item:hover {
-            background: rgba(102, 126, 234, 0.05);
-            transform: translateX(5px);
-        }
-
-        .skill-item:hover .skill-name {
-            color: #667eea;
-        }
-
-        .skill-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 0.5rem;
-        }
-
-        .skill-name {
-            font-weight: 600;
-            color: #1e293b;
-            transition: color 0.3s;
-            font-size: 0.9rem;
-        }
-
-        .skill-level-text {
-            color: #64748b;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #4f46e5;
-        }
-
-        .skill-bar {
-            width: 100%;
-            height: 8px;
-            background: #e2e8f0;
-            border-radius: 4px;
-            overflow: hidden;
-            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.08);
-        }
-
-        .skill-progress {
-            height: 100%;
-            background: linear-gradient(90deg, #4f46e5 0%, #7c3aed 100%);
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(79, 70, 229, 0.3);
-        }
-
-        .skill-progress.expert {
-            width: 95%;
-        }
-
-        .skill-progress.advanced {
-            width: 85%;
-        }
-
-        .skill-progress.intermediate {
-            width: 75%;
-        }
-
-        /* --- Skill Modal --- */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0s 0.3s;
-            padding: 1rem;
-        }
-
-        .modal-overlay.active {
-            opacity: 1;
-            visibility: visible;
-            transition: opacity 0.3s ease;
-        }
-
-        .modal-content {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            max-width: 600px;
-            width: 100%;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            transform: translateY(20px);
-            transition: transform 0.3s ease;
-        }
-
-        .modal-overlay.active .modal-content {
-            transform: translateY(0);
-        }
-
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-            border-bottom: 1px solid #e2e8f0;
-            padding-bottom: 1rem;
-        }
-
-        .modal-title {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.3rem;
-            color: #2d3748;
-        }
-
-        .modal-close {
-            font-size: 1.5rem;
-            color: #334155;
-            cursor: pointer;
-            border: none;
-            background: none;
-            line-height: 1;
-        }
-
-        .modal-close:hover {
-            color: #0ea5a1;
-            transform: scale(1.05);
-        }
-
-        .modal-close:focus {
-            outline: 2px solid #0ea5a1;
-            outline-offset: 2px;
-            border-radius: 4px;
-        }
-
-        .modal-body p {
-            color: #4a5568;
-            line-height: 1.7;
-        }
-
-        .modal-body ul {
-            list-style: none;
-            padding-left: 0;
-            margin-top: 1rem;
-        }
-
-        .modal-body li {
-            padding-left: 1.5rem;
-            position: relative;
-            margin-bottom: 0.5rem;
-        }
-
-        .modal-body li::before {
-            content: "✓";
-            color: #38a169;
-            position: absolute;
-            left: 0;
-        }
-
-        /* --- Other Sections (Projects, Patents, Education etc.) --- */
-        .project-item,
-        .patent-item {
-            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
-            padding: 1rem;
-            border-radius: 10px;
-            margin-bottom: 1rem;
-            border-left: 4px solid #667eea;
-            transition: all 0.3s ease;
-        }
-
-        .project-item:hover,
-        .patent-item:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .project-header,
-        .patent-header {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            margin-bottom: 0.75rem;
-            gap: 0.4rem;
-        }
-
-        /* Mobile first: column */
-        .project-title,
-        .patent-title {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: #1f2937;
-        }
-
-        .project-time,
-        .patent-number {
-            color: #718096;
-            font-size: 0.75rem;
-            font-weight: 500;
-            background: #edf2f7;
-            padding: 0.3rem 0.7rem;
-            border-radius: 15px;
-        }
-
-        .project-description,
-        .patent-details {
-            margin-bottom: 0.75rem;
-            line-height: 1.6;
-            color: #4a5568;
-            font-size: 0.9rem;
-        }
-
-        .project-technologies {
-            font-size: 0.85rem;
-            color: #718096;
-            font-style: italic;
-        }
-
-        .patent-item {
-            background: linear-gradient(135deg, #f0fff4 0%, #e6fffa 100%);
-            border-left-color: #38a169;
-        }
-
-        .patent-details p {
-            margin-bottom: 0.5rem;
-            color: #4a5568;
-        }
-
-        .patent-link {
-            color: #38a169;
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: color 0.2s;
-        }
-
-        .patent-link:hover {
-            color: #2f855a;
-        }
-
-        .education-item {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 0.5rem;
-            padding: 1rem 0;
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        /* Mobile first: column */
-        .education-item:last-child {
-            border-bottom: none;
-        }
-
-        .education-info h4 {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            color: #1f2937;
-            margin-bottom: 0.2rem;
-            font-weight: 700;
-            font-size: 0.95rem;
-        }
-
-        .education-info p {
-            color: #4a5568;
-            margin-bottom: 0.2rem;
-            font-size: 0.85rem;
-        }
-
-        .education-time {
-            color: #718096;
-            font-size: 0.8rem;
-            font-weight: 500;
-            background: #edf2f7;
-            padding: 0.35rem 0.8rem;
-            border-radius: 15px;
-            flex-shrink: 0;
-        }
-
-        .certification-item {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 0.5rem;
-            padding: 1rem 0;
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        /* Mobile first: column */
-        .certification-item:last-child {
-            border-bottom: none;
-        }
-
-        .certification-info h4 {
-            font-family: 'Outfit', sans-serif;
-            color: #1f2937;
-            margin-bottom: 0.2rem;
-            font-weight: 700;
-            font-size: 0.95rem;
-        }
-
-        .certification-info p {
-            color: #4a5568;
-            margin-bottom: 0.2rem;
-            font-size: 0.85rem;
-        }
-
-        .certification-time {
-            color: #718096;
-            font-size: 0.8rem;
-            font-weight: 500;
-            background: #edf2f7;
-            padding: 0.35rem 0.8rem;
-            border-radius: 15px;
-        }
-
-        .interests {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.6rem;
-            margin-top: 1rem;
-        }
-
-        .interest-item {
-            background: white;
-            border: 1px solid #e2e8f0;
-            color: #4a5568;
-            padding: 0.5rem 1rem;
-            border-radius: 10px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-        }
-
-        .interest-item i {
-            color: #4f46e5;
-        }
-
-        .interest-item:hover {
-            border-color: #4f46e5;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(79, 70, 229, 0.15);
-            color: #4f46e5;
-        }
-
-
-        /* --- Footer --- */
-        .footer {
-            background: linear-gradient(135deg, #0b1220 0%, #0f172a 60%, #0b1220 100%);
-            color: white;
-            padding: 1.25rem 1rem 1rem;
-            margin-top: 2rem;
-            position: relative;
-            overflow: hidden;
-            text-align: center;
-            /* Center align on mobile */
-        }
-
-        .footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.1"/><circle cx="10" cy="60" r="0.5" fill="white" opacity="0.1"/><circle cx="90" cy="40" r="0.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-            opacity: 0.3;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: 1fr;
-            /* Mobile first: 1 column */
-            gap: 1.25rem;
-            margin-bottom: 1.25rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .footer-section h3 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 700;
-            margin-bottom: 0.6rem;
-            color: #e2e8f0;
-        }
-
-        .footer-section h4 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: #a5b4fc;
-        }
-
-        .footer-social {
-            display: flex;
-            flex-direction: row;
-            gap: 0.5rem;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            /* Center social links on mobile */
-        }
-
-        .footer-social a {
-            display: inline-flex;
-            /* Changed for better centering */
-            align-items: center;
-            gap: 0.4rem;
-            padding: 0.4rem 0.9rem;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            color: #e2e8f0;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        .footer-social a:hover {
-            background: #818cf8;
-            color: #0b1220;
-            transform: translateY(-2px);
-            /* Adjusted transform */
-        }
-
-        .footer-social i {
-            font-size: 1rem;
-            width: 16px;
-        }
-
-        .footer-stats {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            align-items: center;
-        }
-
-        .stat-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .stat-number {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: #2dd4bf;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: #a0aec0;
-        }
-
-        .footer-expertise {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            justify-content: center;
-        }
-
-        .expertise-tag {
-            background: rgba(255, 255, 255, 0.1);
-            color: #e2e8f0;
-            padding: 0.35rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .expertise-tag:hover {
-            background: #818cf8;
-            color: #0b1220;
-            transform: translateY(-2px);
-        }
-
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 0.75rem;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .footer-bottom p {
-            margin-bottom: 0;
-            font-size: 0.75rem;
-            color: #a0aec0;
-        }
-
-        /* --- Dark Mode Toggle --- */
-        .dark-mode-toggle {
-            position: fixed;
-            top: 1rem;
-            right: 1rem;
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.9);
-            border: none;
-            border-radius: 50%;
-            width: 44px;
-            height: 44px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
-
-        .dark-mode-toggle:hover {
-            transform: scale(1.1);
-        }
-
-        .dark-mode-toggle i {
-            font-size: 1.3rem;
-            color: #2d3748;
-        }
-
-        /* --- Tablet and larger screens --- */
-        @media (min-width: 768px) {
-            body {
-                padding: 1rem 0;
-            }
-
-            .header {
-                padding: 2rem 1.5rem;
-            }
-
-            .header h1 {
-                font-size: 2.2rem;
-            }
-
-            .header .tagline {
-                font-size: 1.05rem;
-            }
-
-            .contact-info {
-                gap: 0.75rem;
-            }
-
-            .contact-item {
-                font-size: 0.85rem;
-                padding: 0.5rem 1rem;
-            }
-
-            .main-content {
-                padding: 2rem 1.5rem;
-            }
-
-            .section {
-                margin-bottom: 2.25rem;
-            }
-
-            .section-title {
-                font-size: 1.4rem;
-                margin-bottom: 1.25rem;
-            }
-
-            .career-profile {
-                padding: 1.5rem;
-                font-size: 1rem;
-            }
-
-            .experience-timeline {
-                padding-left: 25px;
-            }
-
-            .experience-item::before {
-                left: -20px;
-            }
-
-            .experience-content {
-                padding: 1.25rem 1.5rem;
-            }
-
-            .experience-header {
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: flex-start;
-                gap: 1rem;
-            }
-
-            .skills-grid {
-                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-                gap: 1.5rem;
-            }
-
-            .skill-category {
-                padding: 1.25rem;
-            }
-
-            .skill-category h4 {
-                font-size: 1.05rem;
-            }
-
-            .skill-item {
-                margin-bottom: 1.25rem;
-            }
-
-            .project-item,
-            .patent-item {
-                padding: 1.25rem;
-            }
-
-            .project-header,
-            .patent-header {
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: flex-start;
-                gap: 1rem;
-            }
-
-            .project-title,
-            .patent-title {
-                font-size: 1rem;
-            }
-
-            .project-time,
-            .patent-number {
-                font-size: 0.8rem;
-            }
-
-            .education-item,
-            .certification-item {
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-            }
-
-            .footer {
-                text-align: left;
-            }
-
-            .footer-content {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
-            }
-
-            .footer-social {
-                align-items: flex-start;
-                flex-direction: row;
-            }
-
-            .footer-expertise {
-                justify-content: flex-start;
-            }
-
-            .sticky-bar {
-                padding: 0.5rem 1.5rem;
-            }
-
-            .sticky-contact {
-                display: inline-flex;
-            }
-
-            .sticky-name {
-                font-size: 1rem;
-            }
-
-            .sticky-nav-list a {
-                font-size: 0.9rem;
-            }
-        }
-
-        /* --- Dark Mode Styles --- */
-        body.dark {
-            background: #181a1b;
-            color: #e2e8f0;
-        }
-
-        body.dark .container {
-            background: #23272f;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-        }
-
-        body.dark .header {
-            background: linear-gradient(135deg, #23272f 0%, #181a1b 100%);
-        }
-
-        body.dark .header h1 {
-            background: linear-gradient(45deg, #e2e8f0, #a0aec0);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        body.dark .header .tagline {
-            color: #a0aec0;
-        }
-
-        body.dark .contact-item {
-            background: rgba(44, 62, 80, 0.2);
-            border: 1px solid rgba(160, 174, 192, 0.2);
-        }
-
-        body.dark .contact-item a {
-            color: #e2e8f0;
-        }
-
-        body.dark .contact-item:hover a {
-            color: #90cdf4;
-        }
-
-        body.dark .main-content {
-            background: linear-gradient(135deg, #23272f 0%, #181a1b 100%);
-        }
-
-        body.dark .section-title {
-            color: #e2e8f0;
-            border-image: linear-gradient(90deg, #818cf8, #a78bfa) 1;
-        }
-
-        body.dark .section-title::before {
-            background: linear-gradient(90deg, #818cf8, #a78bfa);
-        }
-
-        body.dark .section-title i,
-        body.dark .skill-category h4 i,
-        body.dark .skill-level-text {
-            color: #818cf8;
-            -webkit-text-fill-color: initial;
-            background: none;
-        }
-
-
-        body.dark .career-profile {
-            border-image: linear-gradient(180deg, #818cf8, #a78bfa) 1;
-            background: linear-gradient(135deg, #2a2f3b 0%, #23272f 100%);
-        }
-
-
-        body.dark .experience-timeline::before {
-            background: #2d3748;
-        }
-
-        body.dark .experience-item::before {
-            border-color: #818cf8;
-            background: #23272f;
-        }
-
-
-        body.dark .experience-content {
-            background: linear-gradient(135deg, #2a2f3b 0%, #23272f 100%);
-            border-color: #2d3748;
-        }
-
-        body.dark .experience-content:hover {
-            border-color: #818cf8;
-        }
-
-
-        body.dark .experience-title,
-        body.dark .skill-category h4,
-        body.dark .skill-name,
-        body.dark .project-title,
-        body.dark .patent-title,
-        body.dark .education-info h4,
-        body.dark .certification-info h4 {
-            color: #e2e8f0;
-        }
-
-        body.dark .experience-company,
-        body.dark .experience-details p,
-        body.dark .experience-details li,
-        body.dark .career-profile p,
-        body.dark .project-description,
-        body.dark .patent-details p,
-        body.dark .education-info p,
-        body.dark .certification-info p {
-            color: #a0aec0;
-        }
-
-        body.dark .experience-time,
-        body.dark .project-time,
-        body.dark .patent-number,
-        body.dark .education-time,
-        body.dark .certification-time {
-            background: #2d3748;
-            color: #a0aec0;
-        }
-
-        body.dark .experience-details li:before {
-            color: #818cf8;
-        }
-
-
-        body.dark .skill-category {
-            background: linear-gradient(135deg, #2a2f3b 0%, #23272f 100%);
-            border-color: #2d3748;
-        }
-
-        body.dark .skill-item:hover {
-            background: rgba(165, 180, 252, 0.1);
-        }
-
-        body.dark .skill-item:hover .skill-name {
-            color: #818cf8;
-        }
-
-
-        body.dark .skill-bar {
-            background: #2d3748;
-        }
-
-        body.dark .project-item {
-            background: linear-gradient(135deg, #2a2f3b 0%, #23272f 100%);
-            border-color: #06b6d4;
-        }
-
-        body.dark .patent-item {
-            background: linear-gradient(135deg, #1c3a3a 0%, #23272f 100%);
-            border-color: #4fd1c5;
-        }
-
-        body.dark .patent-link {
-            color: #4fd1c5;
-        }
-
-        body.dark .patent-link:hover {
-            color: #38b2ac;
-        }
-
-        body.dark .education-item,
-        body.dark .certification-item {
-            border-bottom-color: #2d3748;
-        }
-
-        body.dark .interest-item {
-            background: #1e293b;
-            border-color: #2d3748;
-            color: #cbd5e1;
-        }
-
-        body.dark .interest-item:hover {
-            border-color: #818cf8;
-            color: #818cf8;
-            background: #2d3748;
-        }
-
-        body.dark .interest-item i {
-            color: #818cf8;
-        }
-
-
-        body.dark .footer {
-            background: linear-gradient(135deg, #0b1220 0%, #0f172a 100%);
-        }
-
-        body.dark .footer-section h3 {
-            color: #e2e8f0;
-        }
-
-        body.dark .footer-section h4,
-        body.dark .footer-location i,
-        body.dark .footer-contact i,
-        body.dark .stat-number {
-            color: #818cf8;
-        }
-
-
-        body.dark .footer-tagline,
-        body.dark .footer-location,
-        body.dark .stat-label,
-        body.dark .footer-bottom p {
-            color: #a0aec0;
-        }
-
-        body.dark .footer-contact a {
-            color: #e2e8f0;
-        }
-
-        body.dark .footer-contact a:hover {
-            color: #818cf8;
-        }
-
-
-        body.dark .footer-social a {
-            background: rgba(255, 255, 255, 0.1);
-            color: #e2e8f0;
-        }
-
-        body.dark .footer-social a:hover {
-            background: #818cf8;
-            color: #0f172a;
-        }
-
-
-        body.dark .expertise-tag {
-            background: rgba(255, 255, 255, 0.1);
-            color: #e2e8f0;
-        }
-
-        body.dark .expertise-tag:hover {
-            background: #818cf8;
-            color: #0f172a;
-        }
-
-
-        body.dark .footer-bottom {
-            border-top-color: rgba(255, 255, 255, 0.1);
-        }
-
-        body.dark .modal-overlay {
-            background: rgba(0, 0, 0, 0.8);
-        }
-
-        body.dark .modal-content {
-            background: #2d3748;
-        }
-
-        body.dark .modal-header {
-            border-bottom-color: #4a5568;
-        }
-
-        body.dark .modal-title {
-            color: #e2e8f0;
-        }
-
-        body.dark .modal-close {
-            color: #a0aec0;
-        }
-
-        body.dark .modal-body p,
-        body.dark .modal-body li {
-            color: #a0aec0;
-        }
-
-        body.dark .modal-body li::before {
-            color: #4fd1c5;
-        }
-
-        body.dark .dark-mode-toggle {
-            background: rgba(45, 55, 72, 0.9);
-        }
-
-        body.dark .dark-mode-toggle i {
-            color: #e2e8f0;
-        }
-
-        /* --- ATS Mode (Simplified, Parser-Friendly) --- */
-        body.ats {
-            background: #ffffff;
-            color: #111827;
-        }
-
-        body.ats .container {
-            background: #ffffff;
-            box-shadow: none;
-            border-radius: 0;
-        }
-
-        body.ats .header,
-        body.ats .footer {
-            background: #ffffff;
-            color: #111827;
-        }
-
-        body.ats .header::before,
-        body.ats .footer::before {
-            display: none;
-        }
-
-        body.ats .header h1 {
-            -webkit-text-fill-color: initial;
-            background: none;
-            color: #000000;
-            text-shadow: none;
-        }
-
-        body.ats .header .tagline {
-            color: #111827;
-            text-shadow: none;
-        }
-
-        body.ats .contact-item {
-            background: transparent;
-            border: none;
-            box-shadow: none;
-            padding: 0;
-        }
-
-        body.ats .contact-item i {
-            display: none;
-        }
-
-        body.ats .contact-item a,
-        body.ats .contact-item span {
-            color: #111827;
-            text-decoration: none;
-        }
-
-        body.ats .main-content {
-            background: #ffffff;
-        }
-
-        body.ats .section-title {
-            border-bottom: 2px solid #111827;
-            color: #000;
-        }
-
-        body.ats .section-title::before,
-        body.ats .section-title i {
-            display: none;
-        }
-
-        body.ats .career-profile,
-        body.ats .experience-content,
-        body.ats .skill-category,
-        body.ats .project-item,
-        body.ats .patent-item {
-            background: transparent;
-            border: none;
-            box-shadow: none;
-        }
-
-        body.ats .experience-timeline::before,
-        body.ats .experience-item::before {
-            display: none;
-        }
-
-        body.ats .experience-timeline {
-            padding-left: 0;
-        }
-
-        body.ats .experience-details ul {
-            max-height: none;
-            overflow: visible;
-        }
-
-        body.ats .show-more-btn,
-        body.ats .dark-mode-toggle,
-        body.ats .modal-overlay {
-            display: none !important;
-        }
-
-        body.ats .skill-bar {
-            display: none;
-        }
-
-        body.ats .skill-item {
-            padding: 0;
-        }
-
-        body.ats .footer-social,
-        body.ats .footer-stats,
-        body.ats .footer-expertise {
-            display: none;
-        }
-
-        body.ats .footer-bottom {
-            border-top: 1px solid #e5e7eb;
-        }
-
-        /* --- Print Stylesheet --- */
-        @media print {
-            .sticky-bar {
-                display: none;
-            }
-
-            body {
-                font-family: 'Garamond', 'Times New Roman', serif;
-                color: #000;
-                background-color: #fff;
-                padding: 0;
-            }
-
-            .container {
-                box-shadow: none;
-                max-width: 100%;
-                border-radius: 0;
-            }
-
-            .header,
-            .footer,
-            .interests,
-            .skill-bar,
-            .show-more-btn,
-            .modal-overlay,
-            .patent-link i,
-            .dark-mode-toggle {
-                display: none;
-            }
-
-            .main-content,
-            .experience-content,
-            .skill-category,
-            .project-item,
-            .patent-item {
-                padding: 0;
-            }
-
-            .section {
-                margin-bottom: 1.5rem;
-            }
-
-            .section-title {
-                font-size: 1.4rem;
-                color: #000;
-                border-image: none;
-                border-bottom: 2px solid #000;
-                margin-bottom: 1rem;
-            }
-
-            .section-title i,
-            .section-title::before {
-                display: none;
-            }
-
-            .experience-timeline::before,
-            .experience-item::before {
-                display: none;
-            }
-
-            .experience-timeline {
-                padding-left: 0;
-            }
-
-            .experience-item,
-            .project-item,
-            .patent-item,
-            .skill-category {
-                border: none;
-                padding: 0;
-                margin-bottom: 1.5rem;
-                box-shadow: none;
-                background: none;
-            }
-
-            .experience-details ul,
-            .experience-details ul.expanded {
-                max-height: none;
-                overflow: visible;
-            }
-
-            a {
-                color: #000 !important;
-                text-decoration: none;
-            }
-
-            .contact-item span,
-            .contact-item a::after {
-                content: " | " attr(href);
-            }
-
-            .contact-item a[href^="mailto:"]::after {
-                content: " | " attr(href);
-            }
-
-            .contact-item a[href^="tel:"]::after {
-                content: " | " attr(href);
-            }
-
-            .career-profile,
-            .patent-item,
-            .project-item {
-                border-left: none;
-                background: none;
-            }
-
-            .experience-time,
-            .project-time,
-            .patent-number,
-            .education-time,
-            .certification-time {
-                padding: 0;
-                background: none;
-                border-radius: 0;
-                font-weight: bold;
-                color: #000;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Venkata Guravareddy — Principal Platform Infrastructure & GPU Systems Architect</title>
+  <meta name="description" content="Principal Platform Infrastructure & AI Systems Architect with 14 years of foundational experience architecting high-density GPU supercomputers (NVIDIA H100/L40S), low-latency LLM serving runtimes (vLLM, Triton), and planet-scale Kubernetes fleets across 52 data centers." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
+
+  <!-- OpenGraph Metadata -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Venkata Guravareddy — Principal Platform & GPU Infrastructure Architect" />
+  <meta property="og:description" content="14 Years Experience · 600+ Kubernetes Clusters · NVIDIA H100/L40S GPU Supercomputing · 3.8x LLM Inference Speedup · Granted US Patent US11336525B1." />
+  <meta property="og:url" content="https://bsrgsit.github.io/" />
+
+  <!-- Google Fonts: Inter, JetBrains Mono, Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Venkata Guravareddy",
+    "jobTitle": "Principal Platform Infrastructure & AI Systems Architect",
+    "email": "mailto:bsrgsit@gmail.com",
+    "telephone": "+919884883957",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Hyderabad",
+      "addressCountry": "IN"
+    },
+    "alumniOf": "Andhra University",
+    "sameAs": [
+      "https://github.com/bsrgsit",
+      "https://linkedin.com/in/bvguravareddy"
+    ]
+  }
+  </script>
 </head>
 
 <body>
-    <div class="container">
-        <!-- Header -->
-        <header class="header">
-            <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Toggle dark mode"><i
-                    class="fas fa-moon"></i></button>
-            <h1>Venkata Guravareddy</h1>
-            <div class="tagline">Principal Platform Infrastructure & AI Systems Architect</div>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <i class="fas fa-envelope" aria-hidden="true"></i>
-                    <a href="mailto:bsrgsit@gmail.com" aria-label="Email">bsrgsit@gmail.com</a>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-phone" aria-hidden="true"></i>
-                    <a href="tel:+919884883957" aria-label="Phone">+91 9884883957</a>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-                    <span>Hyderabad, India</span>
-                </div>
-                <div class="contact-item">
-                    <i class="fab fa-linkedin" aria-hidden="true"></i>
-                    <a href="https://linkedin.com/in/bvguravareddy" target="_blank" rel="noopener noreferrer"
-                        aria-label="LinkedIn">bvguravareddy</a>
-                </div>
-                <div class="contact-item">
-                    <i class="fab fa-github" aria-hidden="true"></i>
-                    <a href="https://github.com/bsrgsit" target="_blank" rel="noopener noreferrer"
-                        aria-label="GitHub">bsrgsit</a>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-file-pdf" aria-hidden="true"></i>
-                    <a href="Venkata_Guravareddy_Resume.pdf" download class="text-emerald-500 font-bold" aria-label="Download Resume PDF">Download PDF Resume</a>
-                </div>
-            </div>
-        </header>
+  <!-- Scroll Rail Progress -->
+  <div class="scroll-rail" id="scrollRail" aria-hidden="true"></div>
 
-        <!-- Sticky Compact Top Bar -->
-        <div class="sticky-bar" id="stickyBar" role="navigation" aria-label="Resume sections">
-            <div class="sticky-brand">
-                <span class="sticky-name">Venkata Guravareddy</span>
-                <div class="sticky-contact">
-                    <a href="mailto:bsrgsit@gmail.com" aria-label="Email"><i class="fas fa-envelope"
-                            aria-hidden="true"></i></a>
-                    <a href="tel:+919884883957" aria-label="Phone"><i class="fas fa-phone" aria-hidden="true"></i></a>
-                    <a href="https://linkedin.com/in/bvguravareddy" target="_blank" rel="noopener noreferrer"
-                        aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
-                </div>
+  <div class="site-shell">
+    <!-- ══════════ TOP COMMAND BAR / HEADER ══════════ -->
+    <header class="site-header">
+      <div class="section-shell header-inner">
+        <a class="brand" href="#top">
+          <div class="server-rack-icon" aria-hidden="true">
+            <div class="rack-slot active"><span class="rack-led"></span></div>
+            <div class="rack-slot"><span class="rack-led" style="background:var(--led-cyan); box-shadow:0 0 4px var(--led-cyan);"></span></div>
+            <div class="rack-slot active"><span class="rack-led"></span></div>
+            <div class="rack-slot"><span class="rack-led" style="background:var(--led-amber); box-shadow:0 0 4px var(--led-amber);"></span></div>
+          </div>
+          <div class="brand-text">
+            <div class="brand-title">
+              Venkata Guravareddy
+              <span class="datacenter-badge">VG-DC01</span>
             </div>
-            <ul class="sticky-nav-list">
-                <li><a href="#profile">Profile</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#patents">Patents</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#certifications">Certifications</a></li>
-                <li><a href="#interests">Interests</a></li>
-                <li><a href="Venkata_Guravareddy_Resume.pdf" download style="color:#10b981;font-weight:700;"><i class="fas fa-download"></i> PDF</a></li>
-            </ul>
-            <button id="stickyDarkToggle" class="sticky-dark-toggle" aria-label="Toggle dark mode"><i
-                    class="fas fa-moon"></i></button>
+            <div class="brand-sub">Principal Platform & GPU Infrastructure Architect</div>
+          </div>
+        </a>
+
+        <nav class="site-nav" id="siteNav" aria-label="Command center navigation">
+          <a href="#top">Overview</a>
+          <a href="#tiers">Tiers</a>
+          <a href="#blades">Chassis</a>
+          <a href="#patents">Patents</a>
+          <a href="#specs">Specs</a>
+          <a href="#timeline">Timeline</a>
+          <a href="#dispatch">Dispatch</a>
+        </nav>
+
+        <div class="header-controls">
+          <span class="datacenter-status">
+            <span class="pulse-led"></span> 52 DATACENTERS ONLINE
+          </span>
+          <a href="Venkata_Guravareddy_Resume.pdf" download class="btn btn-secondary btn-compact" title="Download Master ATS Resume (2-Page PDF)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            PDF RESUME
+          </a>
+          <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle Datacenter Theme"></button>
+          <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle Navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- ══════════ HERO & 42U RACK EXPLORER ══════════ -->
+      <section class="hero-section section-shell" id="top">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <div class="terminal-prompt">$ datacenter-cli --node=hyd-dc01 --status=healthy</div>
+            <h1>Architecting <span>GPU Supercomputers</span> & Planet-Scale Cloud Infrastructure.</h1>
+            <p class="hero-lede">
+              <strong>14 years</strong> bridging physical bare-metal hardware lifecycle, high-density GPU supercomputing (NVIDIA H100 SXM5 / L40S), low-latency LLM serving runtimes (vLLM, Triton), and enterprise Kubernetes fleets across 52 enterprise data centers.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#blades">Inspect Server Blades ↗</a>
+              <a class="btn btn-secondary" href="Venkata_Guravareddy_Resume.pdf" download>Download Master PDF Resume</a>
+              <a class="btn btn-secondary" href="#dispatch">Dispatch Brief</a>
+            </div>
+          </div>
+
+          <!-- Interactive 42U Server Rack Explorer -->
+          <div class="rack-explorer-chassis" aria-label="Interactive 42U Datacenter Server Rack">
+            <div class="rack-title-bar">
+              <span><strong>CABINET:</strong> RACK-HYD-01 · 42U STANDALONE</span>
+              <span>CLICK SHELF TO PROBE</span>
+            </div>
+
+            <div class="rack-cabinet">
+              <!-- Shelf 1: ToR Switches -->
+              <div class="rack-shelf" data-tier="tor-switch">
+                <div class="shelf-info">
+                  <span class="shelf-unit">U40-U42</span>
+                  <span class="shelf-name">Mellanox 400G InfiniBand Spine</span>
+                </div>
+                <div class="shelf-telemetry">
+                  <span class="shelf-led" style="background:var(--led-cyan); box-shadow:0 0 6px var(--led-cyan);"></span>
+                  <span>400 Gb/s NDR</span>
+                </div>
+              </div>
+
+              <!-- Shelf 2: GPU Compute Blades -->
+              <div class="rack-shelf active" data-tier="h100-gpu">
+                <div class="shelf-info">
+                  <span class="shelf-unit">U28-U36</span>
+                  <span class="shelf-name">8x NVIDIA H100 SXM5 (80GB) + L40S</span>
+                </div>
+                <div class="shelf-telemetry">
+                  <span class="shelf-led"></span>
+                  <span id="liveTokenLatency">11.4 ms (P99)</span>
+                </div>
+              </div>
+
+              <!-- Shelf 3: Kubernetes Control Plane -->
+              <div class="rack-shelf" data-tier="k8s-nodes">
+                <div class="shelf-info">
+                  <span class="shelf-unit">U14-U24</span>
+                  <span class="shelf-name">600+ K8s Multi-Cluster Fleet</span>
+                </div>
+                <div class="shelf-telemetry">
+                  <span class="shelf-led"></span>
+                  <span>99.999% SLA</span>
+                </div>
+              </div>
+
+              <!-- Shelf 4: Ceph Storage Pool -->
+              <div class="rack-shelf" data-tier="ceph-storage">
+                <div class="shelf-info">
+                  <span class="shelf-unit">U02-U10</span>
+                  <span class="shelf-name">Ceph NVMe All-Flash Storage Pool</span>
+                </div>
+                <div class="shelf-telemetry">
+                  <span class="shelf-led"></span>
+                  <span>NVMe-oF RDMA</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Dynamic Readout Display -->
+            <div class="rack-readout" id="rackReadout">
+              <div class="readout-header">
+                <span id="readoutUnit">U28-U36 · NVIDIA H100 SXM5 GPU COMPUTE RACK</span>
+                <span style="color:var(--accent-emerald);">● DCGM PROFILED</span>
+              </div>
+              <p id="readoutTitle" style="font-weight:700; color:var(--text-main); margin-bottom:4px;">
+                8x NVIDIA H100 SXM5 (80GB HBM3) & L40S Compute Nodes
+              </p>
+              <p id="readoutSpecs" style="color:var(--text-muted); font-size:0.76rem; margin-bottom:6px;">
+                Interconnect: NVLink 900 GB/s · PCIe Gen5 · vLLM & Triton Inference Engines · KV-Cache Paging
+              </p>
+              <p id="readoutImpact" style="color:var(--accent-cyan); font-size:0.78rem;">
+                Delivered 3.8x LLM serving throughput gain; caught and mitigated live 94% NVLink saturation incident via DCGM.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════ DATACENTER TELEMETRY HUD STRIP ══════════ -->
+      <section class="telemetry-hud-strip section-shell" aria-label="Datacenter Capacity & Operations HUD">
+        <div class="hud-card">
+          <span class="hud-metric">14<em>+</em></span>
+          <span class="hud-label">Years Bare-Metal & GPU</span>
+        </div>
+        <div class="hud-card">
+          <span class="hud-metric">600<em>+</em></span>
+          <span class="hud-label">K8s Fleet Clusters</span>
+        </div>
+        <div class="hud-card">
+          <span class="hud-metric">42k<em>+</em></span>
+          <span class="hud-label">Edge Datacenter Nodes</span>
+        </div>
+        <div class="hud-card">
+          <span class="hud-metric">3.8<em>x</em></span>
+          <span class="hud-label">LLM Serving Throughput</span>
+        </div>
+        <div class="hud-card">
+          <span class="hud-metric">5M<em>+</em></span>
+          <span class="hud-label">Telemetry Recs / Hr ($1.8M Saved)</span>
+        </div>
+        <div class="hud-card">
+          <span class="hud-metric">1<em> GRANTED</em></span>
+          <span class="hud-label">US Patent (+ 2 Pending)</span>
+        </div>
+      </section>
+
+      <!-- ══════════ FOUR INFRASTRUCTURE TIERS ══════════ -->
+      <section class="section-shell" id="tiers" style="margin-bottom: 64px;">
+        <div class="section-heading">
+          <div>
+            <p class="terminal-prompt" style="margin-bottom:8px;">// INFRASTRUCTURE TIERS</p>
+            <h2>Four pillars of mission-critical compute.</h2>
+          </div>
+          <p>End-to-end platform systems engineered across hardware bring-up, lossless fabric, and cloud control planes.</p>
         </div>
 
-        <!-- Main Content -->
-        <main class="main-content">
-            <!-- Career Profile -->
-            <section class="section" id="profile">
-                <h2 class="section-title">
-                    <i class="fas fa-user"></i>
-                    Career Profile
-                </h2>
-                <div class="career-profile">
-                    <p>Principal Platform Infrastructure & AI Systems Architect with <strong>14 years</strong> of foundational experience designing, provisioning, and operating planet-scale distributed compute platforms, high-density GPU supercomputers, and low-latency ML/LLM serving runtimes. Deep expertise across the full stack—from bare-metal hardware lifecycle (PXE, IPMI, BIOS, PCIe) to multi-node NVIDIA H100/L40S clusters (GPU Operator, Fabric Manager, DCGM, InfiniBand/RDMA) and enterprise Kubernetes fleets. Proven track record managing <strong>600+ Kubernetes/OpenStack clusters</strong> across 52 data centers and scaling edge platforms from 2-person prototypes to <strong>42,000+ nodes</strong>. Architect of enterprise GPU inference platforms boosting throughput by <strong>3.8x</strong>, and creator of distributed capacity analytics engines processing <strong>5M+ telemetry records/hour</strong> ($1.8M/yr savings). <strong>Granted US Patent Holder (US11336525B1)</strong> with 2 pending AI/GPU telemetry patents, and recipient of <strong>20+ Verizon Spotlight Awards</strong> for sustained technical leadership.</p>
-                </div>
-            </section>
-
-            <!-- Experience -->
-            <section class="section" id="experience">
-                <h2 class="section-title">
-                    <i class="fas fa-briefcase"></i>
-                    Professional Experience
-                </h2>
-                <div class="experience-timeline">
-
-                    <!-- Verizon -->
-                    <div class="experience-item">
-                        <div class="experience-content">
-                            <div class="experience-header">
-                                <div>
-                                    <div class="experience-title">Principal Engineer — AI & Cloud Infrastructure</div>
-                                    <div class="experience-company">Verizon, Hyderabad, India</div>
-                                </div>
-                                <div class="experience-time">June 2017 - Present</div>
-                            </div>
-                            <div class="experience-details">
-                                <p><strong>Lead Architect : Enterprise GPU Infrastructure & GenAI Inference Platform (2023 - Present)</strong><br>
-                                Architected centralized GPU compute infrastructure from bare metal to model serving; provisioned multi-node NVIDIA H100 and L40S clusters with NVIDIA GPU Operator, DCGM telemetry, and Fabric Manager across InfiniBand/RDMA fabric.</p>
-                                <ul>
-                                    <li><strong>High-Throughput Model Serving:</strong> Integrated low-latency LLM serving runtimes (<strong>vLLM, LiteLLM proxy, and Triton Inference Server</strong>) with custom KV-cache optimization and continuous batching, boosting inference throughput by <strong>3.8x</strong> while enforcing strict P99 latency SLOs.</li>
-                                    <li><strong>Fabric Engineering & Production Debugging:</strong> Engineered high-bandwidth InfiniBand/RDMA fabric; diagnosed and mitigated a live <strong>94% NVLink saturation bottleneck</strong> using real-time DCGM telemetry profiling.</li>
-                                    <li><strong>Platform Observability & Governance:</strong> Instituted comprehensive Prometheus/Grafana GPU monitoring tracking SM utilization, thermal throttling, and token generation latencies (99.99% uptime); governed scheduling policies for 40+ engineering teams.</li>
-                                </ul>
-
-                                <p style="margin-top: 1rem;"><strong>Staff Platform Engineer : Fleet Kubernetes & Capacity Analytics Engine (2021 - 2024)</strong><br>
-                                Governed infrastructure architecture and lifecycle operations for <strong>600+ Kubernetes and OpenStack clusters</strong> across 52 enterprise data centers.</p>
-                                <ul>
-                                    <li><strong>Capacity Analytics Engine ("CER"):</strong> Designed and built "CER", a distributed capacity analytics platform in Python processing <strong>5,000,000+ telemetry records/hour</strong> across 500+ clusters and 60,000+ pods, saving <strong>$1.8M annually</strong> in compute over-provisioning spend.</li>
-                                    <li><strong>Full Stack Lifecycle Automation:</strong> Automated server provisioning, IPMI power control, CNI overlay network tuning, and persistent distributed storage lifecycle using <strong>Ceph</strong> and NetApp Trident CSI plugins.</li>
-                                </ul>
-
-                                <p style="margin-top: 1rem;"><strong>Platform Lead : Atlas 5G Cloud Native Network Platform (2017 - 2021)</strong><br>
-                                Spearheaded the architectural design of Atlas, an enterprise cloud-native deployment, validation, and admission control engine.</p>
-                                <ul>
-                                    <li><strong>Planet-Scale Growth:</strong> Scaled the platform from an initial 2-person prototype to a distributed fleet operating across <strong>42,000+ edge locations</strong> handling <strong>10,000+ operations/hour</strong>.</li>
-                                    <li><strong>Granted US Patent US11336525B1:</strong> Awarded US patent for automated multi-stage pre-flight validation, container security profiling, and Kubernetes admission webhooks, displacing legacy commercial solutions.</li>
-                                    <li><strong>Zero-Downtime Rollouts:</strong> Engineered automated canary rollout strategies delivering <strong>99.999% platform availability</strong> across nationwide edge sites.</li>
-                                    <li><strong>Engineering Leadership:</strong> Scaled and mentored cross-functional engineering teams from 2 to 14 engineers, governing architectural RFC reviews and SRE operational practices.</li>
-                                </ul>
-                                <button class="show-more-btn">Show More</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Ericsson -->
-                    <div class="experience-item">
-                        <div class="experience-content">
-                            <div class="experience-header">
-                                <div>
-                                    <div class="experience-title">Senior Software Engineer</div>
-                                    <div class="experience-company">Ericsson R&D, Bangalore, India</div>
-                                </div>
-                                <div class="experience-time">May 2016 - June 2017</div>
-                            </div>
-                            <div class="experience-details">
-                                <p>Led OPNFV SDNVPN Project representing Ericsson in open-source working groups, focusing on Software Defined Networking and network virtualization orchestration.</p>
-                                <ul>
-                                    <li>Built modular Python microservices and automated CI/CD validation harnesses for Virtualized Network Function (VNF) lifecycle orchestration integrated with OpenStack and SDN controllers.</li>
-                                    <li>Developed custom OpenDaylight plugins enhancing network service chaining by 30%.</li>
-                                    <li>Independently built and maintained RedHat OpenStack bare-metal labs for R&D.</li>
-                                </ul>
-                                <button class="show-more-btn">Show More</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- HPE -->
-                    <div class="experience-item">
-                        <div class="experience-content">
-                            <div class="experience-header">
-                                <div>
-                                    <div class="experience-title">Software Engineer</div>
-                                    <div class="experience-company">Hewlett Packard Enterprise (HPE R&D), Bangalore, India</div>
-                                </div>
-                                <div class="experience-time">December 2014 - May 2016</div>
-                            </div>
-                            <div class="experience-details">
-                                <p>Automated server provisioning, BIOS/firmware injection, and configuration management for HPE ProLiant Gen8/Gen9 rack servers and Moonshot systems using Python, IPMI, and OpenStack Cinder/Ironic.</p>
-                                <ul>
-                                    <li>Developed single-click bare-metal server installation solutions, reducing provisioning time by 70%.</li>
-                                    <li>Selected for on-site US customer client deployment; led direct datacenter rack bring-up, SAN storage connectivity, and operational handoff for tier-1 enterprise clients.</li>
-                                    <li>Implemented OpenStack and OpenShift on bare metal using TripleO Architecture.</li>
-                                </ul>
-                                <button class="show-more-btn">Show More</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- HCL -->
-                    <div class="experience-item">
-                        <div class="experience-content">
-                            <div class="experience-header">
-                                <div>
-                                    <div class="experience-title">Software Engineer</div>
-                                    <div class="experience-company">HCL Technologies (Cisco Practice), Chennai, India</div>
-                                </div>
-                                <div class="experience-time">August 2012 - December 2014</div>
-                            </div>
-                            <div class="experience-details">
-                                <p>Authored automated regression test suites in Python for Cisco IOS and IOS-XE network operating systems; investigated and resolved escalated production defects in partnership with Cisco TAC.</p>
-                                <ul>
-                                    <li>Achieved CCNA and CCNA Security certifications within the first 18 months.</li>
-                                    <li>Designed and configured complex physical router/switch testbed topologies replicating customer multi-hop routing, VLAN trunking, and high-availability failovers.</li>
-                                </ul>
-                                <button class="show-more-btn">Show More</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Patents -->
-            <section class="section" id="patents">
-                <h2 class="section-title">
-                    <i class="fas fa-lightbulb"></i>
-                    Patents & Intellectual Property
-                </h2>
-
-                <div class="patent-item">
-                    <div class="patent-header">
-                        <div class="patent-title">Automated Containerized Network Function (CNF) Validation, Security Profiling, and Policy-Enforced Deployment System</div>
-                        <div class="patent-number">US 11,336,525 B1 (Granted)</div>
-                    </div>
-                    <div class="patent-details">
-                        <p><strong>Assignee:</strong> Verizon Patent and Licensing Inc.</p>
-                        <p><strong>Inventors:</strong> Venkata Guravareddy Butukuri, et al.</p>
-                        <p><strong>Description:</strong> An automated multi-stage pre-flight validation and admission control engine for containerized workloads, enforcing security profiling, resource isolation, and policy verification to eliminate deployment failures at edge scale.</p>
-                    </div>
-                    <a href="https://patents.google.com/patent/US11336525B1" target="_blank" class="patent-link">
-                        <i class="fas fa-external-link-alt"></i> View US Patent
-                    </a>
-                </div>
-
-                <div class="patent-item" style="margin-top: 1rem;">
-                    <div class="patent-header">
-                        <div class="patent-title">Distributed AI/GPU Telemetry Arbitration and Hardware Health Auto-Remediation</div>
-                        <div class="patent-number">Patent Pending (USPTO Under Review)</div>
-                    </div>
-                    <div class="patent-details">
-                        <p><strong>Assignee:</strong> Verizon Patent and Licensing Inc.</p>
-                        <p><strong>Description:</strong> Real-time GPU telemetry arbitration system leveraging DCGM metrics to dynamically detect thermal throttling, NVLink saturation, and PCIe bus anomalies, triggering proactive pod eviction and hardware quarantine.</p>
-                    </div>
-                </div>
-
-                <div class="patent-item" style="margin-top: 1rem;">
-                    <div class="patent-header">
-                        <div class="patent-title">Multi-Cluster Predictive Capacity Reservation and Dynamic Scheduling Engine</div>
-                        <div class="patent-number">Patent Pending (USPTO Under Review)</div>
-                    </div>
-                    <div class="patent-details">
-                        <p><strong>Assignee:</strong> Verizon Patent and Licensing Inc.</p>
-                        <p><strong>Description:</strong> Distributed machine learning capacity forecasting framework calculating real-time resource exhaustion frontiers across hundreds of Kubernetes clusters to automate predictive reservations.</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Projects -->
-            <section class="section" id="projects">
-                <h2 class="section-title">
-                    <i class="fas fa-project-diagram"></i>
-                    Key Projects & Platforms
-                </h2>
-
-                <div class="project-item">
-                    <div class="project-header">
-                        <div class="project-title">Centralized Enterprise GPU & GenAI Inference Platform</div>
-                        <div class="project-time">2023 - Present</div>
-                    </div>
-                    <div class="project-description">
-                        Designed and deployed Verizon's enterprise GPU inference compute platform from physical bare metal to model serving. Integrated <strong>vLLM, LiteLLM proxy, and Triton Inference Server</strong> across NVIDIA H100 and L40S clusters with InfiniBand/RDMA fabric, continuous batching, and KV-cache optimization, boosting inference throughput by <strong>3.8x</strong>.
-                    </div>
-                    <div class="project-technologies">
-                        <strong>Technologies:</strong> NVIDIA H100/L40S, vLLM, Triton, LiteLLM, InfiniBand, RDMA, DCGM, Kubernetes, Python
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <div class="project-header">
-                        <div class="project-title">"CER" Distributed Capacity Analytics & Real-Time Reservation Engine</div>
-                        <div class="project-time">2021 - 2024</div>
-                    </div>
-                    <div class="project-description">
-                        Architected and engineered "CER", a distributed capacity analytics platform processing <strong>5,000,000+ telemetry records/hour</strong> across 500+ clusters and 60,000+ pods, preempting cluster outages and saving <strong>$1.8M annually</strong> in compute spend.
-                    </div>
-                    <div class="project-technologies">
-                        <strong>Technologies:</strong> Python, Kubernetes API, Time-Series Analytics, Redis, Prometheus, OpenStack
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <div class="project-header">
-                        <div class="project-title">Atlas: Enterprise 5G Cloud-Native Deployment & Admission Platform</div>
-                        <div class="project-time">2017 - 2021</div>
-                    </div>
-                    <div class="project-description">
-                        Spearheaded the greenfield architecture of Atlas, scaling from a 2-person prototype to a distributed fleet across <strong>42,000+ edge locations</strong> handling 10,000+ ops/hr. Awarded US Patent <strong>US11336525B1</strong> and achieved 99.999% platform availability.
-                    </div>
-                    <div class="project-technologies">
-                        <strong>Technologies:</strong> Kubernetes, Admission Webhooks, Custom Controllers, Python, Go, Helm, ArgoCD
-                    </div>
-                </div>
-            </section>
-
-            <!-- Skills -->
-            <section class="section" id="skills">
-                <h2 class="section-title">
-                    <i class="fas fa-tools"></i>
-                    Skills & Proficiency
-                </h2>
-
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <h4><i class="fas fa-microchip"></i> AI, GPU & Inference Runtimes</h4>
-                        <div class="skill-item"
-                            data-skill-details="<p>Architected multi-node NVIDIA H100, L40S, and DGX/HGX clusters with InfiniBand/RDMA fabric, GPU Operator, Fabric Manager, and DCGM telemetry. Resolved live 94% NVLink saturation incidents.</p>">
-                            <div class="skill-header">
-                                <span class="skill-name">GPU Platforms (NVIDIA H100/L40S/DGX)</span>
-                                <span class="skill-level-text">Expert</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress expert"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item"
-                            data-skill-details="<p>Integrated and optimized low-latency model serving engines using vLLM, LiteLLM proxy, and Triton Inference Server with KV-cache optimization and continuous batching, boosting throughput by 3.8x.</p>">
-                            <div class="skill-header">
-                                <span class="skill-name">LLM Serving (vLLM, Triton, LiteLLM)</span>
-                                <span class="skill-level-text">Expert</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress expert"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item"
-                            data-skill-details="<p>Built end-to-end MLOps pipelines with HuggingFace, PyTorch, Ray, and MLflow, integrating GPU telemetry with automated scheduling and dynamic slicing.</p>">
-                            <div class="skill-header">
-                                <span class="skill-name">MLOps & Model Lifecycle</span>
-                                <span class="skill-level-text">Advanced</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress advanced"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="skill-category">
-                        <h4><i class="fas fa-server"></i> Kubernetes & Distributed Systems</h4>
-                        <div class="skill-item"
-                            data-skill-details="<p>Governed lifecycle architecture for 600+ Kubernetes clusters across 52 data centers. Expert in core scheduling, custom CRDs, admission webhooks, CNI (Calico/Cilium), and CSI (Ceph, NetApp Trident).</p>">
-                            <div class="skill-header">
-                                <span class="skill-name">Kubernetes Fleet & Control Planes</span>
-                                <span class="skill-level-text">Expert</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress expert"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item"
-                            data-skill-details="<p>Full-stack bare metal hardware lifecycle from PXE, IPMI/Redfish, BIOS/kernel tuning to high-density compute rack bring-up and OpenStack/OpenShift provisioning.</p>">
-                            <div class="skill-header">
-                                <span class="skill-name">Bare Metal & Hardware Lifecycle</span>
-                                <span class="skill-level-text">Expert</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress expert"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item"
-                            data-skill-details="<p>Production distributed storage lifecycle using Ceph (Block, Object, CephFS), MinIO, and NetApp Trident for high-availability enterprise workloads.</p>">
-                            <div class="skill-header">
-                                <span class="skill-name">Distributed Storage (Ceph, MinIO)</span>
-                                <span class="skill-level-text">Expert</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress expert"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="skill-category">
-                        <h4><i class="fas fa-code"></i> Automation, IaC & Networking</h4>
-                        <div class="skill-item"
-                            data-skill-details="<p>Production development of custom operators, schedulers, and telemetry engines in Python and Go. Declarative infrastructure using Terraform, Ansible, ArgoCD, and Helm.</p>">
-                            <div class="skill-header">
-                                <span class="skill-name">Python, Go, Terraform & GitOps</span>
-                                <span class="skill-level-text">Expert</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress expert"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item"
-                            data-skill-details="<p>Deep networking stack: BGP routing, SR-IOV, DPDK, CNI overlays (Calico/Cilium), Linux kernel network namespaces, Envoy, and cross-cluster ingress/egress.</p>">
-                            <div class="skill-header">
-                                <span class="skill-name">BGP, High-Speed Fabric & Linux Networking</span>
-                                <span class="skill-level-text">Expert</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress expert"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item"
-                            data-skill-details="<p>Prometheus, Grafana, DCGM Exporter, OpenTelemetry, ELK stack, SLO/SLI architecture, P99 latency optimization, and Incident Commander for Sev-0/1 events.</p>">
-                            <div class="skill-header">
-                                <span class="skill-name">Observability & SRE (Prometheus, DCGM)</span>
-                                <span class="skill-level-text">Expert</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress expert"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Education -->
-            <section class="section" id="education">
-                <h2 class="section-title">
-                    <i class="fas fa-graduation-cap"></i>
-                    Education
-                </h2>
-
-                <div class="education-item">
-                    <div class="education-info">
-                        <h4>Bachelor of Technology (B.Tech) in Computer Science & Engineering</h4>
-                        <p><strong>Andhra University (2008 - 2012)</strong></p>
-                        <p>Graduated as Department Valedictorian & Academic Gold Medalist with Highest Academic Distinction.</p>
-                    </div>
-                    <div class="education-time">2008 - 2012</div>
-                </div>
-            </section>
-
-            <!-- Certifications -->
-            <section class="section" id="certifications">
-                <h2 class="section-title">
-                    <i class="fas fa-certificate"></i>
-                    Certifications & Honors
-                </h2>
-
-                <div class="certification-item">
-                    <div class="certification-info">
-                        <h4>20+ Verizon Spotlight & Engineering Excellence Awards</h4>
-                        <p>Recognized across 8+ years for technical leadership, GPU platform delivery, and Sev-0 incident resolution.</p>
-                    </div>
-                    <div class="certification-time">2017 - Present</div>
-                </div>
-
-                <div class="certification-item">
-                    <div class="certification-info">
-                        <h4>Red Hat Certified Specialist in OpenShift Administration</h4>
-                        <p>Red Hat</p>
-                    </div>
-                    <div class="certification-time">Certified</div>
-                </div>
-
-                <div class="certification-item">
-                    <div class="certification-info">
-                        <h4>CCNA & CCNA Security (Cisco Certified Network Associate)</h4>
-                        <p>Cisco Systems</p>
-                    </div>
-                    <div class="certification-time">Certified</div>
-                </div>
-            </section>
-
-            <!-- Interests -->
-            <section class="section" id="interests">
-                <h2 class="section-title">
-                    <i class="fas fa-heart"></i>
-                    Interests & Passions
-                </h2>
-                <div class="interests">
-                    <div class="interest-item"><i class="fas fa-microchip"></i> AI & GPU Architecture</div>
-                    <div class="interest-item"><i class="fas fa-network-wired"></i> Distributed Systems</div>
-                    <div class="interest-item"><i class="fas fa-bolt"></i> Low-Latency Serving</div>
-                    <div class="interest-item"><i class="fas fa-code-branch"></i> Open Source & Cloud Native</div>
-                </div>
-            </section>
-        </main>
-
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="footer-content">
-
-
-                <div class="footer-section">
-                    <h3>Core Expertise</h3>
-                    <div class="footer-expertise">
-                        <div class="expertise-tag">GPU & AI Infrastructure</div>
-                        <div class="expertise-tag">Kubernetes Fleet & Control Planes</div>
-                        <div class="expertise-tag">LLM Inference Serving & Runtimes</div>
-                        <div class="expertise-tag">Distributed Systems & SRE</div>
-                    </div>
-                </div>
-
-                <div class="footer-section">
-                    <h3>Connect & Follow</h3>
-                    <div class="footer-social">
-                        <a href="https://linkedin.com/in/bvguravareddy" target="_blank" rel="noopener noreferrer"
-                            aria-label="LinkedIn">
-                            <i class="fab fa-linkedin" aria-hidden="true"></i>
-                            <span>LinkedIn</span>
-                        </a>
-                        <a href="https://github.com/bsrgsit" target="_blank" rel="noopener noreferrer"
-                            aria-label="GitHub">
-                            <i class="fab fa-github" aria-hidden="true"></i>
-                            <span>GitHub</span>
-                        </a>
-                    </div>
-                </div>
+        <div class="tier-grid">
+          <article class="tier-card">
+            <div class="tier-header">
+              <span class="chassis-tag">TIER-01 :: GPU SILICON</span>
+              <span style="color:var(--accent-cyan); font-family:var(--font-mono); font-size:0.8rem;">900 GB/s</span>
             </div>
+            <h3>GPU Supercomputing & Silicon</h3>
+            <p>
+              Provisioning multi-node NVIDIA H100 SXM5, L40S, and DGX/HGX clusters from bare-metal firmware/IPMI to NVIDIA GPU Operator, Fabric Manager, and InfiniBand/RDMA fabric.
+            </p>
+          </article>
 
-            <div class="footer-bottom">
+          <article class="tier-card">
+            <div class="tier-header">
+              <span class="chassis-tag">TIER-02 :: RUNTIME</span>
+              <span style="color:var(--accent-emerald); font-family:var(--font-mono); font-size:0.8rem;">3.8x SPEEDUP</span>
+            </div>
+            <h3>Low-Latency Inference Engines</h3>
+            <p>
+              Integrating vLLM, LiteLLM proxy, and Triton Inference Server with custom KV-cache optimization, continuous batching, and dynamic GPU slicing for high-throughput LLM workloads.
+            </p>
+          </article>
 
-                <p>&copy; 2026 Venkata Guravareddy. All rights reserved.</p>
+          <article class="tier-card">
+            <div class="tier-header">
+              <span class="chassis-tag">TIER-03 :: K8S FLEET</span>
+              <span style="color:var(--accent-cyan); font-family:var(--font-mono); font-size:0.8rem;">600+ CLUSTERS</span>
             </div>
-        </footer>
-    </div>
+            <h3>Planet-Scale Kubernetes Fleet</h3>
+            <p>
+              Architecting multi-cluster Kubernetes and OpenStack infrastructure across 52 enterprise data centers; custom CRDs, admission controllers, Ceph storage, and Calico/Cilium CNI.
+            </p>
+          </article>
 
-    <!-- Skill Modal HTML -->
-    <div class="modal-overlay" id="skill-modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title" id="skill-modal-title">Skill Details</h3>
-                <button class="modal-close" id="skill-modal-close" aria-label="Close modal">&times;</button>
+          <article class="tier-card">
+            <div class="tier-header">
+              <span class="chassis-tag">TIER-04 :: TELEMETRY</span>
+              <span style="color:var(--accent-emerald); font-family:var(--font-mono); font-size:0.8rem;">$1.8M / YR SAVED</span>
             </div>
-            <div class="modal-body" id="skill-modal-body">
-                <!-- Details will be injected here by JavaScript -->
-            </div>
+            <h3>Capacity Engines & Lossless SRE</h3>
+            <p>
+              Built the "CER" distributed telemetry engine processing 5,000,000+ records/hr in Python; live DCGM telemetry profiling resolving 94% NVLink saturation with 99.999% uptime.
+            </p>
+          </article>
         </div>
-    </div>
+      </section>
 
+      <!-- ══════════ SERVER BLADE WORK SHOWCASE ══════════ -->
+      <section class="section-shell" id="blades" style="margin-bottom: 64px;">
+        <div class="section-heading">
+          <div>
+            <p class="terminal-prompt" style="margin-bottom:8px;">// PRODUCTION PLATFORMS</p>
+            <h2>Deployed server chassis & systems.</h2>
+          </div>
+          <p>Filter by platform subsystem. Each blade represents verified production infrastructure.</p>
+        </div>
 
-    <!-- JavaScript for Interactivity -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // --- Show More/Less for Experience ---
-            const showMoreButtons = document.querySelectorAll('.show-more-btn');
-            showMoreButtons.forEach(button => {
-                const list = button.previousElementSibling;
-                if (list && list.tagName === 'UL') {
-                    // Hide button if list is short
-                    if (list.scrollHeight <= 120) {
-                        button.style.display = 'none';
-                    } else {
-                        button.addEventListener('click', () => {
-                            list.classList.toggle('expanded');
-                            button.textContent = list.classList.contains('expanded') ? 'Show Less' : 'Show More';
-                        });
-                    }
-                }
-            });
+        <div class="filter-bar">
+          <div class="filter-group" role="tablist" aria-label="Filter server chassis">
+            <button class="btn btn-compact is-active" data-filter="all">All Chassis</button>
+            <button class="btn btn-compact" data-filter="gpu">GPU & Inference</button>
+            <button class="btn btn-compact" data-filter="k8s">Kubernetes Fleet</button>
+            <button class="btn btn-compact" data-filter="capacity">Capacity & Telemetry</button>
+            <button class="btn btn-compact" data-filter="edge">Edge & Telecom</button>
+          </div>
+          <span class="filter-count" id="filterCount">Showing all 6 server chassis platforms.</span>
+        </div>
 
-            // --- Skill Modal Logic ---
-            const skillItems = document.querySelectorAll('.skill-item');
-            const modal = document.getElementById('skill-modal');
-            const modalTitle = document.getElementById('skill-modal-title');
-            const modalBody = document.getElementById('skill-modal-body');
-            const closeModalBtn = document.getElementById('skill-modal-close');
-            const focusableSelectors = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), [tabindex]:not([tabindex="-1"])';
-            let lastFocusedElement = null;
+        <div class="blade-grid">
+          <!-- Blade 1: GPU Platform -->
+          <article class="server-blade-card" data-category="gpu">
+            <div class="blade-chassis-top">
+              <div class="blade-nameplate">
+                <span style="color:var(--accent-cyan);">[4U]</span> VZ-GPU-H100-NODE
+              </div>
+              <div class="blade-led-cluster">
+                <span class="led-indicator led-green" title="Power OK"></span>
+                <span class="led-indicator led-cyan" title="InfiniBand Active"></span>
+                <span class="led-indicator led-green" title="DCGM Telemetry OK"></span>
+              </div>
+            </div>
+            <div class="blade-body">
+              <h3>Enterprise GPU & GenAI Inference Platform</h3>
+              <p>
+                Architected centralized GPU compute infrastructure from physical bare metal to model serving. Deployed multi-node NVIDIA H100 SXM5 and L40S clusters with <strong>vLLM, LiteLLM proxy, and Triton Inference Server</strong>. Engineered custom KV-cache optimization, continuous batching, and dynamic GPU slicing, delivering <strong>3.8x throughput gain</strong>.
+              </p>
+              <div class="tech-chip-list">
+                <span class="tech-chip">NVIDIA H100 SXM5</span>
+                <span class="tech-chip">vLLM</span>
+                <span class="tech-chip">Triton</span>
+                <span class="tech-chip">InfiniBand NDR</span>
+                <span class="tech-chip">DCGM</span>
+                <span class="tech-chip">KV-Cache</span>
+              </div>
+            </div>
+            <div class="blade-footer">
+              <span>Model Serving Platform</span>
+              <a href="#patents" class="footer-link">Telemetry Patent Pending ↗</a>
+            </div>
+          </article>
 
-            skillItems.forEach(item => {
-                item.addEventListener('click', () => {
-                    const skillName = item.querySelector('.skill-name').textContent;
-                    const skillDetails = item.dataset.skillDetails;
+          <!-- Blade 2: CER Engine -->
+          <article class="server-blade-card" data-category="capacity k8s">
+            <div class="blade-chassis-top">
+              <div class="blade-nameplate">
+                <span style="color:var(--accent-emerald);">[2U]</span> CER-CAPACITY-ENGINE
+              </div>
+              <div class="blade-led-cluster">
+                <span class="led-indicator led-green" title="Analytics Running"></span>
+                <span class="led-indicator led-green" title="Redis Sync"></span>
+              </div>
+            </div>
+            <div class="blade-body">
+              <h3>"CER" Distributed Capacity Analytics Engine</h3>
+              <p>
+                Designed and built "CER", a distributed capacity analytics and real-time reservation platform in Python. Processes <strong>5,000,000+ telemetry records/hour</strong> across 500+ Kubernetes clusters and 60,000+ pods, predicting resource exhaustion frontiers to eliminate compute over-provisioning spend by <strong>$1.8M annually</strong>.
+              </p>
+              <div class="tech-chip-list">
+                <span class="tech-chip">Python</span>
+                <span class="tech-chip">Kubernetes API</span>
+                <span class="tech-chip">Time-Series</span>
+                <span class="tech-chip">Redis</span>
+                <span class="tech-chip">Prometheus</span>
+              </div>
+            </div>
+            <div class="blade-footer">
+              <span>Capacity Analytics & SRE</span>
+              <a href="#patents" class="footer-link">Scheduling Patent Pending ↗</a>
+            </div>
+          </article>
 
-                    modalTitle.textContent = skillName;
-                    modalBody.innerHTML = skillDetails || '<p>No additional details available.</p>';
-                    modal.classList.add('active');
-                    lastFocusedElement = document.activeElement;
-                    const focusable = modal.querySelectorAll(focusableSelectors);
-                    if (focusable.length) { focusable[0].focus(); }
-                });
-            });
+          <!-- Blade 3: Atlas 5G -->
+          <article class="server-blade-card" data-category="edge k8s">
+            <div class="blade-chassis-top">
+              <div class="blade-nameplate">
+                <span style="color:var(--accent-cyan);">[1U]</span> ATLAS-EDGE-CNF-RACK
+              </div>
+              <div class="blade-led-cluster">
+                <span class="led-indicator led-green" title="42k Nodes Online"></span>
+                <span class="led-indicator led-cyan" title="Admission Webhook Active"></span>
+              </div>
+            </div>
+            <div class="blade-body">
+              <h3>Atlas: Cloud-Native Deployment & Validation Platform</h3>
+              <p>
+                Spearheaded the architectural design of Atlas, scaling from a 2-person prototype to a distributed fleet operating across <strong>42,000+ edge locations</strong> handling 10,000+ operations/hour. Awarded US Patent <strong>US11336525B1</strong> for automated multi-stage pre-flight validation, container security profiling, and Kubernetes admission webhooks.
+              </p>
+              <div class="tech-chip-list">
+                <span class="tech-chip">Kubernetes</span>
+                <span class="tech-chip">Admission Webhooks</span>
+                <span class="tech-chip">Python / Go</span>
+                <span class="tech-chip">ArgoCD</span>
+                <span class="tech-chip">GitOps</span>
+              </div>
+            </div>
+            <div class="blade-footer">
+              <span>Cloud-Native Control Plane</span>
+              <a href="https://patents.google.com/patent/US11336525B1" target="_blank" rel="noopener" class="footer-link">Granted Patent US11336525B1 ↗</a>
+            </div>
+          </article>
 
-            function closeModal() {
-                modal.classList.remove('active');
-                if (lastFocusedElement) { lastFocusedElement.focus(); }
-            }
+          <!-- Blade 4: Fleet Kubernetes -->
+          <article class="server-blade-card" data-category="k8s">
+            <div class="blade-chassis-top">
+              <div class="blade-nameplate">
+                <span style="color:var(--accent-cyan);">[8U]</span> FLEET-K8S-CLUSTER-GRID
+              </div>
+              <div class="blade-led-cluster">
+                <span class="led-indicator led-green" title="600 Clusters Sync"></span>
+                <span class="led-indicator led-green" title="Ceph Active"></span>
+              </div>
+            </div>
+            <div class="blade-body">
+              <h3>Fleet Kubernetes & Multi-Cluster Control Plane</h3>
+              <p>
+                Governed infrastructure architecture and lifecycle operations for <strong>600+ Kubernetes and OpenStack clusters</strong> across 52 enterprise data centers. Automated bare-metal server bring-up (PXE, IPMI), Linux kernel tuning, CNI overlays (Calico/Cilium), and persistent distributed storage lifecycle using <strong>Ceph</strong> and NetApp Trident CSI.
+              </p>
+              <div class="tech-chip-list">
+                <span class="tech-chip">Kubernetes Core</span>
+                <span class="tech-chip">OpenShift</span>
+                <span class="tech-chip">Ceph NVMe</span>
+                <span class="tech-chip">Calico / Cilium</span>
+                <span class="tech-chip">Terraform</span>
+              </div>
+            </div>
+            <div class="blade-footer">
+              <span>Distributed Orchestration</span>
+              <span class="footer-link" style="color:var(--accent-emerald);">99.999% Availability</span>
+            </div>
+          </article>
 
-            closeModalBtn.addEventListener('click', closeModal);
-            modal.addEventListener('click', (event) => {
-                if (event.target === modal) {
-                    closeModal();
-                }
-            });
+          <!-- Blade 5: DCGM NVLink -->
+          <article class="server-blade-card" data-category="gpu capacity">
+            <div class="blade-chassis-top">
+              <div class="blade-nameplate">
+                <span style="color:var(--accent-emerald);">[2U]</span> DCGM-TELEMETRY-PROFILER
+              </div>
+              <div class="blade-led-cluster">
+                <span class="led-indicator led-green" title="NVLink Monitored"></span>
+                <span class="led-indicator led-cyan" title="PCIe Gen5 Active"></span>
+              </div>
+            </div>
+            <div class="blade-body">
+              <h3>Real-Time Hardware Telemetry & NVLink Profiling</h3>
+              <p>
+                Engineered real-time GPU telemetry systems tracking SM utilization, thermal throttling, and PCIe bus anomalies. Caught and mitigated a live <strong>94% NVLink saturation bottleneck</strong> in production using real-time DCGM telemetry profiling, preserving P99 token latency across enterprise LLM applications.
+              </p>
+              <div class="tech-chip-list">
+                <span class="tech-chip">NVIDIA DCGM</span>
+                <span class="tech-chip">NVLink 900 GB/s</span>
+                <span class="tech-chip">PCIe Gen5</span>
+                <span class="tech-chip">Fabric Manager</span>
+                <span class="tech-chip">Prometheus</span>
+              </div>
+            </div>
+            <div class="blade-footer">
+              <span>Hardware Telemetry & Fabric</span>
+              <span class="footer-link" style="color:var(--accent-cyan);">Zero Packet Drop</span>
+            </div>
+          </article>
 
-            // Trap focus within modal
-            modal.addEventListener('keydown', (e) => {
-                if (!modal.classList.contains('active')) return;
-                if (e.key === 'Escape') { e.preventDefault(); closeModal(); return; }
-                if (e.key !== 'Tab') return;
-                const focusable = Array.from(modal.querySelectorAll(focusableSelectors));
-                if (!focusable.length) return;
-                const first = focusable[0];
-                const last = focusable[focusable.length - 1];
-                if (e.shiftKey && document.activeElement === first) {
-                    e.preventDefault();
-                    last.focus();
-                } else if (!e.shiftKey && document.activeElement === last) {
-                    e.preventDefault();
-                    first.focus();
-                }
-            });
+          <!-- Blade 6: Bare Metal Provisioning -->
+          <article class="server-blade-card" data-category="edge">
+            <div class="blade-chassis-top">
+              <div class="blade-nameplate">
+                <span style="color:var(--accent-cyan);">[1U]</span> BARE-METAL-PROVISIONER
+              </div>
+              <div class="blade-led-cluster">
+                <span class="led-indicator led-green" title="PXE / IPMI Ready"></span>
+                <span class="led-indicator led-green" title="BIOS Injected"></span>
+              </div>
+            </div>
+            <div class="blade-body">
+              <h3>Bare Metal Automation & Global Deployment</h3>
+              <p>
+                Developed single-click bare-metal server installation solutions for HPE ProLiant Gen8/Gen9 rack servers and Moonshot systems. Led on-site international US customer datacenter bring-up for tier-1 telecom clients, and authored automated regression suites and SDN plugins for Cisco and Ericsson R&D.
+              </p>
+              <div class="tech-chip-list">
+                <span class="tech-chip">Bare Metal</span>
+                <span class="tech-chip">IPMI / Redfish</span>
+                <span class="tech-chip">TripleO</span>
+                <span class="tech-chip">OpenDaylight</span>
+                <span class="tech-chip">BGP / Cisco IOS</span>
+              </div>
+            </div>
+            <div class="blade-footer">
+              <span>Bare Metal Systems</span>
+              <span class="footer-link">Carrier-Grade SRE</span>
+            </div>
+          </article>
+        </div>
+      </section>
 
-            // --- Dark Mode Logic ---
-            const toggle = document.getElementById('darkModeToggle');
-            const toggleIcon = toggle.querySelector('i');
-            const stickyToggle = document.getElementById('stickyDarkToggle');
-            const stickyToggleIcon = stickyToggle?.querySelector('i');
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      <!-- ══════════ PATENTS & INTELLECTUAL PROPERTY ══════════ -->
+      <section class="section-shell patents-section" id="patents">
+        <div class="section-heading">
+          <div>
+            <p class="terminal-prompt" style="margin-bottom:8px;">// INTELLECTUAL PROPERTY</p>
+            <h2>Patented systems & hardware inventions.</h2>
+          </div>
+          <p>Proprietary architectures solving container validation, GPU telemetry, and multi-cluster capacity.</p>
+        </div>
 
-            function updateToggleIcon() {
-                const isDark = document.body.classList.contains('dark');
-                toggleIcon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
-                toggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
-                if (stickyToggleIcon) {
-                    stickyToggleIcon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
-                    stickyToggle?.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
-                }
-            }
+        <div class="patent-blade">
+          <div class="patent-badge-icon">📜</div>
+          <div class="patent-details">
+            <h3>Automated Containerized Network Function (CNF) Validation, Security Profiling, and Policy-Enforced Deployment System</h3>
+            <p class="patent-meta">US Patent US 11,336,525 B1 · Granted · Assignee: Verizon Patent and Licensing Inc.</p>
+            <p class="patent-desc">
+              A multi-stage validation and admission control engine executing package, connectivity, container security profiling, and infrastructure verification before deployment, eliminating deployment crashes across 42,000+ edge datacenter nodes.
+            </p>
+          </div>
+          <a href="https://patents.google.com/patent/US11336525B1" target="_blank" rel="noopener" class="btn btn-secondary btn-compact">
+            View US Patent ↗
+          </a>
+        </div>
 
-            // Set initial theme based on localStorage or system preference
-            if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && prefersDark)) {
-                document.body.classList.add('dark');
-            }
+        <div class="patent-blade">
+          <div class="patent-badge-icon">⚡</div>
+          <div class="patent-details">
+            <h3>Distributed AI/GPU Telemetry Arbitration and Hardware Health Auto-Remediation</h3>
+            <p class="patent-meta">USPTO Patent Pending (Under Review) · Assignee: Verizon Patent and Licensing Inc.</p>
+            <p class="patent-desc">
+              Real-time hardware arbitration system leveraging DCGM telemetry streams to dynamically detect thermal throttling, NVLink saturation, and PCIe bus anomalies, triggering proactive pod eviction and hardware quarantine.
+            </p>
+          </div>
+          <span class="datacenter-badge" style="background:rgba(16,185,129,0.15); color:var(--accent-emerald); border-color:var(--accent-emerald);">Under Review</span>
+        </div>
 
-            updateToggleIcon();
+        <div class="patent-blade">
+          <div class="patent-badge-icon">📊</div>
+          <div class="patent-details">
+            <h3>Multi-Cluster Predictive Capacity Reservation and Dynamic Scheduling Engine</h3>
+            <p class="patent-meta">USPTO Patent Pending (Under Review) · Assignee: Verizon Patent and Licensing Inc.</p>
+            <p class="patent-desc">
+              Distributed capacity forecasting framework calculating real-time resource exhaustion frontiers across hundreds of Kubernetes clusters to automate predictive reservations and prevent cluster exhaustion.
+            </p>
+          </div>
+          <span class="datacenter-badge" style="background:rgba(16,185,129,0.15); color:var(--accent-emerald); border-color:var(--accent-emerald);">Under Review</span>
+        </div>
+      </section>
 
-            toggle.addEventListener('click', function () {
-                document.body.classList.toggle('dark');
-                localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
-                updateToggleIcon();
-            });
+      <!-- ══════════ HARDWARE & PLATFORM SPECIFICATIONS ══════════ -->
+      <section class="section-shell" id="specs" style="margin-bottom: 64px;">
+        <div class="section-heading">
+          <div>
+            <p class="terminal-prompt" style="margin-bottom:8px;">// HARDWARE & PLATFORM STACK</p>
+            <h2>Hardware specifications & silicon stack.</h2>
+          </div>
+          <p>Production hardware, interconnects, storage systems, and control planes operated at scale.</p>
+        </div>
 
-            if (stickyToggle) {
-                stickyToggle.addEventListener('click', function () {
-                    document.body.classList.toggle('dark');
-                    localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
-                    updateToggleIcon();
-                });
-            }
+        <div class="tier-grid">
+          <article class="tier-card">
+            <span class="chassis-tag">HARDWARE & GPU ACCELERATORS</span>
+            <div class="tech-chip-list" style="margin-top:8px;">
+              <span class="tech-chip">NVIDIA H100 SXM5 (80GB HBM3)</span>
+              <span class="tech-chip">NVIDIA L40S / A100</span>
+              <span class="tech-chip">DGX / HGX Platforms</span>
+              <span class="tech-chip">NVIDIA GPU Operator</span>
+              <span class="tech-chip">Fabric Manager</span>
+              <span class="tech-chip">DCGM Telemetry</span>
+              <span class="tech-chip">CUDA & NVLink 900 GB/s</span>
+            </div>
+          </article>
 
-            // --- Sticky bar show/hide on scroll ---
-            const stickyBar = document.getElementById('stickyBar');
-            let lastScrollY = window.scrollY;
-            const headerHeight = document.querySelector('.header')?.offsetHeight || 200;
-            const floatingToggle = document.getElementById('darkModeToggle');
+          <article class="tier-card">
+            <span class="chassis-tag">INFERENCE ENGINES & RUNTIMES</span>
+            <div class="tech-chip-list" style="margin-top:8px;">
+              <span class="tech-chip">vLLM Serving Engine</span>
+              <span class="tech-chip">LiteLLM Proxy</span>
+              <span class="tech-chip">Triton Inference Server</span>
+              <span class="tech-chip">KV-Cache Paging</span>
+              <span class="tech-chip">Continuous Batching</span>
+              <span class="tech-chip">MIG / GPU Slicing</span>
+              <span class="tech-chip">PyTorch / Ray Cluster</span>
+            </div>
+          </article>
 
-            function updateStickyVisibility() {
-                const showSticky = window.scrollY > headerHeight - 80;
-                if (showSticky) {
-                    stickyBar.classList.add('visible');
-                    if (floatingToggle) floatingToggle.style.display = 'none';
-                } else {
-                    stickyBar.classList.remove('visible');
-                    if (floatingToggle) floatingToggle.style.display = 'flex';
-                }
-            }
-            updateStickyVisibility();
-            window.addEventListener('scroll', updateStickyVisibility, { passive: true });
+          <article class="tier-card">
+            <span class="chassis-tag">KUBERNETES & CLOUD CONTROL</span>
+            <div class="tech-chip-list" style="margin-top:8px;">
+              <span class="tech-chip">Kubernetes Core & CRDs</span>
+              <span class="tech-chip">Admission Webhooks</span>
+              <span class="tech-chip">Red Hat OpenShift</span>
+              <span class="tech-chip">OpenStack (Ironic, Cinder)</span>
+              <span class="tech-chip">Bare Metal (PXE, IPMI)</span>
+              <span class="tech-chip">Linux Kernel Tuning</span>
+              <span class="tech-chip">Terraform & ArgoCD GitOps</span>
+            </div>
+          </article>
 
-            // --- Section Nav Active State ---
-            const sections = document.querySelectorAll('main .section[id]');
-            const navLinks = document.querySelectorAll('.sticky-nav-list a');
-            const linkMap = new Map(Array.from(navLinks).map(a => [a.getAttribute('href').slice(1), a]));
+          <article class="tier-card">
+            <span class="chassis-tag">STORAGE, NETWORK & SRE</span>
+            <div class="tech-chip-list" style="margin-top:8px;">
+              <span class="tech-chip">Ceph All-Flash NVMe</span>
+              <span class="tech-chip">NetApp Trident CSI</span>
+              <span class="tech-chip">400G InfiniBand NDR</span>
+              <span class="tech-chip">RoCEv2 / RDMA</span>
+              <span class="tech-chip">Calico / Cilium CNI</span>
+              <span class="tech-chip">BGP Spine/Leaf</span>
+              <span class="tech-chip">Prometheus / Grafana / DCGM</span>
+            </div>
+          </article>
+        </div>
+      </section>
 
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    const id = entry.target.getAttribute('id');
-                    const link = linkMap.get(id);
-                    if (!link) return;
-                    if (entry.isIntersecting) {
-                        navLinks.forEach(l => l.classList.remove('active'));
-                        link.classList.add('active');
-                    }
-                });
-            }, { rootMargin: '-40% 0px -40% 0px', threshold: 0.1 });
+      <!-- ══════════ TIMELINE: 14 YEARS SYSTEMS EVOLUTION ══════════ -->
+      <section class="section-shell timeline-section" id="timeline">
+        <div class="section-heading">
+          <div>
+            <p class="terminal-prompt" style="margin-bottom:8px;">// CAREER TRAJECTORY</p>
+            <h2>14 Years of infrastructure evolution.</h2>
+          </div>
+          <p>From bare-metal server bring-up and networking labs to enterprise GPU supercomputing leadership.</p>
+        </div>
 
-            sections.forEach(sec => observer.observe(sec));
+        <ol class="infra-timeline">
+          <li class="timeline-node">
+            <div class="timeline-era">2017 — PRESENT · HYDERABAD, INDIA</div>
+            <h3>Principal Engineer — AI & Cloud Infrastructure</h3>
+            <h4>Verizon Wireless</h4>
+            <p>
+              Lead architect for centralized GPU inference platforms (H100/L40S, vLLM, Triton, 3.8x speedup) and fleet infrastructure for 600+ Kubernetes clusters across 52 data centers. Architected the "CER" capacity engine ($1.8M/yr savings) and Atlas 5G platform across 42,000+ edge nodes. Granted US Patent <strong>US11336525B1</strong> and recipient of <strong>20+ Verizon Spotlight Awards</strong>.
+            </p>
+          </li>
 
-            // Smooth scroll offset for sticky nav
-            navLinks.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    const targetId = link.getAttribute('href');
-                    if (!targetId.startsWith('#')) return;
-                    const el = document.querySelector(targetId);
-                    if (!el) return;
-                    e.preventDefault();
-                    const barHeight = stickyBar.offsetHeight || 0;
-                    const y = el.getBoundingClientRect().top + window.scrollY - (barHeight + 10);
-                    window.scrollTo({ top: y, behavior: 'smooth' });
-                });
-            });
+          <li class="timeline-node">
+            <div class="timeline-era">2016 — 2017 · BANGALORE, INDIA</div>
+            <h3>Senior Software Engineer</h3>
+            <h4>Ericsson R&D</h4>
+            <p>
+              Represented Ericsson in open-source OPNFV SDNVPN projects; built modular Python microservices and automated CI/CD validation harnesses for Virtualized Network Function (VNF) lifecycle orchestration integrated with OpenStack and SDN controllers.
+            </p>
+          </li>
 
-            // --- ATS Mode via URL param (?ats=1) ---
-            const params = new URLSearchParams(window.location.search);
-            if (params.get('ats') === '1' || params.get('ats') === 'true') {
-                document.body.classList.add('ats');
-            }
+          <li class="timeline-node">
+            <div class="timeline-era">2014 — 2016 · BANGALORE, INDIA</div>
+            <h3>Software Engineer</h3>
+            <h4>Hewlett Packard Enterprise (HPE R&D)</h4>
+            <p>
+              Automated server provisioning, BIOS/firmware injection, and configuration management for HPE ProLiant Gen8/Gen9 rack servers and Moonshot systems using Python, IPMI, and OpenStack TripleO. Deployed bare-metal NFV solutions on-site in the US for Bell Canada.
+            </p>
+          </li>
 
+          <li class="timeline-node">
+            <div class="timeline-era">2012 — 2014 · CHENNAI, INDIA</div>
+            <h3>Software Engineer</h3>
+            <h4>HCL Technologies (Cisco Practice)</h4>
+            <p>
+              Authored automated regression test suites in Python for Cisco IOS and IOS-XE network operating systems; investigated customer-reported defects with Cisco TAC and built physical router/switch testbed topologies.
+            </p>
+          </li>
 
-        });
-    </script>
+          <li class="timeline-node">
+            <div class="timeline-era">2008 — 2012 · VISAKHAPATNAM, INDIA</div>
+            <h3>B.Tech in Computer Science & Engineering (Academic Gold Medalist)</h3>
+            <h4>Andhra University</h4>
+            <p>
+              Graduated as Department Valedictorian with Highest Distinction Academic Gold Medal. Specialized in Computer Networks, Operating Systems, and Distributed Computing.
+            </p>
+          </li>
+        </ol>
+      </section>
+
+      <!-- ══════════ DISPATCH TERMINAL & CONTACT ══════════ -->
+      <section class="section-shell dispatch-section" id="dispatch">
+        <div class="dispatch-grid">
+          <div class="dispatch-info">
+            <p class="terminal-prompt">// DATACENTER DISPATCH</p>
+            <h2>Let's build systems that scale.</h2>
+            <p class="hero-lede">
+              Open to Principal / Staff Platform Infrastructure Architect, Lead GPU Systems Engineer, and AI Compute Leadership opportunities worldwide.
+            </p>
+
+            <dl class="contact-spec-list">
+              <dt>DIRECT EMAIL:</dt>
+              <dd><a href="mailto:bsrgsit@gmail.com" class="footer-link">bsrgsit@gmail.com</a></dd>
+
+              <dt>PHONE:</dt>
+              <dd><a href="tel:+919884883957" class="footer-link">+91 9884883957</a></dd>
+
+              <dt>LINKEDIN:</dt>
+              <dd><a href="https://linkedin.com/in/bvguravareddy" target="_blank" rel="noopener" class="footer-link">linkedin.com/in/bvguravareddy ↗</a></dd>
+
+              <dt>GITHUB:</dt>
+              <dd><a href="https://github.com/bsrgsit" target="_blank" rel="noopener" class="footer-link">github.com/bsrgsit ↗</a></dd>
+
+              <dt>LOCATION:</dt>
+              <dd>Hyderabad, India (Open to Global Relocation & Remote)</dd>
+            </dl>
+          </div>
+
+          <form class="dispatch-form" id="dispatchForm">
+            <div class="dispatch-field">
+              <label for="dName">YOUR NAME</label>
+              <input type="text" id="dName" placeholder="e.g. Alex Vance" required />
+            </div>
+
+            <div class="dispatch-field">
+              <label for="dEmail">YOUR EMAIL</label>
+              <input type="email" id="dEmail" placeholder="e.g. alex@company.com" required />
+            </div>
+
+            <div class="dispatch-field">
+              <label for="dSubject">SUBJECT</label>
+              <input type="text" id="dSubject" placeholder="e.g. Principal GPU Infrastructure Role" required />
+            </div>
+
+            <div class="dispatch-field">
+              <label for="dMessage">INFRASTRUCTURE / PLATFORM BRIEF</label>
+              <textarea id="dMessage" rows="4" placeholder="Describe the scale, compute challenge, or leadership scope..." required></textarea>
+            </div>
+
+            <button class="btn btn-primary" type="submit" style="width: 100%; margin-top: 6px;">
+              Dispatch Message ↗
+            </button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- ══════════ FOOTER ══════════ -->
+    <footer class="site-footer section-shell">
+      <div>
+        <strong>Venkata Guravareddy</strong> · Principal Platform Infrastructure & GPU Systems Architect
+      </div>
+      <div>
+        <span>Datacenter Node: HYD-DC01 · © 2026 Venkata Guravareddy. All rights reserved.</span>
+      </div>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
 </body>
-
 </html>
