@@ -53,23 +53,15 @@
     <header class="site-header">
       <div class="section-shell header-inner">
         <a class="brand" href="#top">
-          <div class="server-rack-icon" aria-hidden="true">
-            <div class="rack-slot active"><span class="rack-led"></span></div>
-            <div class="rack-slot"><span class="rack-led" style="background:var(--led-cyan); box-shadow:0 0 4px var(--led-cyan);"></span></div>
-            <div class="rack-slot active"><span class="rack-led"></span></div>
-            <div class="rack-slot"><span class="rack-led" style="background:var(--led-amber); box-shadow:0 0 4px var(--led-amber);"></span></div>
-          </div>
-          <div class="brand-text">
-            <div class="brand-title">
-              Venkata Guravareddy
-              <span class="datacenter-badge">VG-DC01</span>
-            </div>
-            <div class="brand-sub">Principal Platform & GPU Infrastructure Architect</div>
+          <span class="brand-badge">VG</span>
+          <div class="brand-meta">
+            <strong class="brand-name">Venkata Guravareddy</strong>
+            <span class="brand-role">Principal Platform & GPU Infrastructure Architect</span>
           </div>
         </a>
 
-        <nav class="site-nav" id="siteNav" aria-label="Command center navigation">
-          <a href="#top">Overview</a>
+        <nav class="site-nav" id="siteNav" aria-label="Main Navigation">
+          <a href="#top" class="active">Overview</a>
           <a href="#tiers">Tiers</a>
           <a href="#blades">Chassis</a>
           <a href="#patents">Patents</a>
@@ -79,14 +71,14 @@
         </nav>
 
         <div class="header-controls">
-          <span class="datacenter-status">
-            <span class="pulse-led"></span> 52 DATACENTERS ONLINE
+          <span class="status-pill">
+            <span class="status-dot"></span> 52 DCs Active
           </span>
-          <a href="Venkata_Guravareddy_Resume.pdf" download class="btn btn-secondary btn-compact" title="Download Master ATS Resume (2-Page PDF)">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-            PDF RESUME
+          <a href="Venkata_Guravareddy_Resume.pdf" download class="btn-header-action" title="Download Master ATS Resume (2-Page PDF)">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            <span>PDF Resume</span>
           </a>
-          <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle Datacenter Theme"></button>
+          <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle Theme"></button>
           <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle Navigation" aria-expanded="false">
             <span></span><span></span><span></span>
           </button>
@@ -285,11 +277,11 @@
 
         <div class="filter-bar">
           <div class="filter-group" role="tablist" aria-label="Filter server chassis">
-            <button class="btn btn-compact is-active" data-filter="all">All Chassis</button>
-            <button class="btn btn-compact" data-filter="gpu">GPU & Inference</button>
-            <button class="btn btn-compact" data-filter="k8s">Kubernetes Fleet</button>
-            <button class="btn btn-compact" data-filter="capacity">Capacity & Telemetry</button>
-            <button class="btn btn-compact" data-filter="edge">Edge & Telecom</button>
+            <button class="filter-btn is-active" data-filter="all">All Chassis</button>
+            <button class="filter-btn" data-filter="gpu">GPU & Inference</button>
+            <button class="filter-btn" data-filter="k8s">Kubernetes Fleet</button>
+            <button class="filter-btn" data-filter="capacity">Capacity & Telemetry</button>
+            <button class="filter-btn" data-filter="edge">Edge & Telecom</button>
           </div>
           <span class="filter-count" id="filterCount">Showing all 6 server chassis platforms.</span>
         </div>

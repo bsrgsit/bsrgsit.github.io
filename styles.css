@@ -1,33 +1,30 @@
 /* ============================================================
-   Venkata Guravareddy — Datacenter & GPU Infrastructure Showcase
-   Theme: High-Tech Datacenter, Server Rack Chassis & Silicon Platform
+   Venkata Guravareddy — Datacenter & GPU Systems Architecture
+   Sleek, High-Tech Datacenter Platform & Command Center Theme
    ============================================================ */
 
 :root {
-  --bg-ground: #0a0e17;
-  --bg-card: #111827;
-  --bg-card-header: #172033;
-  --bg-elevated: #1e293b;
-  --border-line: #223049;
-  --border-strong: #334466;
+  --bg-ground: #070a12;
+  --bg-card: #0d1322;
+  --bg-card-header: #131d31;
+  --bg-elevated: #18243b;
+  --border-line: #1e2c47;
+  --border-strong: #2c3e61;
 
   --text-main: #f8fafc;
   --text-secondary: #cbd5e1;
-  --text-muted: #94a3b8;
+  --text-muted: #8899b2;
 
   --led-green: #10b981;
   --led-green-glow: rgba(16, 185, 129, 0.4);
   --led-amber: #f59e0b;
-  --led-amber-glow: rgba(245, 158, 11, 0.4);
   --led-cyan: #06b6d4;
-  --led-cyan-glow: rgba(6, 182, 212, 0.4);
-  --led-red: #ef4444;
 
   --accent-cyan: #38bdf8;
   --accent-emerald: #34d399;
-  --accent-lime: #a3e635;
+  --accent-blue: #60a5fa;
 
-  --shadow-chassis: 0 10px 30px -5px rgba(0, 0, 0, 0.8), 0 0 0 1px #223049;
+  --shadow-chassis: 0 10px 30px -5px rgba(0, 0, 0, 0.8), 0 0 0 1px #1e2c47;
   --shadow-hover: 0 15px 40px -5px rgba(56, 189, 248, 0.2), 0 0 0 1px #38bdf8;
 
   --font-serif: Georgia, 'Times New Roman', serif;
@@ -37,10 +34,10 @@
 
 /* Light / Aluminum Lab Mode */
 body.light-mode {
-  --bg-ground: #f1f5f9;
+  --bg-ground: #f8fafc;
   --bg-card: #ffffff;
-  --bg-card-header: #e2e8f0;
-  --bg-elevated: #f8fafc;
+  --bg-card-header: #f1f5f9;
+  --bg-elevated: #e2e8f0;
   --border-line: #cbd5e1;
   --border-strong: #94a3b8;
 
@@ -49,14 +46,10 @@ body.light-mode {
   --text-muted: #64748b;
 
   --led-green: #059669;
-  --led-green-glow: rgba(5, 150, 105, 0.3);
-  --led-amber: #d97706;
-  --led-cyan: #0284c7;
-
   --accent-cyan: #0284c7;
   --accent-emerald: #059669;
 
-  --shadow-chassis: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 0 0 1px #cbd5e1;
+  --shadow-chassis: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 0 0 1px #cbd5e1;
   --shadow-hover: 0 15px 35px -5px rgba(2, 132, 199, 0.2), 0 0 0 1px #0284c7;
 }
 
@@ -76,10 +69,10 @@ body {
   color: var(--text-main);
   background-color: var(--bg-ground);
   background-image: 
-    radial-gradient(circle at 15% 10%, rgba(56, 189, 248, 0.08), transparent 32rem),
-    radial-gradient(circle at 85% 20%, rgba(16, 185, 129, 0.08), transparent 30rem),
-    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    radial-gradient(circle at 15% 10%, rgba(56, 189, 248, 0.07), transparent 32rem),
+    radial-gradient(circle at 85% 20%, rgba(16, 185, 129, 0.07), transparent 30rem),
+    linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
   background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
   font-family: var(--font-sans);
   font-size: 16px;
@@ -119,11 +112,11 @@ button, input, select, textarea {
 }
 
 .section-shell {
-  width: min(1260px, calc(100% - 36px));
+  width: min(1240px, calc(100% - 40px));
   margin-inline: auto;
 }
 
-/* ══════════ TOP COMMAND BAR / HEADER (ONE CLEAN ROW) ══════════ */
+/* ══════════ TOP COMMAND BAR / HEADER ══════════ */
 .site-header {
   position: sticky;
   top: 0;
@@ -131,7 +124,7 @@ button, input, select, textarea {
   background: color-mix(in srgb, var(--bg-ground) 92%, transparent);
   backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border-line);
-  padding: 10px 0;
+  padding: 12px 0;
 }
 
 .header-inner {
@@ -145,106 +138,74 @@ button, input, select, textarea {
 .brand {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
+  text-decoration: none;
   flex-shrink: 0;
 }
 
-.server-rack-icon {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 2.5px;
-  width: 36px;
-  height: 36px;
-  padding: 5px;
-  background: var(--bg-elevated);
-  border: 1px solid var(--border-strong);
-  border-radius: 6px;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+.brand-badge {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--accent-cyan), #0284c7);
+  color: #070a10;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 800;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.35);
   flex-shrink: 0;
 }
 
-.rack-slot {
-  height: 4px;
-  background: var(--border-line);
-  border-radius: 2px;
-  display: flex;
-  align-items: center;
-  padding-left: 2px;
-}
-
-.rack-slot.active {
-  background: #1e3a5f;
-}
-
-.rack-led {
-  width: 2.5px;
-  height: 2.5px;
-  border-radius: 50%;
-  background: var(--led-green);
-  box-shadow: 0 0 4px var(--led-green);
-}
-
-.brand-text {
+.brand-meta {
   display: flex;
   flex-direction: column;
+  line-height: 1.25;
 }
 
-.brand-title {
+.brand-name {
   font-size: 0.98rem;
   font-weight: 800;
   letter-spacing: -0.01em;
   color: var(--text-main);
-  display: flex;
-  align-items: center;
-  gap: 6px;
   white-space: nowrap;
 }
 
-.datacenter-badge {
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  font-weight: 700;
-  padding: 1px 5px;
-  border-radius: 4px;
-  background: rgba(56, 189, 248, 0.15);
-  color: var(--accent-cyan);
-  border: 1px solid rgba(56, 189, 248, 0.4);
-}
-
-.brand-sub {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
+.brand-role {
+  font-size: 0.76rem;
   color: var(--text-muted);
+  font-weight: 500;
   white-space: nowrap;
 }
 
 .site-nav {
   display: flex;
   align-items: center;
-  gap: 2px;
+  gap: 4px;
   flex-shrink: 1;
 }
 
 .site-nav a {
-  padding: 5px 10px;
+  padding: 6px 12px;
   border-radius: 6px;
-  font-size: 0.82rem;
+  font-size: 0.84rem;
   font-weight: 600;
   color: var(--text-secondary);
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   white-space: nowrap;
   transition: all 0.15s ease;
 }
 
 .site-nav a:hover {
-  color: var(--accent-cyan);
-  background: var(--bg-card);
+  color: var(--text-main);
+  background: var(--bg-elevated);
 }
 
 .site-nav a.active {
   color: var(--text-main);
-  background: var(--bg-card);
+  background: var(--bg-elevated);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
   border: 1px solid var(--border-line);
 }
 
@@ -255,22 +216,21 @@ button, input, select, textarea {
   flex-shrink: 0;
 }
 
-.datacenter-status {
+.status-pill {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 5px 10px;
-  border-radius: 6px;
-  background: rgba(16, 185, 129, 0.1);
-  border: 1px solid rgba(16, 185, 129, 0.3);
-  font-family: var(--font-mono);
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.35);
   font-size: 0.75rem;
   font-weight: 700;
   color: var(--accent-emerald);
   white-space: nowrap;
 }
 
-.pulse-led {
+.status-dot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
@@ -284,11 +244,33 @@ button, input, select, textarea {
   50% { opacity: 0.3; }
 }
 
+.btn-header-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 6px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-strong);
+  color: var(--text-main);
+  font-size: 0.8rem;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.btn-header-action:hover {
+  background: var(--bg-card-header);
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+  transform: translateY(-1px);
+}
+
 .theme-toggle-btn {
   display: grid;
   place-items: center;
-  width: 34px;
-  height: 34px;
+  width: 36px;
+  height: 36px;
   border-radius: 6px;
   background: var(--bg-card);
   border: 1px solid var(--border-line);
@@ -308,8 +290,8 @@ button, input, select, textarea {
   flex-direction: column;
   justify-content: center;
   gap: 4px;
-  width: 34px;
-  height: 34px;
+  width: 36px;
+  height: 36px;
   border-radius: 6px;
   background: var(--bg-card);
   border: 1px solid var(--border-line);
@@ -332,11 +314,10 @@ button, input, select, textarea {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 10px 18px;
+  padding: 11px 20px;
   border-radius: 6px;
   font-weight: 700;
-  font-size: 0.88rem;
-  font-family: var(--font-mono);
+  font-size: 0.9rem;
   cursor: pointer;
   transition: all 0.2s ease;
   white-space: nowrap;
@@ -369,18 +350,18 @@ button, input, select, textarea {
 }
 
 .btn-compact {
-  padding: 5px 10px;
-  font-size: 0.76rem;
+  padding: 5px 12px;
+  font-size: 0.78rem;
 }
 
 /* ══════════ HERO & 42U RACK EXPLORER ══════════ */
 .hero-section {
-  padding: 48px 0 36px 0;
+  padding: 52px 0 40px 0;
 }
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.25fr 1fr;
+  grid-template-columns: 1.2fr 1fr;
   gap: 36px;
   align-items: center;
 }
@@ -408,7 +389,7 @@ button, input, select, textarea {
 
 .hero-copy h1 {
   font-family: var(--font-serif);
-  font-size: clamp(2.2rem, 3.8vw, 3.3rem);
+  font-size: clamp(2.3rem, 3.8vw, 3.4rem);
   line-height: 1.15;
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -438,11 +419,11 @@ button, input, select, textarea {
 
 /* 42U Interactive Server Rack Chassis Widget */
 .rack-explorer-chassis {
-  background: #070a10;
-  border: 2px solid #1e293b;
+  background: #04070e;
+  border: 1px solid #1a2538;
   border-radius: 10px;
   padding: 14px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), inset 0 0 0 1px #334155;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), inset 0 0 0 1px #273752;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -453,7 +434,7 @@ button, input, select, textarea {
   justify-content: space-between;
   align-items: center;
   padding-bottom: 6px;
-  border-bottom: 1px solid #1e293b;
+  border-bottom: 1px solid #1a2538;
   font-family: var(--font-mono);
   font-size: 0.74rem;
   color: var(--text-muted);
@@ -467,15 +448,15 @@ button, input, select, textarea {
   display: flex;
   flex-direction: column;
   gap: 6px;
-  background: #020408;
-  border: 1px solid #1e293b;
+  background: #020409;
+  border: 1px solid #1a2538;
   border-radius: 6px;
   padding: 10px;
 }
 
 .rack-shelf {
-  background: #0d131f;
-  border: 1px solid #223049;
+  background: #0a101d;
+  border: 1px solid #1e2c47;
   border-radius: 5px;
   padding: 8px 12px;
   display: flex;
@@ -493,13 +474,13 @@ button, input, select, textarea {
   top: 0;
   bottom: 0;
   width: 4px;
-  background: #334155;
+  background: #273752;
   border-radius: 5px 0 0 5px;
   transition: background 0.2s ease;
 }
 
 .rack-shelf:hover {
-  background: #131c2e;
+  background: #111a2e;
   border-color: var(--accent-cyan);
   transform: translateX(3px);
 }
@@ -511,7 +492,7 @@ button, input, select, textarea {
 }
 
 .rack-shelf.active {
-  background: #172338;
+  background: #142038;
   border-color: var(--accent-cyan);
 }
 
@@ -554,8 +535,8 @@ button, input, select, textarea {
 
 /* Rack Detail Readout Display */
 .rack-readout {
-  background: #030712;
-  border: 1px solid #1f293d;
+  background: #02050b;
+  border: 1px solid #1a2538;
   border-radius: 6px;
   padding: 10px 14px;
   font-family: var(--font-mono);
@@ -715,49 +696,77 @@ button, input, select, textarea {
   line-height: 1.55;
 }
 
-/* ══════════ SERVER BLADE WORK SHOWCASE (HIGH CONTRAST FILTERS) ══════════ */
+/* ══════════ FILTER BAR & HIGH CONTRAST BUTTONS ══════════ */
 .filter-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 14px;
-  padding: 12px 16px;
-  background: var(--bg-card);
-  border: 1px solid var(--border-line);
+  gap: 12px;
+  padding: 10px 14px;
+  background: #0d1424;
+  border: 1px solid #1e293b;
   border-radius: 8px;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
+}
+
+body.light-mode .filter-bar {
+  background: #e2e8f0;
+  border-color: #cbd5e1;
 }
 
 .filter-group {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 6px;
 }
 
-/* High Contrast Filter Buttons */
-.filter-group .btn {
-  background: var(--bg-elevated) !important;
-  color: var(--text-main) !important;
-  border: 1px solid var(--border-strong) !important;
-  padding: 6px 14px;
-  font-size: 0.78rem;
+.filter-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 14px;
+  font-size: 0.8rem;
   font-weight: 700;
   border-radius: 6px;
+  cursor: pointer;
+  border: 1px solid #27354a;
+  background: #172236;
+  color: #cbd5e1;
+  transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
-.filter-group .btn:hover {
-  background: var(--bg-card-header) !important;
-  border-color: var(--accent-cyan) !important;
-  color: var(--accent-cyan) !important;
+body.light-mode .filter-btn {
+  background: #ffffff;
+  color: #334155;
+  border-color: #cbd5e1;
 }
 
-.filter-group .btn.is-active {
-  background: var(--accent-cyan) !important;
+.filter-btn:hover {
+  background: #1f2e47;
+  color: #38bdf8;
+  border-color: #38bdf8;
+}
+
+body.light-mode .filter-btn:hover {
+  background: #f8fafc;
+  color: #0284c7;
+  border-color: #0284c7;
+}
+
+.filter-btn.is-active {
+  background: #38bdf8 !important;
   color: #070a10 !important;
-  border-color: var(--accent-cyan) !important;
-  font-weight: 800;
-  box-shadow: 0 0 12px rgba(56, 189, 248, 0.5) !important;
+  border-color: #38bdf8 !important;
+  font-weight: 800 !important;
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.45) !important;
+}
+
+body.light-mode .filter-btn.is-active {
+  background: #0284c7 !important;
+  color: #ffffff !important;
+  border-color: #0284c7 !important;
+  box-shadow: 0 0 12px rgba(2, 132, 199, 0.35) !important;
 }
 
 .filter-count {
@@ -1110,7 +1119,7 @@ button, input, select, textarea {
 
 /* ══════════ RESPONSIVE BREAKPOINTS ══════════ */
 @media (max-width: 1140px) {
-  .datacenter-status {
+  .status-pill {
     display: none;
   }
 }
