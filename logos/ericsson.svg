@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 40" fill="none">
+  <!-- Ericsson Three Diagonal Bars (Official Brand Blue) -->
+  <g transform="translate(4, 6) scale(1.4)">
+    <path d="M2 17L9 3H13L6 17H2Z" fill="#0082F0" />
+    <path d="M7 19L14 5H18L11 19H7Z" fill="#002561" />
+    <path d="M1 14L6 4H9L4 14H1Z" fill="#00A9F4" />
+  </g>
+  <!-- Ericsson Wordmark -->
+  <text x="40" y="27" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="20" font-weight="900" fill="#002561" letter-spacing="0.5px">ERICSSON</text>
+</svg>

@@ -1,10 +1,10 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Mail, Phone, Linkedin, Github, MapPin, Send, Download, CheckCircle2 } from 'lucide-react';
+import { Mail, Phone, Linkedin, Github, Download, Send, Sparkles } from 'lucide-react';
+import { DrawablyButton } from 'drawably/react';
 
 export const Contact: React.FC = () => {
-  const [formSubmitted, setFormSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -14,186 +14,101 @@ export const Contact: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const mailSubject = encodeURIComponent(formData.subject || 'Engineering Leadership Opportunity');
+    const mailSubject = encodeURIComponent(formData.subject || 'Principal Infrastructure Opportunity');
     const mailBody = `Name: ${formData.name}%0D%0AEmail: ${formData.email}%0D%0A%0D%0AInquiry:%0D%0A${encodeURIComponent(
       formData.message
     )}`;
     window.location.href = `mailto:bsrgsit@gmail.com?subject=${mailSubject}&body=${mailBody}`;
-    setFormSubmitted(true);
   };
 
   return (
-    <section className="py-20" id="contact">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="p-8 sm:p-12 rounded-3xl neu-card grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Left Column: Direct Info */}
-          <div className="space-y-6">
+    <section className="py-12" id="contact">
+      <div className="space-y-6">
+        <div className="flex items-center gap-2 pb-3 border-b border-border/40">
+          <span className="w-2.5 h-2.5 rounded-full bg-brand-cyan animate-pulse shadow-[0_0_8px_#38bdf8]" />
+          <h2 className="font-heading font-extrabold text-lg text-foreground tracking-tight">
+            Contact & Collaboration
+          </h2>
+        </div>
+
+        <div className="p-8 sm:p-10 rounded-3xl bg-card/80 border border-border/80 grid grid-cols-1 md:grid-cols-2 gap-8 shadow-xl">
+          {/* Direct Channels */}
+          <div className="space-y-4">
+            <h3 className="font-heading font-bold text-2xl text-foreground">
+              Let's build systems that scale.
+            </h3>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Open to Principal / Staff Platform Infrastructure Architect, Lead GPU Systems Engineer, and AI Compute Leadership opportunities worldwide.
+            </p>
+
+            <div className="space-y-2.5 pt-2 text-xs font-mono">
+              <div className="flex items-center gap-3">
+                <Mail className="w-4 h-4 text-brand-cyan shrink-0" />
+                <a href="mailto:bsrgsit@gmail.com" className="font-bold text-foreground hover:text-brand-cyan">
+                  bsrgsit@gmail.com
+                </a>
+              </div>
+              <div className="flex items-center gap-3">
+                <Phone className="w-4 h-4 text-emerald-400 shrink-0" />
+                <a href="tel:+919884883957" className="font-bold text-foreground hover:text-emerald-400">
+                  +91 9884883957
+                </a>
+              </div>
+              <div className="flex items-center gap-3">
+                <Linkedin className="w-4 h-4 text-blue-400 shrink-0" />
+                <a href="https://linkedin.com/in/bvguravareddy" target="_blank" rel="noopener noreferrer" className="font-bold text-foreground hover:text-blue-400">
+                  linkedin.com/in/bvguravareddy ↗
+                </a>
+              </div>
+              <div className="flex items-center gap-3">
+                <Github className="w-4 h-4 text-purple-400 shrink-0" />
+                <a href="https://github.com/bsrgsit" target="_blank" rel="noopener noreferrer" className="font-bold text-foreground hover:text-purple-400">
+                  github.com/bsrgsit ↗
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Form */}
+          <form onSubmit={handleSubmit} className="space-y-3">
             <div>
-              <span className="inline-block text-xs font-bold text-brand-cyan uppercase tracking-wider mb-2">
-                Executive Inquiries
-              </span>
-              <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-foreground tracking-tight mb-4">
-                Let's Build Systems That Scale.
-              </h2>
-              <p className="text-base text-muted-foreground leading-relaxed">
-                Open to <strong>Principal Platform / AI Infrastructure Architect</strong>, <strong>Lead GPU Systems Engineer</strong>, and <strong>Director of Platform Infrastructure</strong> opportunities worldwide.
-              </p>
+              <input
+                type="text"
+                required
+                placeholder="Your Name"
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                className="w-full px-4 py-2.5 rounded-xl bg-background border border-border text-foreground text-xs focus:border-brand-cyan focus:outline-none transition-colors"
+              />
             </div>
-
-            {/* Direct Channel Specifications */}
-            <div className="space-y-4 pt-2">
-              <div className="flex items-center gap-4 text-sm">
-                <div className="w-10 h-10 rounded-xl bg-card border border-border flex items-center justify-center text-brand-cyan shrink-0 shadow-inner">
-                  <Mail className="w-4 h-4" />
-                </div>
-                <div>
-                  <span className="text-xs text-muted-foreground block font-medium">Direct Email</span>
-                  <a href="mailto:bsrgsit@gmail.com" className="font-semibold text-foreground hover:text-brand-cyan transition-colors">
-                    bsrgsit@gmail.com
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-4 text-sm">
-                <div className="w-10 h-10 rounded-xl bg-card border border-border flex items-center justify-center text-brand-cyan shrink-0 shadow-inner">
-                  <Phone className="w-4 h-4" />
-                </div>
-                <div>
-                  <span className="text-xs text-muted-foreground block font-medium">Direct Phone</span>
-                  <a href="tel:+919884883957" className="font-semibold text-foreground hover:text-brand-cyan transition-colors">
-                    +91 9884883957
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-4 text-sm">
-                <div className="w-10 h-10 rounded-xl bg-card border border-border flex items-center justify-center text-brand-cyan shrink-0 shadow-inner">
-                  <Linkedin className="w-4 h-4" />
-                </div>
-                <div>
-                  <span className="text-xs text-muted-foreground block font-medium">LinkedIn Profile</span>
-                  <a
-                    href="https://linkedin.com/in/bvguravareddy"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-semibold text-foreground hover:text-brand-cyan transition-colors"
-                  >
-                    linkedin.com/in/bvguravareddy ↗
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-4 text-sm">
-                <div className="w-10 h-10 rounded-xl bg-card border border-border flex items-center justify-center text-brand-cyan shrink-0 shadow-inner">
-                  <Github className="w-4 h-4" />
-                </div>
-                <div>
-                  <span className="text-xs text-muted-foreground block font-medium">GitHub Repositories</span>
-                  <a
-                    href="https://github.com/bsrgsit"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-semibold text-foreground hover:text-brand-cyan transition-colors"
-                  >
-                    github.com/bsrgsit ↗
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-4 text-sm">
-                <div className="w-10 h-10 rounded-xl bg-card border border-border flex items-center justify-center text-brand-cyan shrink-0 shadow-inner">
-                  <MapPin className="w-4 h-4" />
-                </div>
-                <div>
-                  <span className="text-xs text-muted-foreground block font-medium">Location</span>
-                  <span className="font-semibold text-foreground">
-                    Hyderabad, India (Open to Global Relocation & Remote)
-                  </span>
-                </div>
-              </div>
+            <div>
+              <input
+                type="email"
+                required
+                placeholder="Your Email"
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                className="w-full px-4 py-2.5 rounded-xl bg-background border border-border text-foreground text-xs focus:border-brand-cyan focus:outline-none transition-colors"
+              />
             </div>
-
-            {/* Direct Resume Download */}
-            <div className="pt-4">
-              <a
-                href="Venkata_Guravareddy_Resume.pdf"
-                download
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-card hover:bg-card/80 border border-border hover:border-brand-cyan/60 text-xs font-bold text-foreground shadow-sm transition-all hover:-translate-y-0.5"
-              >
-                <Download className="w-4 h-4 text-brand-cyan" />
-                <span>Download Master 2-Page ATS Resume (PDF)</span>
-              </a>
+            <div>
+              <textarea
+                rows={4}
+                required
+                placeholder="Inquiry / Scope..."
+                value={formData.message}
+                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                className="w-full px-4 py-2.5 rounded-xl bg-background border border-border text-foreground text-xs focus:border-brand-cyan focus:outline-none transition-colors"
+              />
             </div>
-          </div>
-
-          {/* Right Column: Contact Form */}
-          <div className="p-6 sm:p-8 rounded-2xl bg-card/60 border border-border/60">
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <label className="block text-xs font-semibold text-muted-foreground mb-1.5">
-                  YOUR NAME
-                </label>
-                <input
-                  type="text"
-                  required
-                  placeholder="e.g. Alex Vance"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-xl bg-background border border-border text-foreground text-sm focus:border-brand-cyan focus:outline-none transition-colors"
-                />
-              </div>
-
-              <div>
-                <label className="block text-xs font-semibold text-muted-foreground mb-1.5">
-                  YOUR EMAIL
-                </label>
-                <input
-                  type="email"
-                  required
-                  placeholder="e.g. alex@company.com"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-xl bg-background border border-border text-foreground text-sm focus:border-brand-cyan focus:outline-none transition-colors"
-                />
-              </div>
-
-              <div>
-                <label className="block text-xs font-semibold text-muted-foreground mb-1.5">
-                  SUBJECT
-                </label>
-                <input
-                  type="text"
-                  required
-                  placeholder="e.g. Principal GPU Infrastructure Role"
-                  value={formData.subject}
-                  onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-xl bg-background border border-border text-foreground text-sm focus:border-brand-cyan focus:outline-none transition-colors"
-                />
-              </div>
-
-              <div>
-                <label className="block text-xs font-semibold text-muted-foreground mb-1.5">
-                  MESSAGE / INQUIRY
-                </label>
-                <textarea
-                  rows={4}
-                  required
-                  placeholder="Describe the engineering challenge, scale, or leadership scope..."
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-xl bg-background border border-border text-foreground text-sm focus:border-brand-cyan focus:outline-none transition-colors"
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full inline-flex items-center justify-center gap-2 py-3 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-slate-950 font-bold text-sm shadow-[0_4px_20px_rgba(56,189,248,0.35)] transition-all"
-              >
-                <Send className="w-4 h-4" />
-                <span>Send Message via Email</span>
-              </button>
-            </form>
-          </div>
+            <button
+              type="submit"
+              className="w-full inline-flex items-center justify-center gap-2 py-3 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-slate-950 font-bold text-xs shadow-md transition-all hover:scale-[1.01]"
+            >
+              <Send className="w-3.5 h-3.5" />
+              <span>Dispatch Message via Email</span>
+            </button>
+          </form>
         </div>
       </div>
     </section>

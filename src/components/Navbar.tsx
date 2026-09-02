@@ -2,15 +2,14 @@
 
 import React, { useState, useEffect } from 'react';
 import { Download, Moon, Sun, Menu, X } from 'lucide-react';
+import { DrawablyButton } from 'drawably/react';
 
 export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isLightMode, setIsLightMode] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('top');
 
   useEffect(() => {
-    // Check saved theme
     const saved = localStorage.getItem('vg_theme_pref');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     if (saved === 'light' || (!saved && !prefersDark)) {
@@ -38,13 +37,10 @@ export const Navbar: React.FC = () => {
   };
 
   const navLinks = [
-    { label: 'Overview', href: '#top' },
-    { label: 'Specializations', href: '#specializations' },
-    { label: 'Architecture', href: '#architecture' },
+    { label: 'Overview', href: '#overview' },
     { label: 'Case Studies', href: '#case-studies' },
     { label: 'Patents', href: '#patents' },
-    { label: 'Stack', href: '#stack' },
-    { label: 'Timeline', href: '#timeline' },
+    { label: 'Experience', href: '#experience' },
     { label: 'Contact', href: '#contact' },
   ];
 
@@ -52,15 +48,15 @@ export const Navbar: React.FC = () => {
     <header
       className={`sticky top-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-[#070b14]/90 dark:bg-[#070b14]/90 light:bg-white/90 backdrop-blur-xl border-b border-border/60 py-3 shadow-lg'
-          : 'bg-transparent py-4 border-b border-border/30'
+          ? 'bg-background/95 backdrop-blur-xl border-b border-border shadow-lg py-3'
+          : 'bg-background/80 backdrop-blur-md py-4 border-b border-border/40'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between gap-4">
           {/* Brand Logo & Name */}
-          <a href="#top" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-cyan to-blue-600 flex items-center justify-center font-heading font-extrabold text-slate-950 text-base shadow-[0_0_15px_rgba(56,189,248,0.35)] group-hover:scale-105 transition-transform">
+          <a href="#overview" className="flex items-center gap-3 group">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-cyan to-blue-600 flex items-center justify-center font-heading font-extrabold text-slate-950 text-base shadow-[0_0_15px_rgba(56,189,248,0.35)] group-hover:scale-105 transition-transform shrink-0">
               VG
             </div>
             <div className="flex flex-col">
@@ -74,12 +70,12 @@ export const Navbar: React.FC = () => {
           </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-1 bg-card/40 p-1.5 rounded-full border border-border/50 backdrop-blur-md">
+          <nav className="hidden md:flex items-center gap-1 bg-card/80 px-3 py-1.5 rounded-full border border-border">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="px-3 py-1.5 rounded-full text-xs font-semibold text-muted-foreground hover:text-foreground hover:bg-card/80 transition-all"
+                className="px-3 py-1.5 rounded-full text-xs font-semibold text-foreground/80 hover:text-foreground hover:bg-secondary transition-all"
               >
                 {link.label}
               </a>
@@ -91,40 +87,48 @@ export const Navbar: React.FC = () => {
             <a
               href="Venkata_Guravareddy_Resume.pdf"
               download
-              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-card/80 hover:bg-card border border-border hover:border-brand-cyan/60 text-xs font-semibold text-foreground shadow-sm transition-all hover:-translate-y-0.5"
+              className="inline-block"
             >
-              <Download className="w-3.5 h-3.5 text-brand-cyan" />
-              <span>Resume (PDF)</span>
+              <DrawablyButton
+                variant="outline"
+                stroke="#38bdf8"
+                roughness={1.3}
+                boil={1}
+                className="px-3 py-1.5 rounded-xl text-xs font-semibold text-foreground hover:text-brand-cyan transition-colors cursor-pointer flex items-center gap-1.5"
+              >
+                <Download className="w-3.5 h-3.5 text-brand-cyan inline-block mr-1" />
+                Resume (PDF)
+              </DrawablyButton>
             </a>
 
             <button
               onClick={toggleTheme}
               aria-label="Toggle Theme"
-              className="w-9 h-9 rounded-lg bg-card/80 border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-brand-cyan/40 transition-colors"
+              className="w-9 h-9 rounded-xl bg-card border border-border flex items-center justify-center text-foreground hover:border-brand-cyan/40 transition-colors"
             >
-              {isLightMode ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4 text-amber-400" />}
+              {isLightMode ? <Moon className="w-4 h-4 text-slate-700" /> : <Sun className="w-4 h-4 text-amber-400" />}
             </button>
 
             {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle Mobile Menu"
-              className="lg:hidden w-9 h-9 rounded-lg bg-card/80 border border-border flex items-center justify-center text-foreground"
+              className="md:hidden w-9 h-9 rounded-xl bg-card border border-border flex items-center justify-center text-foreground"
             >
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
             </button>
           </div>
         </div>
 
         {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
-          <div className="lg:hidden mt-3 p-4 rounded-2xl bg-card border border-border shadow-2xl space-y-2 animate-in fade-in-50 slide-in-from-top-2">
+          <div className="md:hidden mt-3 p-4 rounded-2xl bg-card border border-border shadow-2xl space-y-2 animate-in fade-in-50 slide-in-from-top-2">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="block px-3 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
+                className="block px-3 py-2 rounded-lg text-xs font-medium text-foreground hover:bg-secondary transition-colors"
               >
                 {link.label}
               </a>
