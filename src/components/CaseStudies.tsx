@@ -21,32 +21,32 @@ export const CaseStudies: React.FC = () => {
   ];
 
   return (
-    <section className="py-20" id="case-studies">
+    <section className="py-20 border-b border-border/40" id="case-studies">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div className="max-w-3xl">
-            <span className="inline-block text-xs font-bold text-brand-cyan uppercase tracking-wider mb-2">
-              Production Execution
+            <span className="inline-block text-xs font-bold text-brand-cyan uppercase tracking-wider mb-2 font-mono">
+              // PRODUCTION SYSTEMS & IMPACT
             </span>
             <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-foreground tracking-tight mb-4">
-              Architectural Systems & Case Studies.
+              Featured Case Studies & Architectures.
             </h2>
             <p className="text-base text-muted-foreground leading-relaxed">
-              Real-world systems engineered across physical bare metal, high-density GPU supercomputers, and multi-tenant cloud control planes.
+              Selected production platforms demonstrating measured throughput gains, multi-million dollar cost avoidance, and carrier-grade availability.
             </p>
           </div>
 
           {/* Filter Bar */}
-          <div className="flex flex-wrap items-center gap-2 p-1.5 rounded-2xl bg-card border border-border shrink-0">
+          <div className="flex flex-wrap items-center gap-1.5 p-1.5 rounded-2xl bg-card border border-border shrink-0">
             {filterTabs.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveFilter(tab.id as any)}
-                className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all ${
+                className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
                   activeFilter === tab.id
-                    ? 'neu-button-active'
-                    : 'text-muted-foreground hover:text-foreground hover:bg-secondary/60'
+                    ? 'bg-brand-cyan text-slate-950 shadow-[0_0_12px_rgba(56,189,248,0.4)]'
+                    : 'text-muted-foreground hover:text-foreground hover:bg-secondary'
                 }`}
               >
                 {tab.label}
@@ -60,7 +60,7 @@ export const CaseStudies: React.FC = () => {
           {filteredStudies.map((study) => (
             <div
               key={study.id}
-              className="p-7 rounded-2xl neu-card flex flex-col justify-between group"
+              className="p-7 rounded-3xl neu-card flex flex-col justify-between group border border-border/70 hover:border-brand-cyan/50 transition-all"
             >
               <div>
                 {/* Badges */}
@@ -68,21 +68,21 @@ export const CaseStudies: React.FC = () => {
                   <span className="text-xs font-bold px-2.5 py-1 rounded-md bg-secondary text-foreground/80 font-mono">
                     {study.categoryBadge}
                   </span>
-                  <span className="text-xs font-bold px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                  <span className="text-xs font-bold px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-mono">
                     {study.impactBadge}
                   </span>
                 </div>
 
-                <h3 className="font-heading font-bold text-xl text-foreground mb-2 group-hover:text-brand-cyan transition-colors">
+                <h3 className="font-heading font-bold text-xl text-foreground mb-1 group-hover:text-brand-cyan transition-colors">
                   {study.title}
                 </h3>
 
-                <p className="text-xs font-medium text-brand-cyan mb-4">
+                <p className="text-xs font-semibold text-brand-cyan mb-4">
                   {study.subtitle}
                 </p>
 
                 {/* Problem */}
-                <div className="mb-4 text-xs text-muted-foreground leading-relaxed">
+                <div className="mb-3.5 text-xs text-muted-foreground leading-relaxed">
                   <strong className="text-foreground/90 font-semibold block mb-1">Challenge:</strong>
                   {study.problem}
                 </div>
@@ -94,8 +94,8 @@ export const CaseStudies: React.FC = () => {
                 </div>
 
                 {/* Impact */}
-                <div className="p-3 rounded-xl bg-card/60 border border-border/40 text-xs text-foreground/90 leading-relaxed mb-6">
-                  <strong className="text-emerald-400 font-semibold block mb-0.5">Measured Impact:</strong>
+                <div className="p-3.5 rounded-2xl bg-card/80 border border-border/50 text-xs text-foreground/90 leading-relaxed mb-6">
+                  <strong className="text-emerald-400 font-semibold block mb-1">Measured Impact:</strong>
                   {study.impact}
                 </div>
               </div>
