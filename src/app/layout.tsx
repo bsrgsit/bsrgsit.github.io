@@ -42,11 +42,11 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Dancing+Script:wght@700&family=Georama:wght@700;800&family=Short+Stack&family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap"
           rel="stylesheet"
         />
       </head>
-      <body className="min-h-screen bg-background text-foreground font-sans antialiased selection:bg-brand-cyan/20 selection:text-brand-cyan">
+      <body className="min-h-screen font-sans antialiased bg-background text-foreground transition-colors duration-300 selection:bg-brand-cyan/20 selection:text-brand-cyan">
         {children}
       </body>
     </html>

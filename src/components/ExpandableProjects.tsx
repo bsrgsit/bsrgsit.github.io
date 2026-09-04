@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { caseStudiesData, CaseStudy } from '@/data/case-studies';
-import { ChevronDown, ChevronUp, Cpu, Server, Activity, Radio, ArrowUpRight, CheckCircle2 } from 'lucide-react';
+import { Plus, Minus, Cpu, Server, Activity, Radio, ArrowUpRight, CheckCircle2 } from 'lucide-react';
 
 export const ExpandableProjects: React.FC = () => {
   // First project expanded by default
@@ -27,18 +27,18 @@ export const ExpandableProjects: React.FC = () => {
   ];
 
   return (
-    <section className="py-16 border-b border-border/40" id="projects">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+    <section className="py-16 border-b border-border/50" id="projects">
+      <div className="space-y-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-2 border-b border-border/40">
           <div>
-            <span className="text-xs font-bold text-brand-cyan uppercase tracking-wider font-mono block mb-1">
-              // PRODUCTION SYSTEMS & ARCHITECTURES
-            </span>
-            <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-foreground tracking-tight">
-              Featured Systems & Case Studies
-            </h2>
-            <p className="text-sm text-muted-foreground mt-1">
-              Click any architecture to expand full technical design, problem context, and measured production results.
+            <div className="flex items-center gap-2 mb-1.5">
+              <span className="w-2.5 h-2.5 rounded-full bg-brand-cyan animate-pulse shadow-[0_0_8px_#38bdf8]" />
+              <h2 className="font-heading font-extrabold text-2xl sm:text-3xl text-foreground tracking-tight">
+                Featured Systems & Production Case Studies
+              </h2>
+            </div>
+            <p className="text-sm text-muted-foreground">
+              Click any system architecture to expand the complete technical breakdown, challenges solved, and verified production results.
             </p>
           </div>
 
@@ -61,31 +61,31 @@ export const ExpandableProjects: React.FC = () => {
         </div>
 
         {/* Expandable Project List */}
-        <div className="space-y-4">
+        <div className="space-y-5">
           {filteredProjects.map((project) => {
             const isExpanded = expandedId === project.id;
 
             return (
               <div
                 key={project.id}
-                className={`rounded-3xl neu-card transition-all duration-200 overflow-hidden border ${
+                className={`rounded-3xl neu-card transition-all duration-300 overflow-hidden ${
                   isExpanded
-                    ? 'border-brand-cyan/50 shadow-lg'
-                    : 'border-border/70 hover:border-border hover:bg-card/70'
+                    ? 'border-brand-cyan/60 shadow-[0_6px_25px_rgba(56,189,248,0.15)]'
+                    : 'hover:border-brand-cyan/30'
                 }`}
               >
                 {/* Header Row (Clickable) */}
                 <button
                   onClick={() => toggleExpand(project.id)}
-                  className="w-full p-6 sm:p-7 flex items-center justify-between gap-4 text-left transition-colors"
+                  className="w-full p-6 sm:p-7 flex items-center justify-between gap-6 text-left transition-colors"
                   aria-expanded={isExpanded}
                 >
                   <div className="space-y-1.5">
-                    <div className="flex flex-wrap items-center gap-2.5">
-                      <span className="font-heading font-bold text-lg sm:text-xl text-foreground">
+                    <div className="flex flex-wrap items-center gap-3">
+                      <span className="font-heading font-bold text-lg sm:text-xl text-foreground group-hover:text-brand-cyan transition-colors">
                         {project.title}
                       </span>
-                      <span className="text-xs font-mono font-bold px-2.5 py-0.5 rounded-md bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                      <span className="text-xs font-mono font-bold px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
                         {project.impactBadge}
                       </span>
                     </div>
@@ -94,15 +94,15 @@ export const ExpandableProjects: React.FC = () => {
                     </p>
                   </div>
 
-                  <div className="shrink-0 flex items-center gap-2 text-muted-foreground">
+                  <div className="shrink-0 flex items-center gap-3 text-muted-foreground">
                     <span className="text-xs font-mono font-semibold hidden sm:inline">
                       {isExpanded ? 'Collapse' : 'Expand Deep-Dive'}
                     </span>
-                    <div className="w-8 h-8 rounded-xl bg-background border border-border flex items-center justify-center">
+                    <div className="w-9 h-9 rounded-xl bg-background neu-button flex items-center justify-center text-foreground hover:border-brand-cyan/50 transition-colors">
                       {isExpanded ? (
-                        <ChevronUp className="w-4 h-4 text-brand-cyan" />
+                        <Minus className="w-4 h-4 text-brand-cyan" />
                       ) : (
-                        <ChevronDown className="w-4 h-4 text-muted-foreground" />
+                        <Plus className="w-4 h-4 text-muted-foreground" />
                       )}
                     </div>
                   </div>
@@ -110,17 +110,17 @@ export const ExpandableProjects: React.FC = () => {
 
                 {/* Expanded Technical Content */}
                 {isExpanded && (
-                  <div className="px-6 pb-6 pt-2 border-t border-border/40 space-y-5 animate-in fade-in-50 duration-200 text-xs sm:text-sm">
+                  <div className="px-6 pb-7 pt-2 border-t border-border/40 space-y-6 animate-in fade-in-50 duration-200 text-xs sm:text-sm">
                     {/* Problem & Architecture Grid */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-muted-foreground leading-relaxed pt-2">
-                      <div className="p-4 rounded-2xl bg-background/60 border border-border/50 space-y-1.5">
+                      <div className="p-5 rounded-2xl neu-inset space-y-2">
                         <strong className="text-foreground font-semibold block text-sm">
                           The Challenge & Context:
                         </strong>
                         <p>{project.problem}</p>
                       </div>
 
-                      <div className="p-4 rounded-2xl bg-background/60 border border-border/50 space-y-1.5">
+                      <div className="p-5 rounded-2xl neu-inset space-y-2">
                         <strong className="text-foreground font-semibold block text-sm">
                           Architectural Design & Decisions:
                         </strong>
@@ -129,8 +129,9 @@ export const ExpandableProjects: React.FC = () => {
                     </div>
 
                     {/* Measured Result Highlight Box */}
-                    <div className="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-foreground/90 leading-relaxed">
-                      <strong className="text-emerald-400 font-bold block text-sm mb-1">
+                    <div className="p-5 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-foreground/95 leading-relaxed shadow-sm">
+                      <strong className="text-emerald-400 font-bold block text-sm mb-1.5 flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                         Key Measured Production Result:
                       </strong>
                       <p>{project.impact}</p>
@@ -144,7 +145,7 @@ export const ExpandableProjects: React.FC = () => {
                       {project.techStack.map((tech, idx) => (
                         <span
                           key={idx}
-                          className="text-xs font-mono px-2.5 py-1 rounded-lg bg-secondary text-foreground/90 border border-border/60"
+                          className="text-xs font-mono px-3 py-1 rounded-xl bg-secondary text-foreground/90 border border-border/60 shadow-sm"
                         >
                           {tech}
                         </span>

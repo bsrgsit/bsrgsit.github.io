@@ -5,19 +5,26 @@ import { metricsData } from '@/data/metrics';
 
 export const Metrics: React.FC = () => {
   return (
-    <section className="py-10 bg-card/20 border-b border-border/40" aria-label="Scale and Impact Metrics">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-14 border-b border-border/50" aria-label="Scale and Impact Metrics">
+      <div className="space-y-6">
+        <div className="flex items-center gap-2 pb-2">
+          <span className="w-2.5 h-2.5 rounded-full bg-brand-cyan animate-pulse shadow-[0_0_8px_#38bdf8]" />
+          <h2 className="font-heading font-extrabold text-lg text-foreground tracking-tight">
+            Verified Scale & Production Impact
+          </h2>
+        </div>
+
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6">
           {metricsData.map((metric, idx) => (
             <div
               key={idx}
-              className={`p-4 sm:p-5 rounded-2xl neu-card flex flex-col justify-between group ${
-                metric.highlight ? 'border-brand-cyan/40 shadow-[0_0_15px_rgba(56,189,248,0.1)]' : ''
+              className={`p-5 sm:p-6 rounded-3xl neu-card flex flex-col justify-between group transition-all ${
+                metric.highlight ? 'border-brand-cyan/50 shadow-[0_0_20px_rgba(56,189,248,0.15)]' : ''
               }`}
             >
               <div>
-                <div className="flex items-baseline gap-1.5 mb-1.5">
-                  <span className="font-heading font-extrabold text-2xl sm:text-3xl text-foreground tracking-tight group-hover:text-brand-cyan transition-colors">
+                <div className="flex items-baseline gap-1 mb-2">
+                  <span className="font-heading font-extrabold text-2xl sm:text-3xl lg:text-4xl text-foreground tracking-tight group-hover:text-brand-cyan transition-colors">
                     {metric.value}
                   </span>
                   {metric.suffix && (
@@ -26,11 +33,11 @@ export const Metrics: React.FC = () => {
                     </span>
                   )}
                 </div>
-                <h3 className="font-semibold text-xs text-foreground/90 uppercase tracking-wider font-mono mb-1">
+                <h3 className="font-semibold text-xs text-foreground/90 uppercase tracking-wider font-mono mb-1.5">
                   {metric.label}
                 </h3>
               </div>
-              <p className="text-[11px] text-muted-foreground leading-snug">
+              <p className="text-xs text-muted-foreground leading-relaxed pt-1">
                 {metric.sublabel}
               </p>
             </div>
