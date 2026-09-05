@@ -732,12 +732,12 @@ export const CraftPortfolio: React.FC = () => {
                       {getStackIcon(group.iconName)}
                     </div>
                     <h3 className="font-heading font-bold text-xs sm:text-sm text-foreground leading-tight">
-                      {group.category}
+                      {group.name}
                     </h3>
                   </div>
 
                   <div className="flex flex-wrap gap-1.5">
-                    {group.skills.map((skill, sIdx) => (
+                    {group.subGroups.flatMap((s) => s.skills).map((skill, sIdx) => (
                       <span
                         key={sIdx}
                         className="text-xs font-mono px-2 py-0.5 rounded-lg bg-secondary text-foreground/90 border border-border/50"

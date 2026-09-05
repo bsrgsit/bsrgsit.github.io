@@ -43,6 +43,7 @@ import {
   KubernetesLogo,
   PythonLogo,
   CephLogo,
+  AnsibleLogo,
 } from '@/components/CompanyLogos';
 
 type SectionId = 'overview' | 'systems' | 'experience' | 'patents' | 'stack' | 'contact';
@@ -54,6 +55,11 @@ export const GokayInspiredPortfolio: React.FC = () => {
   const [isDark, setIsDark] = useState<boolean>(true);
   const [stringPulled, setStringPulled] = useState<boolean>(false);
   const [selectedStackCategory, setSelectedStackCategory] = useState<string>('all');
+  const [activeLayer, setActiveLayer] = useState<string | null>('layer-05-llm-serving');
+
+  const toggleLayer = (layerId: string) => {
+    setActiveLayer((prev) => (prev === layerId ? null : layerId));
+  };
 
   useEffect(() => {
     const saved = localStorage.getItem('vg_theme_pref');
@@ -99,11 +105,13 @@ export const GokayInspiredPortfolio: React.FC = () => {
       case 'Cpu':
         return <NVIDIALogo className="w-5 h-5" />;
       case 'Zap':
-        return <PythonLogo className="w-5 h-5" />;
+        return <Zap className="w-5 h-5 text-amber-500 fill-amber-500" />;
       case 'Boxes':
         return <KubernetesLogo className="w-5 h-5" />;
       case 'Database':
         return <CephLogo className="w-5 h-5" />;
+      case 'Ansible':
+        return <AnsibleLogo className="w-5 h-5" />;
       default:
         return <Cpu className="w-5 h-5 text-brand-cyan" />;
     }
@@ -121,17 +129,17 @@ export const GokayInspiredPortfolio: React.FC = () => {
 
   return (
     <div
-      className="min-h-screen transition-colors duration-300 py-6 px-4 sm:px-6 relative bg-[#f1f8f4] dark:bg-[#0f172a] text-slate-900 dark:text-slate-100"
+      className="min-h-screen transition-colors duration-300 py-3 sm:py-6 px-2.5 sm:px-6 relative bg-[#f1f8f4] dark:bg-[#0f172a] text-slate-900 dark:text-slate-100"
     >
       {/* Dangling Pull-Cord Light Switch (Gokay.biz signature feature) */}
       <div
         onClick={toggleTheme}
-        className="fixed top-0 right-4 sm:right-10 lg:right-16 z-50 flex flex-col items-center cursor-pointer group select-none"
+        className="fixed top-0 right-2 sm:right-10 lg:right-16 z-50 flex flex-col items-center cursor-pointer group select-none"
         title={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
       >
         <div
           className="border-l-2 border-dotted border-emerald-500 transition-all duration-300"
-          style={{ height: stringPulled ? '135px' : '90px' }}
+          style={{ height: stringPulled ? '110px' : '75px' }}
         />
         <button
           onClick={(e) => {
@@ -139,7 +147,7 @@ export const GokayInspiredPortfolio: React.FC = () => {
             toggleTheme();
           }}
           aria-label="Toggle theme"
-          className={`w-8 h-8 rounded-full shadow-lg transition-transform duration-200 group-hover:scale-110 active:scale-90 cursor-pointer -mt-1 flex items-center justify-center text-sm border ${
+          className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full shadow-lg transition-transform duration-200 group-hover:scale-110 active:scale-90 cursor-pointer -mt-1 flex items-center justify-center text-xs sm:text-sm border ${
             isDark
               ? 'bg-slate-800 border-slate-600 text-yellow-300 shadow-slate-900/80'
               : 'bg-amber-300 border-amber-400 text-slate-900 shadow-amber-200 ring-2 ring-amber-400/40'
@@ -149,7 +157,7 @@ export const GokayInspiredPortfolio: React.FC = () => {
         </button>
       </div>
 
-      <main className="max-w-6xl mx-auto pt-2 space-y-6">
+      <main className="max-w-6xl mx-auto pt-1 sm:pt-2 space-y-4 sm:space-y-6">
         {/* ======================================================== */}
         {/* TOP NAVIGATION BAR: HIDDEN ON OVERVIEW, VISIBLE ON SECTIONS */}
         {/* ======================================================== */}
@@ -162,22 +170,35 @@ export const GokayInspiredPortfolio: React.FC = () => {
               transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
               className="sticky top-2 z-40"
             >
-              <div className="bg-emerald-100/90 dark:bg-gray-900/90 backdrop-blur-md rounded-2xl doodle-border px-4 sm:px-6 py-2.5 shadow-sm flex flex-wrap items-center justify-between gap-4">
-                {/* Left Brand Badge */}
-                <button
-                  onClick={() => handleOpenSection('overview')}
-                  className="flex items-center gap-2.5 group cursor-pointer"
-                  title="Return to Overview"
-                >
-                  <div className="rounded-lg bg-white dark:bg-slate-800 text-emerald-800 dark:text-emerald-300 font-georama font-bold px-3 py-1 text-sm sm:text-base shadow-sm group-hover:-rotate-3 transition-transform flex items-center gap-1.5 border border-emerald-300 dark:border-emerald-700">
-                    <span>Venkata</span>
-                    <span className="text-gray-900 dark:text-stone-100 font-extrabold">Guravareddy</span>
-                  </div>
-                </button>
+              <div className="bg-emerald-100/90 dark:bg-gray-900/90 backdrop-blur-md rounded-2xl doodle-border px-3 sm:px-6 py-2 sm:py-2.5 shadow-sm flex flex-col md:flex-row items-stretch md:items-center justify-between gap-2.5 md:gap-4">
+                {/* Top Row on Mobile: Brand Badge + Mobile Resume Button */}
+                <div className="flex items-center justify-between gap-2 shrink-0">
+                  <button
+                    onClick={() => handleOpenSection('overview')}
+                    className="flex items-center gap-2 group cursor-pointer"
+                    title="Return to Overview"
+                  >
+                    <div className="rounded-lg bg-white dark:bg-slate-800 text-emerald-800 dark:text-emerald-300 font-georama font-bold px-2.5 py-1 text-xs sm:text-base shadow-sm group-hover:-rotate-3 transition-transform flex items-center gap-1.5 border border-emerald-300 dark:border-emerald-700">
+                      <span>Venkata</span>
+                      <span className="text-gray-900 dark:text-stone-100 font-extrabold">Guravareddy</span>
+                    </div>
+                  </button>
 
-                {/* Center Navigation Links: Clean emoji + label like gokay.biz */}
-                <nav aria-label="Main Navigation">
-                  <ul className="flex flex-wrap items-center gap-2 sm:gap-4 md:gap-6 text-xs sm:text-sm font-medium">
+                  <div className="md:hidden flex items-center gap-2">
+                    <a
+                      href="Venkata_Guravareddy_Resume.pdf"
+                      download
+                      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-sm transition-transform active:scale-95"
+                    >
+                      <Download className="w-3 h-3" />
+                      <span>Resume</span>
+                    </a>
+                  </div>
+                </div>
+
+                {/* Center Navigation Links: Horizontally scrollable on mobile */}
+                <nav aria-label="Main Navigation" className="overflow-x-auto no-scrollbar -mx-1 px-1 py-0.5">
+                  <ul className="flex items-center gap-1 sm:gap-3 md:gap-5 text-xs sm:text-sm font-medium whitespace-nowrap min-w-max">
                     {allNavItems.map((item) => {
                       const isActive = activeTab === item.id;
 
@@ -185,9 +206,9 @@ export const GokayInspiredPortfolio: React.FC = () => {
                         <li key={item.id}>
                           <button
                             onClick={() => handleOpenSection(item.id)}
-                            className={`group flex items-center gap-1.5 px-2 py-1 rounded-lg transition-all cursor-pointer ${
+                            className={`group flex items-center gap-1 sm:gap-1.5 px-2 py-1 rounded-lg transition-all cursor-pointer ${
                               isActive
-                                ? 'text-emerald-700 dark:text-emerald-300 font-bold'
+                                ? 'bg-emerald-600/15 text-emerald-700 dark:text-emerald-300 font-bold border border-emerald-500/30'
                                 : 'text-gray-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400'
                             }`}
                           >
@@ -204,8 +225,8 @@ export const GokayInspiredPortfolio: React.FC = () => {
                   </ul>
                 </nav>
 
-                {/* Right Quick Action: Resume Download Button */}
-                <div className="flex items-center gap-2">
+                {/* Right Quick Action: Resume Download Button on Desktop */}
+                <div className="hidden md:flex items-center gap-2 shrink-0">
                   <a
                     href="Venkata_Guravareddy_Resume.pdf"
                     download
@@ -343,7 +364,7 @@ export const GokayInspiredPortfolio: React.FC = () => {
                 </motion.div>
 
                 {/* Right 5 Tilted Doodle Tiles */}
-                <div className="md:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-5">
+                <div className="md:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-5">
                   {navCards.map((item, idx) => (
                     <motion.button
                       key={item.id}
@@ -353,18 +374,20 @@ export const GokayInspiredPortfolio: React.FC = () => {
                       whileHover={{ scale: 1.05, rotate: 0 }}
                       whileTap={{ scale: 0.97 }}
                       onClick={() => handleOpenSection(item.id)}
-                      className="bg-white dark:bg-slate-900/90 p-5 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 text-center group md:odd:rotate-2 md:even:-rotate-2 doodle-border flex flex-col items-center justify-center space-y-1.5 cursor-pointer w-full text-left"
+                      className={`bg-white dark:bg-slate-900/90 p-3.5 sm:p-5 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 text-center group md:odd:rotate-2 md:even:-rotate-2 doodle-border flex flex-col items-center justify-center space-y-1 sm:space-y-1.5 cursor-pointer w-full text-left ${
+                        idx === 4 ? 'col-span-2 sm:col-span-1' : ''
+                      }`}
                     >
-                      <div className="text-3xl group-hover:scale-125 group-hover:-translate-y-1 transition-transform duration-200 mb-1">
+                      <div className="text-2xl sm:text-3xl group-hover:scale-125 group-hover:-translate-y-1 transition-transform duration-200 mb-0.5 sm:mb-1">
                         {item.icon}
                       </div>
-                      <div className="font-bold text-lg text-gray-900 dark:text-gray-100 tracking-tight flow-underline">
+                      <div className="font-bold text-base sm:text-lg text-gray-900 dark:text-gray-100 tracking-tight flow-underline">
                         {item.label}
                       </div>
-                      <span className="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-bold group-hover:tracking-wider transition-all duration-200">
+                      <span className="text-[10px] sm:text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-bold group-hover:tracking-wider transition-all duration-200">
                         {item.badge}
                       </span>
-                      <span className="text-[11px] text-gray-500 dark:text-gray-400 line-clamp-1">
+                      <span className="text-[10px] sm:text-[11px] text-gray-500 dark:text-gray-400 line-clamp-1">
                         {item.desc}
                       </span>
                     </motion.button>
@@ -377,7 +400,7 @@ export const GokayInspiredPortfolio: React.FC = () => {
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.35, delay: 0.15 }}
-                className="bg-white dark:bg-slate-900/90 rounded-2xl p-7 shadow-sm doodle-border-another space-y-4"
+                className="bg-white dark:bg-slate-900/90 rounded-2xl p-4 sm:p-7 shadow-sm doodle-border-another space-y-3 sm:space-y-4"
               >
                 <div className="flex items-center justify-between border-b border-gray-200 dark:border-gray-700 pb-3">
                   <h3 className="text-2xl font-bold text-gray-900 dark:text-stone-100 tracking-tight flex items-center gap-2">
@@ -425,17 +448,17 @@ export const GokayInspiredPortfolio: React.FC = () => {
               <div>
               {/* SECTION: SYSTEMS & CASE STUDIES */}
               {activeTab === 'systems' && (
-                <div className="bg-white dark:bg-slate-900/90 rounded-2xl p-7 shadow-sm doodle-border-another space-y-6 animate-in fade-in-50 duration-300">
+                <div className="bg-white dark:bg-slate-900/90 rounded-2xl p-4 sm:p-7 shadow-sm doodle-border-another space-y-4 sm:space-y-6 animate-in fade-in-50 duration-300">
                   <div className="border-b border-gray-200 dark:border-gray-700 pb-3">
-                    <h3 className="text-2xl font-bold text-gray-900 dark:text-stone-100 tracking-tight">
+                    <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-stone-100 tracking-tight">
                       Featured Systems & Case Studies
                     </h3>
-                    <p className="text-sm text-gray-500 dark:text-gray-400 mt-0.5">
+                    <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-0.5">
                       Click any project below to expand the complete technical breakdown
                     </p>
                   </div>
 
-                  <div className="space-y-4">
+                  <div className="space-y-3 sm:space-y-4">
                     {caseStudiesData.map((study) => {
                       const isExpanded = expandedProject === study.id;
 
@@ -446,49 +469,49 @@ export const GokayInspiredPortfolio: React.FC = () => {
                         >
                           <button
                             onClick={() => setExpandedProject(isExpanded ? null : study.id)}
-                            className="group w-full p-5 flex items-center justify-between gap-4 text-left cursor-pointer"
+                            className="group w-full p-3.5 sm:p-5 flex items-center justify-between gap-3 sm:gap-4 text-left cursor-pointer"
                             aria-expanded={isExpanded}
                           >
-                            <div className="space-y-1">
-                              <div className="flex flex-wrap items-center gap-2.5">
-                                <span className="font-heading font-bold text-base sm:text-lg text-foreground">
+                            <div className="space-y-1 min-w-0">
+                              <div className="flex flex-wrap items-center gap-2 sm:gap-2.5">
+                                <span className="font-heading font-bold text-sm sm:text-lg text-foreground leading-snug">
                                   <span className="flow-underline group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
                                     {study.title}
                                   </span>
                                 </span>
-                                <span className="text-xs font-mono font-bold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30">
+                                <span className="text-[10px] sm:text-xs font-mono font-bold px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 shrink-0">
                                   {study.impactBadge}
                                 </span>
                               </div>
-                              <p className="text-xs sm:text-sm text-brand-cyan font-medium">
+                              <p className="text-xs sm:text-sm text-brand-cyan font-medium line-clamp-1 sm:line-clamp-none">
                                 {study.subtitle}
                               </p>
                             </div>
 
-                            <div className="shrink-0 w-8 h-8 rounded-xl bg-white dark:bg-slate-700 border border-border flex items-center justify-center text-foreground group-hover:border-emerald-500 transition-colors">
-                              {isExpanded ? <Minus className="w-4 h-4 text-emerald-600" /> : <Plus className="w-4 h-4 text-gray-500 group-hover:text-emerald-600 transition-colors" />}
+                            <div className="shrink-0 w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-white dark:bg-slate-700 border border-border flex items-center justify-center text-foreground group-hover:border-emerald-500 transition-colors">
+                              {isExpanded ? <Minus className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-600" /> : <Plus className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gray-500 group-hover:text-emerald-600 transition-colors" />}
                             </div>
                           </button>
 
                           {isExpanded && (
-                            <div className="px-5 pb-5 pt-1 border-t border-gray-200 dark:border-gray-700 space-y-4 text-xs sm:text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-                              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-                                <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-border space-y-1">
-                                  <strong className="text-foreground font-semibold block text-xs uppercase font-mono">
+                            <div className="px-3.5 pb-4 sm:px-5 sm:pb-5 pt-1 border-t border-gray-200 dark:border-gray-700 space-y-3 sm:space-y-4 text-xs sm:text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 pt-1 sm:pt-2">
+                                <div className="p-3 sm:p-4 rounded-xl bg-white dark:bg-slate-900 border border-border space-y-1">
+                                  <strong className="text-foreground font-semibold block text-[11px] sm:text-xs uppercase font-mono">
                                     The Challenge:
                                   </strong>
                                   <p>{study.problem}</p>
                                 </div>
-                                <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-border space-y-1">
-                                  <strong className="text-foreground font-semibold block text-xs uppercase font-mono">
+                                <div className="p-3 sm:p-4 rounded-xl bg-white dark:bg-slate-900 border border-border space-y-1">
+                                  <strong className="text-foreground font-semibold block text-[11px] sm:text-xs uppercase font-mono">
                                     Architectural Solution:
                                   </strong>
                                   <p>{study.architecture}</p>
                                 </div>
                               </div>
 
-                              <div className="p-4 rounded-xl bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-300 dark:border-emerald-800 text-foreground">
-                                <strong className="text-emerald-600 dark:text-emerald-400 font-bold block text-xs uppercase font-mono mb-1">
+                              <div className="p-3 sm:p-4 rounded-xl bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-300 dark:border-emerald-800 text-foreground">
+                                <strong className="text-emerald-600 dark:text-emerald-400 font-bold block text-[11px] sm:text-xs uppercase font-mono mb-1">
                                   Verified Production Impact:
                                 </strong>
                                 <p>{study.impact}</p>
@@ -498,7 +521,7 @@ export const GokayInspiredPortfolio: React.FC = () => {
                                 {study.techStack.map((tech, tIdx) => (
                                   <span
                                     key={tIdx}
-                                    className="text-xs font-mono px-2.5 py-0.5 rounded-lg bg-gray-200 dark:bg-slate-700 text-foreground"
+                                    className="text-[11px] sm:text-xs font-mono px-2 py-0.5 sm:px-2.5 sm:py-0.5 rounded-lg bg-gray-200 dark:bg-slate-700 text-foreground"
                                   >
                                     {tech}
                                   </span>
@@ -515,9 +538,9 @@ export const GokayInspiredPortfolio: React.FC = () => {
 
               {/* SECTION: WORK EXPERIENCE TIMELINE */}
               {activeTab === 'experience' && (
-                <div className="bg-white dark:bg-slate-900/90 rounded-2xl p-7 shadow-sm doodle-border-another space-y-6 animate-in fade-in-50 duration-300">
+                <div className="bg-white dark:bg-slate-900/90 rounded-2xl p-4 sm:p-7 shadow-sm doodle-border-another space-y-4 sm:space-y-6 animate-in fade-in-50 duration-300">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-gray-200 dark:border-gray-700 pb-3">
-                    <h3 className="text-2xl font-bold text-gray-900 dark:text-stone-100 tracking-tight">
+                    <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-stone-100 tracking-tight">
                       14 Years Across the Stack
                     </h3>
                     <span className="text-xs font-mono text-gray-500 dark:text-gray-400 uppercase tracking-wider font-semibold">
@@ -525,7 +548,7 @@ export const GokayInspiredPortfolio: React.FC = () => {
                     </span>
                   </div>
 
-                  <div className="space-y-4">
+                  <div className="space-y-3 sm:space-y-4">
                     {timelineData.map((item, idx) => {
                       const isExpanded = expandedTimeline === idx;
 
@@ -536,26 +559,26 @@ export const GokayInspiredPortfolio: React.FC = () => {
                         >
                           <button
                             onClick={() => setExpandedTimeline(isExpanded ? null : idx)}
-                            className="group w-full p-5 flex items-center justify-between gap-4 text-left cursor-pointer"
+                            className="group w-full p-3.5 sm:p-5 flex items-center justify-between gap-3 sm:gap-4 text-left cursor-pointer"
                             aria-expanded={isExpanded}
                           >
-                            <div className="flex items-center gap-4 sm:gap-6">
-                              <div className="w-24 sm:w-28 h-12 flex items-center justify-start shrink-0 group-hover:scale-105 transition-transform duration-200">
+                            <div className="flex items-center gap-3 sm:gap-6 min-w-0">
+                              <div className="w-16 sm:w-28 h-10 sm:h-12 flex items-center justify-start shrink-0 group-hover:scale-105 transition-transform duration-200">
                                 {getCompanyLogo(item.company)}
                               </div>
 
-                              <div className="space-y-1.5">
-                                <h4 className="font-heading font-bold text-base sm:text-lg text-foreground">
+                              <div className="space-y-1 min-w-0">
+                                <h4 className="font-heading font-bold text-sm sm:text-lg text-foreground leading-snug">
                                   <span className="flow-underline group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
                                     {item.role}
                                   </span>
                                 </h4>
-                                <div className="flex flex-wrap items-center gap-x-3 text-xs font-mono text-muted-foreground">
+                                <div className="flex flex-wrap items-center gap-x-2 sm:gap-x-3 text-[11px] sm:text-xs font-mono text-muted-foreground">
                                   <span className="text-emerald-600 dark:text-emerald-400 font-semibold">{item.layerBadge}</span>
                                   <span>·</span>
                                   <span>{item.period}</span>
-                                  <span>·</span>
-                                  <span>{item.location}</span>
+                                  <span className="hidden sm:inline">·</span>
+                                  <span className="hidden sm:inline">{item.location}</span>
                                 </div>
                               </div>
                             </div>
@@ -566,28 +589,28 @@ export const GokayInspiredPortfolio: React.FC = () => {
                           </button>
 
                           {isExpanded && (
-                            <div className="px-6 pb-6 pt-2 border-t border-gray-200 dark:border-gray-700 space-y-5 text-xs sm:text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-                              <p className="font-medium text-gray-800 dark:text-gray-200 text-sm">{item.description}</p>
+                            <div className="px-3.5 pb-4 sm:px-6 sm:pb-6 pt-2 border-t border-gray-200 dark:border-gray-700 space-y-4 sm:space-y-5 text-xs sm:text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                              <p className="font-medium text-gray-800 dark:text-gray-200 text-xs sm:text-sm">{item.description}</p>
                               
                               {/* Sub-Projects / Major Initiatives (if available) */}
                               {item.projects && item.projects.length > 0 ? (
-                                <div className="space-y-4 pt-1">
+                                <div className="space-y-3 sm:space-y-4 pt-1">
                                   <div className="flex items-center gap-2">
-                                    <span className="text-xs uppercase font-mono font-bold tracking-wider text-emerald-600 dark:text-emerald-400">
+                                    <span className="text-[11px] sm:text-xs uppercase font-mono font-bold tracking-wider text-emerald-600 dark:text-emerald-400">
                                       Flagship Programs & Architectural Projects
                                     </span>
                                     <div className="h-px bg-gray-200 dark:bg-gray-700 flex-1"></div>
                                   </div>
 
-                                  <div className="grid grid-cols-1 gap-4">
+                                  <div className="grid grid-cols-1 gap-3 sm:gap-4">
                                     {item.projects.map((proj, pIdx) => (
                                       <div
                                         key={pIdx}
-                                        className="group p-4 sm:p-5 rounded-xl bg-white dark:bg-slate-900 border border-gray-200 dark:border-gray-700/80 hover:border-emerald-500/40 shadow-xs space-y-3 transition-colors"
+                                        className="group p-3.5 sm:p-5 rounded-xl bg-white dark:bg-slate-900 border border-gray-200 dark:border-gray-700/80 hover:border-emerald-500/40 shadow-xs space-y-2.5 sm:space-y-3 transition-colors"
                                       >
-                                        <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1.5 border-b border-gray-100 dark:border-gray-800 pb-2.5">
+                                        <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 sm:gap-1.5 border-b border-gray-100 dark:border-gray-800 pb-2">
                                           <div>
-                                            <h5 className="font-bold text-gray-900 dark:text-stone-100 text-sm sm:text-base">
+                                            <h5 className="font-bold text-gray-900 dark:text-stone-100 text-sm sm:text-base leading-snug">
                                               <span className="flow-underline group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
                                                 {proj.title}
                                               </span>
@@ -596,31 +619,31 @@ export const GokayInspiredPortfolio: React.FC = () => {
                                               {proj.roleTitle}
                                             </p>
                                           </div>
-                                          <div className="text-right shrink-0">
-                                            <span className="inline-block text-[11px] font-mono font-bold px-2 py-0.5 rounded-md bg-gray-100 dark:bg-slate-800 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-700">
+                                          <div className="text-left sm:text-right shrink-0">
+                                            <span className="inline-block text-[10px] sm:text-[11px] font-mono font-bold px-1.5 sm:px-2 py-0.5 rounded-md bg-gray-100 dark:bg-slate-800 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-700">
                                               {proj.period}
                                             </span>
                                           </div>
                                         </div>
 
-                                        <p className="text-xs font-mono text-gray-500 dark:text-gray-400">
+                                        <p className="text-xs font-mono text-gray-500 dark:text-gray-400 leading-normal">
                                           {proj.tagline}
                                         </p>
 
-                                        <ul className="space-y-2 pt-1">
+                                        <ul className="space-y-1.5 sm:space-y-2 pt-0.5">
                                           {proj.achievements.map((ach, aIdx) => (
-                                            <li key={aIdx} className="flex items-start gap-2.5 text-xs text-gray-700 dark:text-gray-300 leading-normal">
-                                              <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
+                                            <li key={aIdx} className="flex items-start gap-2 text-xs text-gray-700 dark:text-gray-300 leading-normal">
+                                              <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
                                               <span>{ach}</span>
                                             </li>
                                           ))}
                                         </ul>
 
-                                        <div className="flex flex-wrap gap-1.5 pt-2 border-t border-gray-100 dark:border-gray-800">
+                                        <div className="flex flex-wrap gap-1.5 pt-1.5 border-t border-gray-100 dark:border-gray-800">
                                           {proj.skills.map((skill, sIdx) => (
                                             <span
                                               key={sIdx}
-                                              className="text-[11px] font-mono px-2 py-0.5 rounded bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700"
+                                              className="text-[10px] sm:text-[11px] font-mono px-2 py-0.5 rounded bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700"
                                             >
                                               {skill}
                                             </span>
@@ -634,7 +657,7 @@ export const GokayInspiredPortfolio: React.FC = () => {
                                 <div className="space-y-2 pt-1">
                                   {item.keyAchievements.map((ach, aIdx) => (
                                     <div key={aIdx} className="flex items-start gap-2 text-xs sm:text-sm">
-                                      <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
+                                      <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
                                       <span>{ach}</span>
                                     </div>
                                   ))}
@@ -651,25 +674,25 @@ export const GokayInspiredPortfolio: React.FC = () => {
 
               {/* SECTION: GRANTED US PATENTS */}
               {activeTab === 'patents' && (
-                <div className="bg-white dark:bg-slate-900/90 rounded-2xl p-7 shadow-sm doodle-border-another space-y-6 animate-in fade-in-50 duration-300">
+                <div className="bg-white dark:bg-slate-900/90 rounded-2xl p-4 sm:p-7 shadow-sm doodle-border-another space-y-4 sm:space-y-6 animate-in fade-in-50 duration-300">
                   <div className="border-b border-gray-200 dark:border-gray-700 pb-3">
-                    <h3 className="text-2xl font-bold text-gray-900 dark:text-stone-100 tracking-tight">
+                    <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-stone-100 tracking-tight">
                       Granted United States Patents
                     </h3>
-                    <p className="text-sm text-gray-500 dark:text-gray-400 mt-0.5">
+                    <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-0.5">
                       Patented distributed validation engines assigned to Verizon Patent & Licensing Inc.
                     </p>
                   </div>
 
-                  <div className="grid grid-cols-1 gap-5">
+                  <div className="grid grid-cols-1 gap-3.5 sm:gap-5">
                     {patentsData.map((patent) => (
                       <div
                         key={patent.patentNumber}
-                        className="p-6 rounded-2xl bg-gray-50/70 dark:bg-slate-800/70 border border-gray-200 dark:border-gray-700 space-y-3 flex flex-col justify-between"
+                        className="p-4 sm:p-6 rounded-2xl bg-gray-50/70 dark:bg-slate-800/70 border border-gray-200 dark:border-gray-700 space-y-2.5 sm:space-y-3 flex flex-col justify-between"
                       >
                         <div className="space-y-2">
-                          <div className="flex items-center justify-between">
-                            <span className="text-xs font-mono font-bold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30">
+                          <div className="flex items-center justify-between gap-2">
+                            <span className="text-[10px] sm:text-xs font-mono font-bold px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 shrink-0">
                               USPTO GRANTED
                             </span>
                             <a
@@ -683,7 +706,7 @@ export const GokayInspiredPortfolio: React.FC = () => {
                             </a>
                           </div>
 
-                          <h4 className="font-heading font-bold text-base text-foreground leading-snug">
+                          <h4 className="font-heading font-bold text-sm sm:text-base text-foreground leading-snug">
                             {patent.title}
                           </h4>
 
@@ -692,9 +715,9 @@ export const GokayInspiredPortfolio: React.FC = () => {
                           </p>
                         </div>
 
-                        <div className="text-xs font-mono text-muted-foreground pt-3 border-t border-gray-200 dark:border-gray-700 flex items-center justify-between">
+                        <div className="text-[11px] sm:text-xs font-mono text-muted-foreground pt-2.5 border-t border-gray-200 dark:border-gray-700 flex items-center justify-between">
                           <span>Granted: {patent.grantDate}</span>
-                          <span>{patent.assignee}</span>
+                          <span className="truncate ml-2">{patent.assignee}</span>
                         </div>
                       </div>
                     ))}
@@ -704,31 +727,32 @@ export const GokayInspiredPortfolio: React.FC = () => {
 
               {/* SECTION: HARDWARE & CLOUD STACK */}
               {activeTab === 'stack' && (
-                <div className="bg-white dark:bg-slate-900/90 rounded-2xl p-6 sm:p-8 shadow-sm doodle-border-another space-y-7 animate-in fade-in-50 duration-300">
+                <div className="bg-white dark:bg-slate-900/90 rounded-2xl p-3.5 sm:p-6 md:p-8 shadow-sm doodle-border-another space-y-4 sm:space-y-6 animate-in fade-in-50 duration-300">
                   {/* Header with Title & Summary */}
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-gray-200 dark:border-gray-700 pb-4">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-3 border-b border-gray-200 dark:border-gray-700 pb-3 sm:pb-4">
                     <div>
-                      <h3 className="text-2xl font-bold text-gray-900 dark:text-stone-100 tracking-tight flex items-center gap-2.5">
-                        <span className="p-1.5 rounded-xl bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30">
-                          <Cpu className="w-5 h-5" />
+                      <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-stone-100 tracking-tight flex items-center gap-2 sm:gap-2.5">
+                        <span className="p-1 sm:p-1.5 rounded-xl bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30">
+                          <Layers className="w-4 h-4 sm:w-5 sm:h-5" />
                         </span>
-                        <span>Hardware Silicon & Cloud Stack</span>
+                        <span>Multi-Layered Systems & AI Architecture</span>
                       </h3>
-                      <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
-                        Silicon architectures, serving runtimes, fleet orchestrators & high-speed storage fabrics
+                      <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-0.5 sm:mt-1">
+                        End-to-end full-stack systems engineering: Physical Silicon → Baremetal → Cloud Platform → GitOps → LLM Serving
                       </p>
                     </div>
 
                     <div className="flex items-center gap-2">
-                      <span className="text-xs font-mono font-bold px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 flex items-center gap-1.5">
-                        <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                        <span>4 Architectural Domains · 40+ Capabilities</span>
+                      <span className="text-[10px] sm:text-xs font-mono font-bold px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                        <span className="hidden sm:inline">5 Infrastructure Layers · 45+ Production Capabilities</span>
+                        <span className="sm:hidden">5 Layers · 45+ Capabilities</span>
                       </span>
                     </div>
                   </div>
 
-                  {/* Top Cockpit Metrics Ribbon (4 vibrant metric tiles) */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+                  {/* Top Key Architectural Metrics Ribbon - 2x2 Grid on Mobile */}
+                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3.5">
                     {stackMetrics.map((metric, mIdx) => {
                       const accentColorClasses = {
                         emerald: 'border-emerald-500/30 bg-emerald-500/5 hover:border-emerald-500/60',
@@ -747,20 +771,20 @@ export const GokayInspiredPortfolio: React.FC = () => {
                       return (
                         <div
                           key={mIdx}
-                          className={`p-4 rounded-xl border transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md ${accentColorClasses} space-y-1.5`}
+                          className={`p-2.5 sm:p-4 rounded-xl border transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md ${accentColorClasses} space-y-1 sm:space-y-1.5`}
                         >
-                          <div className="flex items-center justify-between">
-                            <span className="text-[11px] font-mono font-semibold uppercase tracking-wider text-muted-foreground">
+                          <div className="flex items-center justify-between gap-1">
+                            <span className="text-[10px] sm:text-[11px] font-mono font-semibold uppercase tracking-wider text-muted-foreground truncate">
                               {metric.label}
                             </span>
-                            <div className="w-6 h-6 rounded-lg bg-white dark:bg-slate-900 border border-border flex items-center justify-center p-1 shadow-2xs">
+                            <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-lg bg-white dark:bg-slate-900 border border-border flex items-center justify-center p-0.5 sm:p-1 shadow-2xs shrink-0">
                               {getStackIcon(metric.icon)}
                             </div>
                           </div>
-                          <div className={`text-xl font-heading font-extrabold tracking-tight ${textAccent}`}>
+                          <div className={`text-base sm:text-xl font-heading font-extrabold tracking-tight ${textAccent}`}>
                             {metric.value}
                           </div>
-                          <p className="text-[11px] font-mono text-gray-600 dark:text-gray-400 leading-tight">
+                          <p className="text-[10px] sm:text-[11px] font-mono text-gray-600 dark:text-gray-400 leading-tight line-clamp-1 sm:line-clamp-none">
                             {metric.subtitle}
                           </p>
                         </div>
@@ -768,166 +792,209 @@ export const GokayInspiredPortfolio: React.FC = () => {
                     })}
                   </div>
 
-                  {/* Filter Pills Bar */}
-                  <div className="flex flex-wrap items-center gap-2 pt-1 pb-1 border-b border-gray-100 dark:border-gray-800">
-                    <span className="text-xs font-mono font-bold text-gray-500 dark:text-gray-400 mr-1 flex items-center gap-1.5">
-                      <Sparkles className="w-3.5 h-3.5 text-emerald-500" />
-                      <span>Filter Domain:</span>
-                    </span>
-                    {[
-                      { id: 'all', label: 'All Stack (40+)' },
-                      { id: 'gpu-silicon', label: '⚡ GPU & Silicon' },
-                      { id: 'ai-serving', label: '🚀 AI & LLM Serving' },
-                      { id: 'k8s-cloud', label: '☸️ Kubernetes Fleet' },
-                      { id: 'storage-network', label: '💾 Storage & SRE' },
-                    ].map((tab) => {
-                      const isSelected = selectedStackCategory === tab.id;
-                      return (
-                        <button
-                          key={tab.id}
-                          onClick={() => setSelectedStackCategory(tab.id)}
-                          className={`px-3 py-1 rounded-lg text-xs font-medium font-mono transition-all cursor-pointer ${
-                            isSelected
-                              ? 'bg-emerald-600 text-white font-bold shadow-xs'
-                              : 'bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-gray-300 hover:bg-emerald-100 dark:hover:bg-slate-700 hover:text-emerald-700'
-                          }`}
-                        >
-                          {tab.label}
-                        </button>
-                      );
-                    })}
-                  </div>
+                  {/* Datacenter Server Rack Chassis Stack */}
+                  <div className="rounded-2xl sm:rounded-3xl border-2 border-gray-200 dark:border-slate-800 bg-gray-50/50 dark:bg-slate-950/60 p-2 sm:p-4 md:p-5 shadow-xs space-y-2 sm:space-y-3">
+                    {/* Server Rack Status Rail */}
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-2 px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 text-xs font-mono">
+                      <div className="flex items-center gap-2">
+                        <Server className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
+                        <span className="font-bold text-foreground tracking-wide text-[11px] sm:text-xs">
+                          Production Infrastructure & AI Server Stack
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-1.5 sm:gap-2 text-[10px] sm:text-[11px] text-muted-foreground font-mono">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shrink-0" />
+                        <span>5 Layers · 45+ Production Capabilities</span>
+                      </div>
+                    </div>
 
-                  {/* Domain Cards Grid */}
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    {stackData
-                      .filter((group) => selectedStackCategory === 'all' || selectedStackCategory === group.id)
-                      .map((group) => {
-                        const accentBorder = {
-                          emerald: 'hover:border-emerald-500/60 dark:hover:border-emerald-500/50',
-                          amber: 'hover:border-amber-500/60 dark:hover:border-amber-500/50',
-                          blue: 'hover:border-blue-500/60 dark:hover:border-blue-500/50',
-                          purple: 'hover:border-purple-500/60 dark:hover:border-purple-500/50',
-                        }[group.accent];
+                    {/* Server Rack Blades */}
+                    <div className="space-y-2 sm:space-y-3">
+                      {stackData.map((layer) => {
+                        const isExpanded = activeLayer === layer.id;
 
-                        const badgeStyles = {
-                          emerald: 'bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border-emerald-500/30',
-                          amber: 'bg-amber-500/15 text-amber-600 dark:text-amber-400 border-amber-500/30',
-                          blue: 'bg-blue-500/15 text-blue-600 dark:text-blue-400 border-blue-500/30',
-                          purple: 'bg-purple-500/15 text-purple-600 dark:text-purple-400 border-purple-500/30',
-                        }[group.accent];
+                        const accentConfig = {
+                          emerald: {
+                            badge: 'bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border-emerald-500/30',
+                            border: 'hover:border-emerald-500/50',
+                            activeBorder: 'border-emerald-500/60 dark:border-emerald-500/50',
+                            dot: 'bg-emerald-500',
+                            numBg: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/30',
+                            led: 'bg-emerald-500 shadow-emerald-500/50',
+                          },
+                          amber: {
+                            badge: 'bg-amber-500/15 text-amber-600 dark:text-amber-400 border-amber-500/30',
+                            border: 'hover:border-amber-500/50',
+                            activeBorder: 'border-amber-500/60 dark:border-amber-500/50',
+                            dot: 'bg-amber-500',
+                            numBg: 'bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/30',
+                            led: 'bg-amber-500 shadow-amber-500/50',
+                          },
+                          blue: {
+                            badge: 'bg-blue-500/15 text-blue-600 dark:text-blue-400 border-blue-500/30',
+                            border: 'hover:border-blue-500/50',
+                            activeBorder: 'border-blue-500/60 dark:border-blue-500/50',
+                            dot: 'bg-blue-500',
+                            numBg: 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/30',
+                            led: 'bg-blue-500 shadow-blue-500/50',
+                          },
+                          indigo: {
+                            badge: 'bg-red-500/15 text-red-600 dark:text-red-400 border-red-500/30',
+                            border: 'hover:border-red-500/50',
+                            activeBorder: 'border-red-500/60 dark:border-red-500/50',
+                            dot: 'bg-red-500',
+                            numBg: 'bg-red-500/10 text-red-600 dark:text-red-400 border-red-500/30',
+                            led: 'bg-red-500 shadow-red-500/50',
+                          },
+                          purple: {
+                            badge: 'bg-purple-500/15 text-purple-600 dark:text-purple-400 border-purple-500/30',
+                            border: 'hover:border-purple-500/50',
+                            activeBorder: 'border-purple-500/60 dark:border-purple-500/50',
+                            dot: 'bg-purple-500',
+                            numBg: 'bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/30',
+                            led: 'bg-purple-500 shadow-purple-500/50',
+                          },
+                        }[layer.accent] || {
+                          badge: 'bg-emerald-500/15 text-emerald-600 border-emerald-500/30',
+                          border: 'hover:border-emerald-500/50',
+                          activeBorder: 'border-emerald-500/60',
+                          dot: 'bg-emerald-500',
+                          numBg: 'bg-emerald-500/10 text-emerald-600 border-emerald-500/30',
+                          led: 'bg-emerald-500 shadow-emerald-500/50',
+                        };
 
                         return (
                           <div
-                            key={group.id}
-                            className={`group p-6 rounded-2xl bg-gray-50/70 dark:bg-slate-800/70 border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 ${accentBorder} flex flex-col justify-between space-y-5`}
+                            key={layer.id}
+                            className={`rounded-2xl border bg-white dark:bg-slate-900 overflow-hidden transition-all duration-300 shadow-xs ${
+                              isExpanded
+                                ? `${accentConfig.activeBorder} shadow-md`
+                                : `border-gray-200 dark:border-slate-800 ${accentConfig.border}`
+                            }`}
                           >
-                            <div className="space-y-4">
-                              {/* Card Header with Icon, Category Title & Badges */}
-                              <div className="flex items-start justify-between gap-3 border-b border-gray-200 dark:border-gray-700 pb-3.5">
-                                <div className="flex items-center gap-3">
-                                  <div className="w-10 h-10 rounded-xl bg-white dark:bg-slate-900 border border-border flex items-center justify-center shrink-0 p-2 shadow-xs group-hover:scale-110 transition-transform duration-200">
-                                    {getStackIcon(group.iconName)}
+                            {/* Server Blade Faceplate */}
+                            <button
+                              onClick={() => toggleLayer(layer.id)}
+                              className="group w-full p-3 sm:p-5 flex items-center justify-between gap-2 sm:gap-4 text-left cursor-pointer transition-colors"
+                              aria-expanded={isExpanded}
+                            >
+                              <div className="flex items-center gap-2.5 sm:gap-3.5 min-w-0 flex-1">
+                                {/* Brand Hardware Logo with Corner Layer Tag */}
+                                <div className="relative shrink-0">
+                                  <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-gray-50 dark:bg-slate-800 border border-border flex items-center justify-center p-1.5 sm:p-2 shadow-2xs group-hover:scale-105 transition-transform duration-200">
+                                    {getStackIcon(layer.iconName)}
                                   </div>
-                                  <div>
-                                    <h4 className="font-heading font-bold text-base sm:text-lg text-foreground">
-                                      <span className="flow-underline group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
-                                        {group.category}
-                                      </span>
-                                    </h4>
-                                    <span className={`inline-block text-[10px] font-mono font-bold px-2 py-0.5 rounded-md border mt-1 ${badgeStyles}`}>
-                                      {group.badge}
-                                    </span>
-                                  </div>
+                                  <span className={`absolute -top-1.5 -left-1.5 text-[9px] sm:text-[10px] font-mono font-extrabold px-1 py-0.2 rounded border shadow-2xs ${accentConfig.numBg}`}>
+                                    L{layer.layerNumber}
+                                  </span>
                                 </div>
 
-                                <div className="text-right shrink-0">
-                                  <span className="text-base sm:text-lg font-heading font-black text-foreground block">
-                                    {group.stat}
-                                  </span>
-                                  <span className="text-[10px] font-mono text-muted-foreground block">
-                                    {group.statLabel}
-                                  </span>
+                                <div className="space-y-0.5 min-w-0 flex-1">
+                                  <div className="flex flex-col sm:flex-row sm:items-center sm:gap-2">
+                                    <h4 className="font-heading font-bold text-xs sm:text-sm md:text-base text-foreground leading-snug">
+                                      <span className="flow-underline group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                                        {layer.name}
+                                      </span>
+                                    </h4>
+                                    <span className={`inline-flex self-start sm:self-auto text-[9px] sm:text-[10px] font-mono font-bold px-1.5 py-0.5 rounded-md border mt-0.5 sm:mt-0 shrink-0 ${accentConfig.badge}`}>
+                                      {layer.badge}
+                                    </span>
+                                  </div>
+                                  <p className="text-[11px] sm:text-xs text-muted-foreground line-clamp-1">
+                                    {layer.tagline}
+                                  </p>
                                 </div>
                               </div>
 
-                              {/* Architectural Tagline */}
-                              <p className="text-xs text-gray-600 dark:text-gray-300 leading-relaxed font-normal">
-                                {group.tagline}
-                              </p>
+                              <div className="flex items-center gap-2 sm:gap-4 shrink-0">
+                                <div className="hidden sm:block text-right">
+                                  <span className="text-sm font-heading font-black text-foreground block">
+                                    {layer.stat}
+                                  </span>
+                                  <span className="text-[10px] font-mono text-muted-foreground block">
+                                    {layer.statLabel}
+                                  </span>
+                                </div>
 
-                              {/* Section A: Flagship Architectural Specializations */}
-                              <div className="space-y-2">
-                                <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5">
-                                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                                  <span>Flagship Specializations</span>
-                                </span>
-                                <div className="flex flex-wrap gap-1.5">
-                                  {group.flagshipSkills.map((flagship, fIdx) => (
-                                    <span
-                                      key={fIdx}
-                                      className="text-xs font-mono font-bold px-3 py-1 rounded-lg bg-emerald-500/10 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 border border-emerald-500/40 shadow-xs flex items-center gap-1.5 hover:scale-105 transition-transform"
+                                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gray-100 dark:bg-slate-800 border border-border flex items-center justify-center text-foreground group-hover:border-emerald-500 transition-colors shadow-2xs shrink-0">
+                                  {isExpanded ? (
+                                    <Minus className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+                                  ) : (
+                                    <Plus className="w-3.5 h-3.5 text-gray-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors" />
+                                  )}
+                                </div>
+                              </div>
+                            </button>
+
+                            {/* Expanded Technical Sub-Groups */}
+                            {isExpanded && (
+                              <div className="px-3 sm:px-6 pb-4 sm:pb-6 pt-2 border-t border-gray-200/80 dark:border-gray-700/80 space-y-3.5 sm:space-y-6 animate-in fade-in-50 duration-200">
+                                {/* Mobile Stat View */}
+                                <div className="sm:hidden flex items-center justify-between p-2 rounded-xl bg-white/70 dark:bg-slate-900/70 border border-gray-200 dark:border-gray-700">
+                                  <div className="flex items-center gap-1.5">
+                                    <span className={`w-1.5 h-1.5 rounded-full ${accentConfig.dot}`} />
+                                    <span className="text-[10px] font-mono text-muted-foreground">{layer.statLabel}</span>
+                                  </div>
+                                  <span className="text-xs font-heading font-bold text-foreground">{layer.stat}</span>
+                                </div>
+
+                                {/* Flagship Architectural Specializations */}
+                                <div className="space-y-2">
+                                  <span className="text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                                    <span>Core Architectural Focus</span>
+                                  </span>
+                                  <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                                    {layer.flagshipSkills.map((flagship, fIdx) => (
+                                      <span
+                                        key={fIdx}
+                                        className="text-[11px] sm:text-xs font-mono font-bold px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg bg-emerald-500/10 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 border border-emerald-500/40 shadow-xs flex items-center gap-1.5 hover:scale-102 transition-transform"
+                                      >
+                                        <span className="text-emerald-500">★</span>
+                                        <span>{flagship}</span>
+                                      </span>
+                                    ))}
+                                  </div>
+                                </div>
+
+                                {/* Grouped Architecture Modules */}
+                                <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4 pt-0.5 sm:pt-1">
+                                  {layer.subGroups.map((sub, sIdx) => (
+                                    <div
+                                      key={sIdx}
+                                      className="p-3 sm:p-4 rounded-xl bg-white dark:bg-slate-900 border border-gray-200 dark:border-gray-700/80 space-y-2 shadow-2xs"
                                     >
-                                      <span>★</span>
-                                      <span>{flagship}</span>
-                                    </span>
+                                      <div className="flex items-center gap-2 border-b border-gray-100 dark:border-gray-800 pb-1.5">
+                                        <span className={`w-1.5 h-1.5 rounded-full ${accentConfig.dot}`} />
+                                        <h5 className="text-xs font-mono font-bold text-gray-800 dark:text-gray-200">
+                                          {sub.title}
+                                        </h5>
+                                      </div>
+                                      <div className="flex flex-wrap gap-1.5 pt-0.5">
+                                        {sub.skills.map((skill, kIdx) => {
+                                          const isFlagship = layer.flagshipSkills.includes(skill);
+                                          return (
+                                            <span
+                                              key={kIdx}
+                                              className={`text-[11px] sm:text-xs font-mono px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md border transition-all duration-150 ${
+                                                isFlagship
+                                                  ? 'bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 border-emerald-300 dark:border-emerald-700 font-semibold'
+                                                  : 'bg-gray-50 dark:bg-slate-800 text-foreground border-gray-200 dark:border-gray-700 hover:border-emerald-500 hover:text-emerald-600 dark:hover:text-emerald-400'
+                                              }`}
+                                            >
+                                              {skill}
+                                            </span>
+                                          );
+                                        })}
+                                      </div>
+                                    </div>
                                   ))}
                                 </div>
                               </div>
-
-                              {/* Section B: All Core Production Capabilities */}
-                              <div className="space-y-2 pt-1">
-                                <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-muted-foreground block">
-                                  Production Ecosystem & Tooling
-                                </span>
-                                <div className="flex flex-wrap gap-1.5">
-                                  {group.skills.map((skill, sIdx) => {
-                                    const isFlagship = group.flagshipSkills.includes(skill);
-                                    if (isFlagship) return null; // already shown above
-
-                                    return (
-                                      <span
-                                        key={sIdx}
-                                        className="text-xs font-mono px-2.5 py-1 rounded-md bg-white dark:bg-slate-900 text-foreground border border-gray-200 dark:border-gray-700 hover:border-emerald-500 hover:text-emerald-600 dark:hover:text-emerald-400 hover:shadow-xs transition-all duration-200 hover:-translate-y-0.5 cursor-default"
-                                      >
-                                        {skill}
-                                      </span>
-                                    );
-                                  })}
-                                </div>
-                              </div>
-                            </div>
+                            )}
                           </div>
                         );
                       })}
-                  </div>
-
-                  {/* Systems Engineering Summary Cockpit Bar */}
-                  <div className="p-5 rounded-2xl bg-gray-50/80 dark:bg-slate-800/80 border border-gray-200 dark:border-gray-700 space-y-3">
-                    <div className="flex items-center gap-2 pb-2 border-b border-gray-200 dark:border-gray-700">
-                      <Terminal className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-                      <span className="text-xs font-mono font-bold uppercase tracking-wider text-foreground">
-                        Systems Engineering Matrix & Tooling Runtime
-                      </span>
-                    </div>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs font-mono">
-                      <div className="space-y-1">
-                        <span className="text-[10px] text-muted-foreground uppercase block font-bold">Languages & Runtimes</span>
-                        <p className="text-foreground font-semibold">Python 3.12 · Go · C++ · Bash · CUDA C</p>
-                      </div>
-                      <div className="space-y-1">
-                        <span className="text-[10px] text-muted-foreground uppercase block font-bold">Accelerators & Fabrics</span>
-                        <p className="text-foreground font-semibold">NVIDIA H100 · A100 · NVLink 4.0 · InfiniBand NDR</p>
-                      </div>
-                      <div className="space-y-1">
-                        <span className="text-[10px] text-muted-foreground uppercase block font-bold">Fleet Control Planes</span>
-                        <p className="text-foreground font-semibold">Kubernetes · OpenShift · Ironic · ArgoCD</p>
-                      </div>
-                      <div className="space-y-1">
-                        <span className="text-[10px] text-muted-foreground uppercase block font-bold">Telemetry & Reliability</span>
-                        <p className="text-foreground font-semibold">Prometheus · Grafana · DCGM · Cilium eBPF</p>
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -935,43 +1002,43 @@ export const GokayInspiredPortfolio: React.FC = () => {
 
               {/* SECTION: CONTACT */}
               {activeTab === 'contact' && (
-                <div className="bg-white dark:bg-slate-900/90 rounded-2xl p-8 shadow-sm doodle-border-another space-y-6 animate-in fade-in-50 duration-300">
+                <div className="bg-white dark:bg-slate-900/90 rounded-2xl p-4 sm:p-8 shadow-sm doodle-border-another space-y-4 sm:space-y-6 animate-in fade-in-50 duration-300">
                   <div className="border-b border-gray-200 dark:border-gray-700 pb-3">
-                    <h3 className="text-2xl font-bold text-gray-900 dark:text-stone-100 tracking-tight">
+                    <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-stone-100 tracking-tight">
                       Say Hello!
                     </h3>
-                    <p className="text-sm text-gray-500 dark:text-gray-400 mt-0.5">
+                    <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-0.5">
                       Open to Principal / Staff Infrastructure Architect & AI Systems Engineering leadership opportunities.
                     </p>
                   </div>
 
                   <div className="space-y-4">
-                    <div className="space-y-2 text-base text-gray-700 dark:text-gray-300">
+                    <div className="space-y-2 text-sm sm:text-base text-gray-700 dark:text-gray-300">
                       <p>
                         Want to collaborate on high-scale GPU infrastructure, LLM inference platforms, or distributed systems?
                       </p>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 font-mono text-xs pt-1">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 font-mono text-xs pt-1">
                       <a
                         href="mailto:bsrgsit@gmail.com"
-                        className="group flex items-center gap-3 p-3.5 rounded-xl bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-gray-700 hover:border-emerald-500 hover:shadow-md transition-all duration-200 hover:-translate-y-0.5"
+                        className="group flex items-center gap-2.5 sm:gap-3 p-2.5 sm:p-3.5 rounded-xl bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-gray-700 hover:border-emerald-500 hover:shadow-md transition-all duration-200 hover:-translate-y-0.5"
                       >
-                        <Mail className="w-4 h-4 text-emerald-600 group-hover:scale-125 transition-transform duration-200" />
-                        <div>
-                          <span className="text-[10px] text-muted-foreground block">EMAIL</span>
-                          <span className="font-bold text-foreground flow-underline">bsrgsit@gmail.com</span>
+                        <Mail className="w-4 h-4 text-emerald-600 group-hover:scale-125 transition-transform duration-200 shrink-0" />
+                        <div className="min-w-0">
+                          <span className="text-[9px] sm:text-[10px] text-muted-foreground block">EMAIL</span>
+                          <span className="font-bold text-foreground flow-underline truncate block">bsrgsit@gmail.com</span>
                         </div>
                       </a>
 
                       <a
                         href="tel:+919884883957"
-                        className="group flex items-center gap-3 p-3.5 rounded-xl bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-gray-700 hover:border-emerald-500 hover:shadow-md transition-all duration-200 hover:-translate-y-0.5"
+                        className="group flex items-center gap-2.5 sm:gap-3 p-2.5 sm:p-3.5 rounded-xl bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-gray-700 hover:border-emerald-500 hover:shadow-md transition-all duration-200 hover:-translate-y-0.5"
                       >
-                        <Phone className="w-4 h-4 text-emerald-600 group-hover:scale-125 transition-transform duration-200" />
-                        <div>
-                          <span className="text-[10px] text-muted-foreground block">PHONE</span>
-                          <span className="font-bold text-foreground flow-underline">+91 9884883957</span>
+                        <Phone className="w-4 h-4 text-emerald-600 group-hover:scale-125 transition-transform duration-200 shrink-0" />
+                        <div className="min-w-0">
+                          <span className="text-[9px] sm:text-[10px] text-muted-foreground block">PHONE</span>
+                          <span className="font-bold text-foreground flow-underline truncate block">+91 9884883957</span>
                         </div>
                       </a>
 
@@ -979,12 +1046,12 @@ export const GokayInspiredPortfolio: React.FC = () => {
                         href="https://linkedin.com/in/bvguravareddy"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group flex items-center gap-3 p-3.5 rounded-xl bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-gray-700 hover:border-blue-500 hover:shadow-md transition-all duration-200 hover:-translate-y-0.5"
+                        className="group flex items-center gap-2.5 sm:gap-3 p-2.5 sm:p-3.5 rounded-xl bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-gray-700 hover:border-blue-500 hover:shadow-md transition-all duration-200 hover:-translate-y-0.5"
                       >
-                        <Linkedin className="w-4 h-4 text-blue-500 group-hover:scale-125 transition-transform duration-200" />
-                        <div>
-                          <span className="text-[10px] text-muted-foreground block">LINKEDIN</span>
-                          <span className="font-bold text-foreground flow-underline">bvguravareddy ↗</span>
+                        <Linkedin className="w-4 h-4 text-blue-500 group-hover:scale-125 transition-transform duration-200 shrink-0" />
+                        <div className="min-w-0">
+                          <span className="text-[9px] sm:text-[10px] text-muted-foreground block">LINKEDIN</span>
+                          <span className="font-bold text-foreground flow-underline truncate block">bvguravareddy ↗</span>
                         </div>
                       </a>
 
@@ -992,20 +1059,20 @@ export const GokayInspiredPortfolio: React.FC = () => {
                         href="https://github.com/bsrgsit"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group flex items-center gap-3 p-3.5 rounded-xl bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-gray-700 hover:border-purple-500 hover:shadow-md transition-all duration-200 hover:-translate-y-0.5"
+                        className="group flex items-center gap-2.5 sm:gap-3 p-2.5 sm:p-3.5 rounded-xl bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-gray-700 hover:border-purple-500 hover:shadow-md transition-all duration-200 hover:-translate-y-0.5"
                       >
-                        <Github className="w-4 h-4 text-purple-500 group-hover:scale-125 transition-transform duration-200" />
-                        <div>
-                          <span className="text-[10px] text-muted-foreground block">GITHUB</span>
-                          <span className="font-bold text-foreground flow-underline">bsrgsit ↗</span>
+                        <Github className="w-4 h-4 text-purple-500 group-hover:scale-125 transition-transform duration-200 shrink-0" />
+                        <div className="min-w-0">
+                          <span className="text-[9px] sm:text-[10px] text-muted-foreground block">GITHUB</span>
+                          <span className="font-bold text-foreground flow-underline truncate block">bsrgsit ↗</span>
                         </div>
                       </a>
                     </div>
 
-                    <div className="pt-4 text-center">
+                    <div className="pt-2 sm:pt-4 text-center">
                       <a
                         href="mailto:bsrgsit@gmail.com?subject=Principal%20Platform%20%26%20AI%20Infrastructure%20Opportunity&body=Hello%20Venkata,%0D%0A%0D%0AWe%20are%20interested%20in%20discussing%20a%20Principal%20Infrastructure%20Architect%20role%20with%20you."
-                        className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-md transition-transform hover:scale-105"
+                        className="inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-md transition-transform hover:scale-105 active:scale-95"
                       >
                         <Send className="w-3.5 h-3.5" />
                         <span>Send Direct Email to Venkata</span>

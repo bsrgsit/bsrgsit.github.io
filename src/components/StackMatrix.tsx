@@ -45,12 +45,12 @@ export const StackMatrix: React.FC = () => {
                     {getIcon(group.iconName)}
                   </div>
                   <h3 className="font-heading font-bold text-sm text-foreground leading-tight">
-                    {group.category}
+                    {group.name}
                   </h3>
                 </div>
 
                 <div className="flex flex-wrap gap-2">
-                  {group.skills.map((skill, sIdx) => (
+                  {group.subGroups.flatMap((s) => s.skills).map((skill, sIdx) => (
                     <span
                       key={sIdx}
                       className="text-xs font-mono px-2.5 py-1 rounded-lg bg-secondary text-foreground/90 border border-border/60 hover:border-brand-cyan/40 hover:text-brand-cyan transition-colors"

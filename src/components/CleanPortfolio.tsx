@@ -336,13 +336,13 @@ export const CleanPortfolio: React.FC = () => {
           </h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {stackData.map((group, idx) => (
+            {stackData.map((layer, idx) => (
               <div key={idx} className="p-4 rounded-xl border border-border/60 space-y-2">
                 <h3 className="font-heading font-semibold text-xs text-foreground uppercase tracking-wider font-mono">
-                  {group.category}
+                  {layer.name}
                 </h3>
                 <div className="flex flex-wrap gap-1.5">
-                  {group.skills.map((skill, sIdx) => (
+                  {layer.subGroups.flatMap((s) => s.skills).map((skill, sIdx) => (
                     <span
                       key={sIdx}
                       className="text-xs font-mono px-2 py-0.5 rounded bg-secondary text-foreground/90 border border-border/40"
