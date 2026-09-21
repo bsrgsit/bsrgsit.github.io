@@ -36,7 +36,7 @@ export const Timeline: React.FC = () => {
             </p>
           </div>
           <span className="text-xs font-mono px-3 py-1 rounded-full bg-secondary text-muted-foreground font-semibold shrink-0">
-            Stack Layers 01 — 05
+            Stack Layers 01 - 05
           </span>
         </div>
 

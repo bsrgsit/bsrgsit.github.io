@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
-import { GokayInspiredPortfolio } from '@/components/GokayInspiredPortfolio';
+import { InteractivePortfolio } from '@/components/InteractivePortfolio';
 
 export default function Home() {
-  return <GokayInspiredPortfolio />;
+  return <InteractivePortfolio />;
 }

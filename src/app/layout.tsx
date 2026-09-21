@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Venkata Guravareddy — Principal Platform & AI Infrastructure Architect',
+  title: 'Venkata Guravareddy - Principal Platform & AI Infrastructure Architect',
   description:
     '14+ Years Systems Experience · 600+ Kubernetes Clusters · NVIDIA H100 GPU Supercomputers · 3.8x LLM Inference Speedup · Granted US Patents US 12,028,213 & US 11,336,525 B1.',
   keywords: [
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     url: 'https://bsrgsit.github.io/',
-    title: 'Venkata Guravareddy — Principal Platform & AI Infrastructure Architect',
+    title: 'Venkata Guravareddy - Principal Platform & AI Infrastructure Architect',
     description:
       '14+ Years Systems Experience · 600+ Kubernetes Clusters · NVIDIA H100 GPU Supercomputing · 3.8x LLM Inference Speedup · Granted US Patents.',
     siteName: 'Venkata Guravareddy Portfolio',

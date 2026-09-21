@@ -21,9 +21,9 @@ export interface TimelineItem {
 export const timelineData: TimelineItem[] = [
   {
     layerBadge: "STACK LAYER 05 · APPS, GPU SUPERCOMPUTING & MULTI-CLOUD FLEET",
-    period: "2017 — PRESENT",
+    period: "2017 - PRESENT",
     location: "Hyderabad, India",
-    role: "Principal Engineer — AI & Cloud Infrastructure",
+    role: "Principal Engineer - AI & Cloud Infrastructure",
     company: "Verizon Wireless",
     description:
       "Principal infrastructure architect leading 3 core multi-year platform programs: Enterprise GPU Inference Supercomputing, Fleet Kubernetes & Capacity Analytics, and the Atlas 5G Cloud-Native Edge Platform spanning 52 data centers and 42,000+ edge locations.",
@@ -36,8 +36,8 @@ export const timelineData: TimelineItem[] = [
     projects: [
       {
         title: "Enterprise GPU Supercomputing & GenAI Inference Platform",
-        roleTitle: "Lead Architect — Enterprise GPU Infrastructure",
-        period: "2023 — PRESENT",
+        roleTitle: "Lead Architect - Enterprise GPU Infrastructure",
+        period: "2023 - PRESENT",
         tagline: "Bare-Metal to Serving Runtimes · NVIDIA H100/L40S · InfiniBand NDR 400G",
         achievements: [
           "Bare-Metal to Model Serving Architecture: Designed and provisioned centralized multi-node GPU clusters (NVIDIA H100 SXM5 and L40S) utilizing NVIDIA GPU Operator, DCGM telemetry, and NVIDIA Fabric Manager across high-speed InfiniBand/RDMA fabric.",
@@ -49,8 +49,8 @@ export const timelineData: TimelineItem[] = [
       },
       {
         title: "Fleet Kubernetes & \"CER\" Distributed Capacity Analytics Engine",
-        roleTitle: "Staff Platform Engineer — Fleet Infrastructure & Capacity Engine",
-        period: "2021 — 2024",
+        roleTitle: "Staff Platform Engineer - Fleet Infrastructure & Capacity Engine",
+        period: "2021 - 2024",
         tagline: "600+ Multi-Tenant Clusters · 52 Data Centers · 5M+ Telemetry Events/Hour",
         achievements: [
           "Planet-Scale Multi-Site Fleet Operations: Governed infrastructure architecture and lifecycle automation for 600+ Kubernetes and OpenStack clusters across 52 geographic data centers supporting business-critical microservices and 5G network functions.",
@@ -62,8 +62,8 @@ export const timelineData: TimelineItem[] = [
       },
       {
         title: "Atlas: 5G Cloud-Native Network Function (CNF) Deployment Platform",
-        roleTitle: "Platform Lead — Atlas Edge Cloud Control Plane",
-        period: "2017 — 2021",
+        roleTitle: "Platform Lead - Atlas Edge Cloud Control Plane",
+        period: "2017 - 2021",
         tagline: "Scaled from 2-Person Prototype to 42,000+ Edge Nodes · 10,000+ Ops/Hour",
         achievements: [
           "Architected & Scaled Atlas Platform: Spearheaded architectural design and implementation of Atlas, Verizon's enterprise 5G CNF deployment, admission control, and validation engine. Scaled the platform from an initial 2-person prototype to a distributed fleet operating across 42,000+ edge locations handling 10,000+ operations/hour.",
@@ -77,7 +77,7 @@ export const timelineData: TimelineItem[] = [
   },
   {
     layerBadge: "STACK LAYER 04 · SDN & NETWORK VIRTUALIZATION LAYER",
-    period: "2016 — 2017",
+    period: "2016 - 2017",
     location: "Bangalore, India",
     role: "Senior Software Engineer",
     company: "Ericsson R&D",
@@ -90,7 +90,7 @@ export const timelineData: TimelineItem[] = [
   },
   {
     layerBadge: "STACK LAYER 03 · BARE-METAL HARDWARE & CLOUD LAYER",
-    period: "2014 — 2016",
+    period: "2014 - 2016",
     location: "Bangalore, India",
     role: "Software Engineer",
     company: "Hewlett Packard Enterprise (HPE R&D)",
@@ -103,7 +103,7 @@ export const timelineData: TimelineItem[] = [
   },
   {
     layerBadge: "STACK LAYER 02 · PHYSICAL NETWORKING & PROTOCOL FABRIC",
-    period: "2012 — 2014",
+    period: "2012 - 2014",
     location: "Chennai, India",
     role: "Software Engineer",
     company: "HCL Technologies (Cisco Practice)",
@@ -116,7 +116,7 @@ export const timelineData: TimelineItem[] = [
   },
   {
     layerBadge: "STACK LAYER 01 · COMPUTER SCIENCE & SYSTEMS FOUNDATIONS",
-    period: "2008 — 2012",
+    period: "2008 - 2012",
     location: "Visakhapatnam, India",
     role: "B.Tech in Computer Science & Engineering (Academic Gold Medalist)",
     company: "Andhra University",
