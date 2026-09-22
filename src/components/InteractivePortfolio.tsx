@@ -30,6 +30,8 @@ import {
   Home,
   Sparkles,
   Terminal,
+  Menu,
+  X,
 } from 'lucide-react';
 import { DrawablyButton } from 'drawably/react';
 import { GooglyEyesButton } from '@/components/ui/googly-eyes-button';
@@ -69,6 +71,7 @@ export const InteractivePortfolio: React.FC = () => {
   const [activeLayer, setActiveLayer] = useState<string | null>('layer-05-llm-serving');
   const [copiedItem, setCopiedItem] = useState<string | null>(null);
   const [selectedTopic, setSelectedTopic] = useState<string>('gpu');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
 
   const copyToClipboard = (text: string, label: string) => {
     if (typeof navigator !== 'undefined' && navigator.clipboard) {
@@ -131,6 +134,7 @@ export const InteractivePortfolio: React.FC = () => {
 
   const handleOpenSection = (section: SectionId) => {
     setActiveTab(section);
+    setMobileMenuOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -167,94 +171,118 @@ export const InteractivePortfolio: React.FC = () => {
     { id: 'contact', label: 'Contact', icon: '📬', badge: 'Say Hello', desc: 'Get in Touch' },
   ];
 
-  const allNavItems = navCards;
+  const allNavItems: { id: SectionId; label: string; icon: string }[] = [
+    { id: 'overview', label: 'Overview', icon: '👋' },
+    ...navCards.map((c) => ({ id: c.id, label: c.label, icon: c.icon })),
+  ];
 
   return (
     <div
       className="min-h-screen transition-colors duration-300 py-3 sm:py-6 px-2.5 sm:px-6 relative bg-[#f1f8f4] dark:bg-[#0f172a] text-slate-900 dark:text-slate-100"
     >
-      {/* Landscape Orb Light/Dark Mode Toggle */}
-      <div
-        className="fixed top-3 sm:top-5 right-3 sm:right-6 lg:right-10 z-50 flex items-center select-none"
-        title={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
-      >
-        <LandscapeOrbToggle
-          isDark={isDark}
-          onToggle={toggleTheme}
-          size={46}
-        />
-      </div>
-
       <main className="max-w-6xl mx-auto pt-1 sm:pt-2 space-y-4 sm:space-y-6">
         {/* ======================================================== */}
-        {/* TOP NAVIGATION BAR: HIDDEN ON OVERVIEW, VISIBLE ON SECTIONS */}
+        {/* TOP NAVIGATION BAR: ALWAYS VISIBLE & FULLY RESPONSIVE     */}
         {/* ======================================================== */}
-        <AnimatePresence>
-          {activeTab !== 'overview' && (
-            <motion.header
-              initial={{ opacity: 0, y: -24 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -24 }}
-              transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
-              className="sticky top-2 z-40"
+        <header className="sticky top-2 z-40">
+          <div className="bg-emerald-100/90 dark:bg-gray-900/90 backdrop-blur-md rounded-2xl doodle-border px-3 sm:px-5 py-2 shadow-sm flex items-center justify-between gap-2 sm:gap-4">
+            {/* Left: Brand Badge */}
+            <button
+              onClick={() => handleOpenSection('overview')}
+              className="flex items-center gap-2 group cursor-pointer shrink-0"
+              title="Return to Overview"
             >
-              <div className="bg-emerald-100/90 dark:bg-gray-900/90 backdrop-blur-md rounded-2xl doodle-border px-3 sm:px-6 py-2 sm:py-2.5 shadow-sm flex flex-col md:flex-row items-stretch md:items-center justify-between gap-2.5 md:gap-4">
-                {/* Top Row on Mobile: Brand Badge + Mobile Resume Button */}
-                <div className="flex items-center justify-between gap-2 shrink-0">
-                  <button
-                    onClick={() => handleOpenSection('overview')}
-                    className="flex items-center gap-2 group cursor-pointer"
-                    title="Return to Overview"
-                  >
-                    <div className="rounded-lg bg-white dark:bg-slate-800 text-emerald-800 dark:text-emerald-300 font-georama font-bold px-2.5 py-1 text-xs sm:text-base shadow-sm group-hover:-rotate-3 transition-transform flex items-center gap-1.5 border border-emerald-300 dark:border-emerald-700">
-                      <span>Venkata</span>
-                      <span className="text-gray-900 dark:text-stone-100 font-extrabold">Guravareddy</span>
-                    </div>
-                  </button>
-
-                  <div className="md:hidden flex items-center gap-2">
-                    <a
-                      href="/Venkata_Guravareddy_Resume.pdf"
-                      download="Venkata_Guravareddy_Resume.pdf"
-                      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-sm transition-transform active:scale-95"
-                    >
-                      <Download className="w-3 h-3" />
-                      <span>Resume</span>
-                    </a>
-                  </div>
-                </div>
-
-                {/* Center Navigation Links: Rewamp UI Liquid Underline Navbar */}
-                <div className="flex-1 flex justify-center overflow-x-auto no-scrollbar py-0.5">
-                  <LiquidUnderlineNavbar
-                    bare={true}
-                    items={allNavItems.map((item) => ({
-                      id: item.id,
-                      label: item.label,
-                      icon: item.icon,
-                    }))}
-                    activeId={activeTab}
-                    onSelect={(id) => handleOpenSection(id as SectionId)}
-                    className="w-auto"
-                  />
-                </div>
-
-                {/* Right Quick Action: Googly Eyes Button + Resume Download Button on Desktop */}
-                <div className="hidden md:flex items-center gap-2.5 shrink-0">
-                  <GooglyEyesButton onClick={() => handleOpenSection('contact')} className="scale-90 origin-right" />
-                  <a
-                    href="/Venkata_Guravareddy_Resume.pdf"
-                    download="Venkata_Guravareddy_Resume.pdf"
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-sm transition-transform hover:scale-105"
-                  >
-                    <Download className="w-3.5 h-3.5" />
-                    <span>Resume</span>
-                  </a>
-                </div>
+              <div className="rounded-lg bg-white dark:bg-slate-800 text-emerald-800 dark:text-emerald-300 font-georama font-bold px-2.5 py-1 text-xs sm:text-base shadow-sm group-hover:-rotate-3 transition-transform flex items-center gap-1.5 border border-emerald-300 dark:border-emerald-700">
+                <span>Venkata</span>
+                <span className="text-gray-900 dark:text-stone-100 font-extrabold">Guravareddy</span>
               </div>
-            </motion.header>
-          )}
-        </AnimatePresence>
+            </button>
+
+            {/* Center: Desktop Liquid Underline Navbar */}
+            <div className="hidden md:flex flex-1 justify-center py-0.5">
+              <LiquidUnderlineNavbar
+                bare={true}
+                items={allNavItems}
+                activeId={activeTab}
+                onSelect={(id) => handleOpenSection(id as SectionId)}
+                className="w-auto"
+              />
+            </div>
+
+            {/* Right Action Cluster */}
+            <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
+              {/* Googly Eyes Button: Desktop only, and hide if already on contact! */}
+              {activeTab !== 'contact' && (
+                <div className="hidden lg:block">
+                  <GooglyEyesButton onClick={() => handleOpenSection('contact')} className="scale-90 origin-right" />
+                </div>
+              )}
+
+              {/* Resume Download Button */}
+              <a
+                href="/Venkata_Guravareddy_Resume.pdf"
+                download="Venkata_Guravareddy_Resume.pdf"
+                className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-sm transition-transform active:scale-95 hover:scale-105"
+              >
+                <Download className="w-3.5 h-3.5" />
+                <span className="hidden sm:inline">Resume</span>
+              </a>
+
+              {/* Theme Orb Toggle */}
+              <div className="flex items-center" title={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}>
+                <LandscapeOrbToggle isDark={isDark} onToggle={toggleTheme} size={38} />
+              </div>
+
+              {/* Mobile Menu Toggle Button */}
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="md:hidden p-1.5 rounded-xl bg-white dark:bg-slate-800 border border-emerald-300 dark:border-emerald-700 text-gray-800 dark:text-gray-200 focus:outline-none"
+                aria-label="Toggle navigation menu"
+              >
+                {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              </button>
+            </div>
+          </div>
+
+          {/* Mobile Dropdown Navigation Drawer */}
+          <AnimatePresence>
+            {mobileMenuOpen && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.2 }}
+                className="md:hidden mt-2 p-3 rounded-2xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl doodle-border shadow-xl space-y-1.5"
+              >
+                {allNavItems.map((item) => {
+                  const isActive = activeTab === item.id;
+                  return (
+                    <button
+                      key={item.id}
+                      onClick={() => handleOpenSection(item.id)}
+                      className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-sm font-semibold transition-colors ${
+                        isActive
+                          ? 'bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold'
+                          : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800'
+                      }`}
+                    >
+                      <div className="flex items-center gap-2">
+                        <span>{item.icon}</span>
+                        <span>{item.label}</span>
+                      </div>
+                      {isActive && <span className="w-2 h-2 rounded-full bg-emerald-500" />}
+                    </button>
+                  );
+                })}
+                {activeTab !== 'contact' && (
+                  <div className="pt-2 border-t border-gray-200 dark:border-gray-800">
+                    <GooglyEyesButton onClick={() => handleOpenSection('contact')} className="w-full justify-center" />
+                  </div>
+                )}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </header>
 
         {/* ======================================================== */}
         {/* MAIN CONTENT AREA WITH SMOOTH FADE & SLIDE ANIMATIONS    */}
@@ -1150,7 +1178,6 @@ export const InteractivePortfolio: React.FC = () => {
                     </div>
 
                     <div className="flex flex-wrap items-center gap-3 shrink-0 self-start sm:self-auto">
-                      <GooglyEyesButton />
                       <a
                         href="/Venkata_Guravareddy_Resume.pdf"
                         download="Venkata_Guravareddy_Resume.pdf"
